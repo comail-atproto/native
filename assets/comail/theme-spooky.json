@@ -1,0 +1,88 @@
+{
+  "name": "halloween",
+  "copy": {
+    "mascotTagline": "happy spooky szn"
+  },
+  "colors": {
+    "brand": {
+      "lightBlue": "#ffad3b",
+      "darkBlue": "#ffad3b",
+      "darkestBlue": "#ffe596",
+      "yellow": "#c57938",
+      "background": "#313638"
+    },
+    "semantic": {
+      "muted": "#ffad3b",
+      "line": "#574729",
+      "surface": "#574729",
+      "accentSoft": "#574729",
+      "selectionBg": "#ffad3b",
+      "selectionInk": "#313638",
+      "suggestionHover": "oklch(0.30 0.02 70)",
+      "suggestionAvatar": "oklch(0.40 0.01 70)",
+      "suggestionMuted": "oklch(0.65 0.01 70)",
+      "skeletonShine": "oklch(0.92 0.01 70)"
+    },
+    "status": {
+      "success": "oklch(0.60 0.14 150)",
+      "warning": "oklch(0.68 0.15 68)",
+      "danger": "oklch(0.55 0.18 25)",
+      "dangerBg": "oklch(0.30 0.06 25)",
+      "dangerBorder": "oklch(0.40 0.08 25)",
+      "warningBg": "oklch(0.30 0.06 68)",
+      "warningBorder": "oklch(0.40 0.08 68)",
+      "successBg": "oklch(0.30 0.05 150)",
+      "successBorder": "oklch(0.40 0.08 150)"
+    },
+    "docs": {
+      "light": {
+        "bg": "#313638",
+        "bgNav": "#313638",
+        "bgSidebar": "#313638",
+        "bgInlineCode": "#574729",
+        "text": "#ffe596",
+        "textAccent": "#ffad3b",
+        "textInvert": "#313638",
+        "white": "#ffe596",
+        "hairline": "#574729",
+        "hairlineLight": "#975330",
+        "hairlineShade": "#313638",
+        "gray1": "#ffe596",
+        "gray2": "#ffad3b",
+        "gray3": "#c57938",
+        "gray4": "#975330",
+        "gray5": "#574729",
+        "gray6": "#313638",
+        "gray7": "#574729",
+        "accent": "#ffad3b",
+        "accentHigh": "#c57938",
+        "accentLow": "#574729",
+        "asidesTextAccent": "#ffad3b"
+      },
+      "dark": {
+        "bg": "#313638",
+        "bgNav": "#313638",
+        "bgSidebar": "#574729",
+        "bgInlineCode": "#574729",
+        "text": "#ffe596",
+        "textAccent": "#ffad3b",
+        "textInvert": "#313638",
+        "white": "#ffe596",
+        "hairline": "#574729",
+        "hairlineLight": "#975330",
+        "hairlineShade": "#313638",
+        "gray1": "#ffe596",
+        "gray2": "#ffad3b",
+        "gray3": "#c57938",
+        "gray4": "#975330",
+        "gray5": "#574729",
+        "gray6": "#313638",
+        "gray7": "#574729",
+        "accent": "#ffad3b",
+        "accentHigh": "#ffad3b",
+        "accentLow": "#574729",
+        "asidesTextAccent": "#ffad3b"
+      }
+    }
+  }
+}

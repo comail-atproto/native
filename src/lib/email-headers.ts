@@ -1,0 +1,310 @@
+// Header-derived metadata for the reader: SPF/DKIM/DMARC results, spam
+// scores, mailing-list headers and read-receipt requests. Port of the
+// webmail's `lib/email-headers.ts` plus the header lookups the viewer did
+// inline; RN gets raw `headers` (RFC 8621 §4.1.3, an array of {name, value})
+// from Email/get instead of the webmail's pre-parsed fields.
+
+import type { Email, Identity } from '../api/types';
+import { parseUnsubscribeUrls, type UnsubscribeUrls } from './unsubscribe';
+import { resolveReplyFrom } from './reply-identity';
+
+/**
+ * The identity a received message was addressed to (exact or `+tag`), for
+ * the "via <identity>" badge and as the MDN sender. Falls back to the first
+ * identity.
+ */
+export function findReceivingIdentity(
+  identities: Identity[],
+  email: Pick<Email, 'to' | 'cc' | 'bcc'>,
+): Identity | undefined {
+  if (identities.length === 0) return undefined;
+  const resolved = resolveReplyFrom(identities, {
+    to: email.to ?? undefined, cc: email.cc ?? undefined, bcc: email.bcc ?? undefined,
+  });
+  if (resolved && !resolved.overrideEmail) {
+    return identities.find((i) => i.id === resolved.identityId) ?? identities[0];
+  }
+  return identities[0];
+}
+
+export type SpfResult = 'pass' | 'fail' | 'softfail' | 'neutral' | 'none' | 'temperror' | 'permerror';
+export type DkimResult = 'pass' | 'fail' | 'policy' | 'neutral' | 'temperror' | 'permerror';
+export type DmarcResult = 'pass' | 'fail' | 'none';
+export type DmarcPolicy = 'reject' | 'quarantine' | 'none';
+
+export interface SpfEntry {
+  result: SpfResult;
+  identity?: 'mailfrom' | 'helo';
+  domain?: string;
+}
+
+export interface AuthenticationResults {
+  spf?: { result: SpfResult; domain?: string; all?: SpfEntry[] };
+  dkim?: { result: DkimResult; domain?: string; selector?: string };
+  dmarc?: { result: DmarcResult; domain?: string; policy?: DmarcPolicy };
+  iprev?: { result: 'pass' | 'fail'; ip?: string };
+}
+
+type HeaderList = Email['headers'];
+
+/** All values of a header, case-insensitively, in message order. */
+export function headerValues(headers: HeaderList, name: string): string[] {
+  if (!headers) return [];
+  const needle = name.toLowerCase();
+  return headers.filter((h) => h.name.toLowerCase() === needle).map((h) => h.value.trim());
+}
+
+/** First value of a header, case-insensitively. */
+export function headerValue(headers: HeaderList, name: string): string | undefined {
+  return headerValues(headers, name)[0];
+}
+
+/** Collapse the header array to a name → value(s) record (first-seen casing). */
+export function headersToRecord(headers: HeaderList): Record<string, string | string[]> {
+  const out: Record<string, string | string[]> = {};
+  const canonical = new Map<string, string>();
+  for (const h of headers ?? []) {
+    const key = canonical.get(h.name.toLowerCase()) ?? h.name;
+    canonical.set(h.name.toLowerCase(), key);
+    const value = h.value.trim();
+    const existing = out[key];
+    if (existing === undefined) out[key] = value;
+    else if (Array.isArray(existing)) existing.push(value);
+    else out[key] = [existing, value];
+  }
+  return out;
+}
+
+/**
+ * Severity ranking for SPF results. Higher = more severe / more actionable.
+ * A hard `fail` is a definitive policy violation and must outrank ambiguous
+ * states like `temperror`.
+ */
+const SPF_SEVERITY: Record<SpfResult, number> = {
+  fail: 6,
+  softfail: 5,
+  permerror: 4,
+  temperror: 3,
+  neutral: 2,
+  none: 1,
+  pass: 0,
+};
+
+/**
+ * Whether the authentication results indicate the visible From identity can't
+ * be trusted (i.e. the message is likely spoofed). Used to suppress UI that
+ * would otherwise imply the message legitimately came from one of the user's
+ * own identities (e.g. the "via <identity>" badge).
+ */
+export function isAuthenticationSpoofed(auth?: AuthenticationResults): boolean {
+  if (!auth) return false;
+  if (auth.dmarc?.result === 'fail') return true;
+  if (auth.spf?.result === 'fail' && auth.dkim?.result !== 'pass') return true;
+  return false;
+}
+
+/** Parse an Authentication-Results header into SPF, DKIM, DMARC, iprev results. */
+export function parseAuthenticationResults(header: string): AuthenticationResults {
+  const results: AuthenticationResults = {};
+
+  // A single header can carry more than one SPF result when the server
+  // evaluates multiple identities (HELO and MAIL FROM). Collect them all so a
+  // hard fail on any identity isn't softened to an ambiguous state recorded
+  // for another one.
+  const spfRegex = /spf=(\w+)(?:\s+\([^)]*\))?(?:\s+smtp\.(mailfrom|helo)=([^\s;]+))?/g;
+  const spfResults: SpfEntry[] = [];
+  let spfM: RegExpExecArray | null;
+  while ((spfM = spfRegex.exec(header)) !== null) {
+    spfResults.push({
+      result: spfM[1] as SpfResult,
+      identity: spfM[2] as SpfEntry['identity'],
+      domain: spfM[3],
+    });
+  }
+  if (spfResults.length > 0) {
+    const severity = (r: string) => SPF_SEVERITY[r as SpfResult] ?? -1;
+    // MAIL FROM is the primary SPF identity. Another identity (HELO) may only
+    // escalate the headline to a genuine failure state - a HELO `none` or
+    // `neutral` must not downgrade a MAIL FROM `pass`.
+    const isFailure = (r: string) => severity(r) >= SPF_SEVERITY.temperror;
+    let primary = spfResults.find((e) => e.identity === 'mailfrom') ?? spfResults[0];
+    for (const cur of spfResults) {
+      if (isFailure(cur.result) && severity(cur.result) > severity(primary.result)) {
+        primary = cur;
+      }
+    }
+    results.spf = {
+      result: primary.result,
+      domain: primary.domain,
+      ...(spfResults.length > 1 ? { all: spfResults } : {}),
+    };
+  }
+
+  const dkimMatch = header.match(/dkim=(\w+)(?:\s+header\.d=([^\s;]+))?(?:\s+header\.s=([^\s;]+))?/);
+  if (dkimMatch) {
+    results.dkim = {
+      result: dkimMatch[1] as DkimResult,
+      domain: dkimMatch[2],
+      selector: dkimMatch[3],
+    };
+  }
+
+  const dmarcMatch = header.match(/dmarc=(\w+)(?:\s+header\.from=([^\s;]+))?(?:\s+policy\.dmarc=(\w+))?/);
+  if (dmarcMatch) {
+    results.dmarc = {
+      result: dmarcMatch[1] as DmarcResult,
+      domain: dmarcMatch[2],
+      policy: dmarcMatch[3] as DmarcPolicy | undefined,
+    };
+  }
+
+  const iprevMatch = header.match(/iprev=(\w+)(?:\s+policy\.iprev=([\d.]+))?/);
+  if (iprevMatch) {
+    results.iprev = {
+      result: iprevMatch[1] as 'pass' | 'fail',
+      ip: iprevMatch[2],
+    };
+  }
+
+  return results;
+}
+
+/** Parse a spam score from X-Spam-Result / X-Spam-Status / X-Spam-Score. */
+export function parseSpamScore(header: string): { score: number; status: string } | null {
+  // X-Spam-Status: "No, score=-0.25" / Stalwart X-Spam-Result: "ham, score=-0.25"
+  const statusMatch = header.match(/^(Yes|No|spam|ham),?\s+score=([-\d.]+)/i);
+  if (statusMatch) {
+    return {
+      status: statusMatch[1].toLowerCase(),
+      score: parseFloat(statusMatch[2]),
+    };
+  }
+
+  const scoreMatch = header.match(/score[=:]?\s*([-\d.]+)/i);
+  if (scoreMatch) {
+    const score = parseFloat(scoreMatch[1]);
+    return {
+      score,
+      status: score > 5 ? 'spam' : 'ham',
+    };
+  }
+
+  return null;
+}
+
+/** Parse the X-Spam-LLM header: "LEGITIMATE (explanation)" / "SPAM (...)". */
+export function parseSpamLLM(header: string): { verdict: string; explanation: string } | null {
+  const trimmed = header.trim();
+  const match = trimmed.match(/^(LEGITIMATE|SPAM|SUSPICIOUS)\s*\((.+)\)\s*$/i);
+  if (match) {
+    return {
+      verdict: match[1].toUpperCase(),
+      explanation: match[2].trim(),
+    };
+  }
+  return null;
+}
+
+export interface ListHeaders {
+  listId?: string;
+  listUnsubscribe?: UnsubscribeUrls;
+  /** RFC 8058: present when the http URL accepts a one-click POST. */
+  listUnsubscribePost?: string;
+  listHelp?: string;
+  listPost?: string;
+}
+
+/** Extract list headers (List-Unsubscribe, List-Id, ...). */
+export function extractListHeaders(headers: Record<string, string | string[]>): ListHeaders {
+  const result: ListHeaders = {};
+  const first = (key: string): string | undefined => {
+    const found = Object.keys(headers).find((k) => k.toLowerCase() === key.toLowerCase());
+    if (!found) return undefined;
+    const v = headers[found];
+    return Array.isArray(v) ? v[0] : v;
+  };
+
+  const listId = first('List-Id');
+  if (listId) result.listId = listId;
+
+  const unsub = first('List-Unsubscribe');
+  if (unsub) {
+    const parsed = parseUnsubscribeUrls(unsub);
+    if (parsed.preferred) result.listUnsubscribe = parsed;
+  }
+
+  const post = first('List-Unsubscribe-Post');
+  if (post) result.listUnsubscribePost = post;
+
+  const help = first('List-Help');
+  if (help) result.listHelp = help;
+
+  const listPost = first('List-Post');
+  if (listPost) result.listPost = listPost;
+
+  return result;
+}
+
+export interface EmailHeaderInfo {
+  auth?: AuthenticationResults;
+  spamScore?: { score: number; status: string } | null;
+  spamLLM?: { verdict: string; explanation: string } | null;
+  list: ListHeaders;
+  /** Bare address from Disposition-Notification-To, when a receipt was requested. */
+  readReceiptRequestedBy: string | null;
+  /** `<...>`-stripped Message-ID header, for dedupe keys. */
+  messageId: string | null;
+}
+
+/** Everything the reader derives from a message's raw headers, in one pass. */
+export function deriveHeaderInfo(email: Pick<Email, 'headers' | 'messageId'>): EmailHeaderInfo {
+  const headers = email.headers;
+  const authHeaders = headerValues(headers, 'Authentication-Results');
+  // The last hop's results are prepended, so the first header is the
+  // receiving server's own verdict.
+  const auth = authHeaders.length ? parseAuthenticationResults(authHeaders.join('; ')) : undefined;
+
+  const spamRaw = headerValue(headers, 'X-Spam-Status')
+    ?? headerValue(headers, 'X-Spam-Result')
+    ?? headerValue(headers, 'X-Spam-Score');
+  const spamScore = spamRaw ? parseSpamScore(spamRaw) : null;
+  const llmRaw = headerValue(headers, 'X-Spam-LLM');
+  const spamLLM = llmRaw ? parseSpamLLM(llmRaw) : null;
+
+  const list = extractListHeaders(headersToRecord(headers));
+
+  const dnt = headerValue(headers, 'Disposition-Notification-To');
+  let readReceiptRequestedBy: string | null = null;
+  if (dnt) {
+    const m = dnt.match(/<([^>]+)>/);
+    const addr = (m ? m[1] : dnt).trim();
+    readReceiptRequestedBy = addr || null;
+  }
+
+  const rawId = email.messageId?.[0] ?? headerValue(headers, 'Message-ID') ?? null;
+  const messageId = rawId ? rawId.trim().replace(/^<|>$/g, '') : null;
+
+  return { auth, spamScore, spamLLM, list, readReceiptRequestedBy, messageId };
+}
+
+/** Milliseconds between the Date header and delivery, or null when unknown. */
+export function deliveryDeltaMs(email: Pick<Email, 'sentAt' | 'receivedAt'>): number | null {
+  if (!email.sentAt || !email.receivedAt) return null;
+  const sent = Date.parse(email.sentAt);
+  const received = Date.parse(email.receivedAt);
+  if (Number.isNaN(sent) || Number.isNaN(received)) return null;
+  return received - sent;
+}
+
+/** "2 h 5 min" style rendering of a positive delta. */
+export function formatDelta(ms: number): string {
+  const totalMinutes = Math.round(Math.abs(ms) / 60000);
+  const days = Math.floor(totalMinutes / 1440);
+  const hours = Math.floor((totalMinutes % 1440) / 60);
+  const minutes = totalMinutes % 60;
+  const parts: string[] = [];
+  if (days) parts.push(`${days} d`);
+  if (hours) parts.push(`${hours} h`);
+  if (minutes || parts.length === 0) parts.push(`${minutes} min`);
+  return parts.join(' ');
+}

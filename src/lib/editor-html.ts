@@ -1,0 +1,406 @@
+// Builds the self-contained HTML document for the RichTextEditor WebView.
+// Kept as a pure module (no react-native imports) so tests can assert the
+// embedded page script stays syntactically valid JavaScript.
+//
+// IMPORTANT: the page script lives inside a JS template literal. Backslash
+// escapes are "cooked" by the template (`\/` becomes `/`, `\s` becomes `s`),
+// which once shipped an invalid regex that killed the whole inline script
+// with a SyntaxError (issue #11 — Send stayed disabled because the editor
+// never posted `change` messages). Never rely on a backslash reaching the
+// page verbatim; write escape-free code or double the backslash.
+
+import type { ThemePalette } from '../theme/tokens';
+
+// Minimum visible editor height (px). The editor auto-grows beyond this as the
+// user types, and the parent ScrollView handles overflow.
+export const MIN_EDITOR_HEIGHT = 220;
+
+// Shortest gap between two `change` posts while typing (see the page script).
+// Readers that need the current body - send, save, format switch - ask the
+// page with `getHtml` instead of waiting for the next post.
+export const CHANGE_THROTTLE_MS = 400;
+
+/**
+ * The editor page's Content-Security-Policy, mirroring the viewer's
+ * (`src/lib/email-html.ts`). Nothing but images, styles and our own inline
+ * script may load. With `blockRemoteImages` images and fonts are limited to
+ * what the composer produces itself - `data:` (inline and hydrated `cid:`
+ * images) and `blob:` (pasted images) - so a quoted original's tracking
+ * pixels and remote images don't fire just because it is replied to.
+ */
+export function buildEditorCsp(blockRemoteImages: boolean): string {
+  const resources = blockRemoteImages
+    ? ['img-src data: blob:', 'font-src data:', "media-src 'none'"]
+    : ['img-src data: blob: https: http:', 'font-src data: https: http:', 'media-src data: https: http:'];
+  return [
+    "default-src 'none'",
+    "script-src 'unsafe-inline'",
+    "style-src 'unsafe-inline'",
+    ...resources,
+    "base-uri 'none'",
+    "form-action 'none'",
+  ].join('; ');
+}
+
+/**
+ * Whether the composer must open the editor with remote images blocked: it
+ * is seeded with someone else's HTML (the quoted original of a reply or
+ * forward, or a reopened draft that carries a quote) and the viewer would
+ * have shown that message with its remote content blocked too. A reopened
+ * draft doesn't say whose message it quotes, so its quote counts as
+ * untrusted.
+ */
+export function shouldBlockEditorRemoteImages(opts: {
+  /** The HTML the editor is seeded with from a message, if any. */
+  seedHtml?: string | null;
+  isDraft: boolean;
+  externalContentPolicy: 'allow' | 'block' | 'ask';
+  /** The quoted message's sender is trusted (ignored for drafts). */
+  senderTrusted: boolean;
+}): boolean {
+  const { seedHtml, isDraft, externalContentPolicy, senderTrusted } = opts;
+  if (!seedHtml || externalContentPolicy === 'allow') return false;
+  if (isDraft) return /\sdata-quoted-html=|<blockquote\b/i.test(seedHtml);
+  return !senderTrusted;
+}
+
+export function buildEditorHtml(opts: {
+  initialHtml: string;
+  placeholder: string;
+  c: ThemePalette;
+  /** Block remote images and fonts (see `buildEditorCsp`). */
+  blockRemoteImages?: boolean;
+  /**
+   * Keep the page's visual viewport at the top and report every pan to RN as
+   * a `viewportShift` (CSS px = dp) instead (see the page script). Android
+   * only: its WebView pans the visual viewport to reveal the caret.
+   */
+  pinVisualViewport?: boolean;
+}): string {
+  const { initialHtml, placeholder, c, blockRemoteImages = false, pinVisualViewport = false } = opts;
+  // Inject initial content as a JSON-encoded string so any HTML/quotes inside
+  // are safely embedded (no template literal collision with the script body).
+  const initialJson = JSON.stringify(initialHtml);
+  const placeholderJson = JSON.stringify(placeholder);
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Security-Policy" content="${buildEditorCsp(blockRemoteImages)}" />
+<meta name="referrer" content="no-referrer" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; background: ${c.background}; color: ${c.text}; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-y: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+  #editor {
+    outline: none;
+    padding: 12px 16px 24px;
+    min-height: ${MIN_EDITOR_HEIGHT}px;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+  }
+  #editor[data-empty="true"]::before {
+    content: attr(data-placeholder);
+    color: ${c.textMuted};
+    pointer-events: none;
+    position: absolute;
+  }
+  #editor p { margin: 0 0 12px 0; }
+  #editor p:last-child { margin-bottom: 0; }
+  #editor h1 { font-size: 1.4em; font-weight: 700; margin: 0 0 12px 0; line-height: 1.2; }
+  #editor h2 { font-size: 1.2em; font-weight: 700; margin: 0 0 10px 0; line-height: 1.3; }
+  #editor ul, #editor ol { margin: 0 0 12px 0; padding-left: 24px; }
+  #editor li { margin-bottom: 4px; }
+  #editor blockquote {
+    margin: 0 0 12px 0;
+    padding: 4px 0 4px 12px;
+    border-left: 3px solid ${c.border};
+    color: ${c.textSecondary};
+  }
+  #editor a { color: ${c.primary}; text-decoration: underline; }
+  #editor img { max-width: 100%; height: auto; border-radius: 4px; }
+  #editor pre, #editor code {
+    background: ${c.surfaceActive};
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.92em;
+  }
+  #editor pre { padding: 8px 12px; overflow-x: auto; }
+  ::selection { background: ${c.primary}33; }
+</style>
+</head>
+<body>
+<div id="editor" contenteditable="true" dir="auto" data-placeholder=${placeholderJson}></div>
+<script>
+(function () {
+  var editor = document.getElementById('editor');
+  var lastHtml = null;
+  var lastHeight = 0;
+  var lastSelection = '';
+  // Every 'change' re-renders the whole composer, so typing posts at most
+  // one per window: the first keystroke at once (the composer learns it is
+  // dirty), then the latest content when the window ends. Commands, blur
+  // and setHtml post straight away.
+  var CHANGE_THROTTLE_MS = ${CHANGE_THROTTLE_MS};
+  var lastChangeAt = 0;
+  var changeTimer = null;
+
+  // Checked on every keystroke, so it avoids serializing innerHTML.
+  function refreshEmpty() {
+    var isEmpty = editor.textContent.trim() === '' && !editor.querySelector('img');
+    editor.setAttribute('data-empty', isEmpty ? 'true' : 'false');
+  }
+
+  function post(type, payload) {
+    if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+      window.ReactNativeWebView.postMessage(JSON.stringify({ type: type, payload: payload }));
+    }
+  }
+
+  function reportHeight() {
+    var h = Math.max(${MIN_EDITOR_HEIGHT}, editor.scrollHeight + 8);
+    if (Math.abs(h - lastHeight) < 2) return;
+    lastHeight = h;
+    post('height', h);
+  }
+
+  function reportChange() {
+    if (changeTimer) {
+      clearTimeout(changeTimer);
+      changeTimer = null;
+    }
+    refreshEmpty();
+    var html = editor.innerHTML;
+    if (html === lastHtml) return;
+    lastHtml = html;
+    lastChangeAt = Date.now();
+    post('change', html);
+  }
+
+  function scheduleChange() {
+    refreshEmpty();
+    if (changeTimer) return;
+    var wait = CHANGE_THROTTLE_MS - (Date.now() - lastChangeAt);
+    if (wait <= 0) {
+      reportChange();
+      return;
+    }
+    changeTimer = setTimeout(function () {
+      changeTimer = null;
+      reportChange();
+    }, wait);
+  }
+
+  function flushChange() {
+    if (changeTimer) reportChange();
+  }
+
+  function reportSelection() {
+    function active(name) {
+      try { return document.queryCommandState(name); } catch (e) { return false; }
+    }
+    function inBlock(tag) {
+      var sel = window.getSelection();
+      if (!sel || !sel.rangeCount) return false;
+      var node = sel.anchorNode;
+      while (node && node !== editor) {
+        if (node.nodeType === 1 && node.tagName === tag) return true;
+        node = node.parentNode;
+      }
+      return false;
+    }
+    var state = {
+      bold: active('bold'),
+      italic: active('italic'),
+      underline: active('underline'),
+      strikeThrough: active('strikeThrough'),
+      ul: active('insertUnorderedList'),
+      ol: active('insertOrderedList'),
+      blockquote: inBlock('BLOCKQUOTE'),
+      h1: inBlock('H1'),
+      h2: inBlock('H2'),
+      alignLeft: active('justifyLeft'),
+      alignCenter: active('justifyCenter'),
+      alignRight: active('justifyRight'),
+      link: inBlock('A'),
+    };
+    // The caret moves on every keystroke; only a change of the formatting
+    // state is worth a message (and a composer re-render).
+    var key = JSON.stringify(state);
+    if (key === lastSelection) return;
+    lastSelection = key;
+    post('selection', state);
+  }
+
+  // ── Initial content ────────────────────────────────────────────────
+  var initial = ${initialJson};
+  if (initial && typeof initial === 'string') editor.innerHTML = initial;
+  refreshEmpty();
+  lastHtml = editor.innerHTML;
+
+  editor.addEventListener('input', function () {
+    scheduleChange();
+    reportHeight();
+  });
+  editor.addEventListener('blur', function () {
+    flushChange();
+    post('blur', null);
+  });
+  editor.addEventListener('focus', function () { post('focus', null); });
+  document.addEventListener('selectionchange', function () {
+    if (document.activeElement === editor) reportSelection();
+  });
+
+  // ── Bridge: receive commands from RN ───────────────────────────────
+  window.__rne = {
+    exec: function (command, value) {
+      editor.focus();
+      try {
+        if (command === 'formatBlock' && value) {
+          // Toggle: if we're already in that block, switch to <p>.
+          var sel = window.getSelection();
+          if (sel && sel.rangeCount) {
+            var node = sel.anchorNode;
+            while (node && node !== editor) {
+              if (node.nodeType === 1 && node.tagName === value.toUpperCase()) {
+                document.execCommand('formatBlock', false, '<p>');
+                reportChange();
+                reportHeight();
+                reportSelection();
+                return;
+              }
+              node = node.parentNode;
+            }
+          }
+          document.execCommand('formatBlock', false, '<' + value.toLowerCase() + '>');
+        } else {
+          document.execCommand(command, false, value);
+        }
+      } catch (e) {}
+      reportChange();
+      reportHeight();
+      reportSelection();
+    },
+    setHtml: function (html) {
+      editor.innerHTML = html || '';
+      lastHtml = editor.innerHTML;
+      refreshEmpty();
+      reportChange();
+      reportHeight();
+    },
+    insertHtml: function (html) {
+      editor.focus();
+      try { document.execCommand('insertHTML', false, html); } catch (e) {}
+      reportChange();
+      reportHeight();
+    },
+    insertLink: function (url, label) {
+      editor.focus();
+      // Reject anything that isn't a safe scheme or an absolute path, so the
+      // user can't accidentally (or via a malicious paste) ship a
+      // javascript:/data: link to their recipient. Written without regex
+      // backslash escapes — see the template-cooking warning at the top.
+      var trimmed = (url || '').trim();
+      var first = trimmed.charAt(0);
+      var safeScheme = /^(https?:|mailto:|tel:|sms:)/i.test(trimmed)
+        || first === '/' || first === '?' || first === '#';
+      if (!trimmed || !safeScheme) return;
+      var sel = window.getSelection();
+      var hasSelection = sel && sel.rangeCount && !sel.getRangeAt(0).collapsed;
+      if (hasSelection) {
+        try { document.execCommand('createLink', false, trimmed); } catch (e) {}
+        // execCommand doesn't set rel; tag every anchor that points at this URL.
+        Array.prototype.forEach.call(editor.getElementsByTagName('a'), function (a) {
+          if (a.getAttribute('href') === trimmed) {
+            a.setAttribute('rel', 'noopener noreferrer nofollow');
+          }
+        });
+      } else {
+        var text = label && label.trim() ? label : trimmed;
+        var safe = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        var safeUrl = trimmed
+          .replace(/&/g, '&amp;')
+          .replace(/"/g, '&quot;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+        var html = '<a href="' + safeUrl + '" rel="noopener noreferrer nofollow">' + safe + '</a>';
+        try { document.execCommand('insertHTML', false, html); } catch (e) {}
+      }
+      reportChange();
+      reportHeight();
+      reportSelection();
+    },
+    unsetLink: function () {
+      editor.focus();
+      try { document.execCommand('unlink', false, null); } catch (e) {}
+      reportChange();
+      reportSelection();
+    },
+    insertImage: function (src, cid, alt) {
+      editor.focus();
+      var safeSrc = (src || '').replace(/"/g, '&quot;');
+      var safeAlt = (alt || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+      var safeCid = cid ? cid.replace(/"/g, '&quot;') : '';
+      var html = '<img src="' + safeSrc + '" alt="' + safeAlt + '"' +
+        (safeCid ? ' data-cid="' + safeCid + '"' : '') + ' />';
+      try { document.execCommand('insertHTML', false, html); } catch (e) {}
+      reportChange();
+      reportHeight();
+    },
+    // Send-time readback (issue #9): RN asks for the live DOM content instead
+    // of trusting the last change message, which can lag typing or be lost
+    // entirely if the bridge breaks. The id lets RN match reply to request.
+    getHtml: function (id) {
+      post('htmlSnapshot', { id: id, html: editor.innerHTML });
+    },
+    focus: function () { editor.focus(); },
+  };
+
+  reportHeight();
+  reportChange();
+
+  // ── Visual viewport pinning (Android) ──────────────────────────────
+  // The WebView is as tall as its content and sits in RN's ScrollView, so
+  // the page itself never scrolls. But Android's WebView shrinks the visual
+  // viewport to the part of the view that is on screen (above the keyboard,
+  // below the header fields) and pans it to reveal the caret while typing.
+  // The pan outlives the moment: once the composer is scrolled back to the
+  // top the body is still drawn shifted up by that offset, so its first
+  // lines hide under To/Cc/Subject until a scroll to the very bottom clamps
+  // it away. Undo every pan at once (window.scrollTo only moves the layout
+  // viewport; scrolling the top of the page into view resets both) and hand
+  // the offset to RN, which scrolls the composer by as much so the caret
+  // stays where the pan had put it.
+  if (${pinVisualViewport ? 'true' : 'false'} && window.visualViewport) {
+    window.visualViewport.addEventListener('scroll', function () {
+      var shift = window.visualViewport.offsetTop;
+      if (Math.abs(shift) < 0.5) return;
+      try { editor.scrollIntoView({ block: 'start', inline: 'nearest' }); } catch (e) {}
+      post('viewportShift', shift);
+    });
+  }
+
+  // Re-measure after async layout (image loads, font swap).
+  window.addEventListener('load', function () {
+    setTimeout(reportHeight, 50);
+    setTimeout(reportHeight, 200);
+    setTimeout(reportHeight, 600);
+  });
+  if (window.ResizeObserver) {
+    new ResizeObserver(reportHeight).observe(editor);
+  }
+})();
+true;
+</script>
+</body>
+</html>`;
+}

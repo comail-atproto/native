@@ -1,0 +1,62 @@
+{
+  "brandingRevision": "8ec08702be81aeec02ce1d060d7ee6cebc9d782c",
+  "frames": 3,
+  "fps": 10,
+  "assets": {
+    "cammie": {
+      "width": 512,
+      "height": 512,
+      "frames": 3
+    },
+    "spooky": {
+      "width": 710,
+      "height": 522,
+      "frames": 3
+    },
+    "leaf1": {
+      "width": 160,
+      "height": 160,
+      "frames": 3
+    },
+    "leaf2": {
+      "width": 160,
+      "height": 160,
+      "frames": 3
+    },
+    "leaf3": {
+      "width": 160,
+      "height": 160,
+      "frames": 3
+    },
+    "mail1": {
+      "width": 160,
+      "height": 160,
+      "frames": 3
+    },
+    "mail2": {
+      "width": 160,
+      "height": 160,
+      "frames": 3
+    },
+    "mail3": {
+      "width": 160,
+      "height": 160,
+      "frames": 3
+    },
+    "wordmark-light": {
+      "width": 957,
+      "height": 300,
+      "frames": 3
+    },
+    "wordmark-dark": {
+      "width": 957,
+      "height": 300,
+      "frames": 3
+    },
+    "wordmark-spooky": {
+      "width": 957,
+      "height": 300,
+      "frames": 3
+    }
+  }
+}

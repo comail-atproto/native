@@ -1,0 +1,13 @@
+# The lockfile identifies the upstream version; npm postinstall applies the
+# local patch. Installed-package tests exercise the advisory cases in both the
+# private qualification and exported-source test jobs. Remove this exception
+# when a fixed upstream version replaces the patch.
+[[IgnoredVulns]]
+id = "GHSA-gcqx-w48m-w2h4"
+reason = "deepmerge 4.3.1 is patched locally and tested after installation"
+
+# The remaining minimatch 3.1.5 copies have no level-2 preprocessing. Tests
+# reject other affected versions while this advisory is filtered.
+[[IgnoredVulns]]
+id = "GHSA-g3hv-75wg-m249"
+reason = "only legacy minimatch 3.1.5 remains; it has no level-2 preprocessing"

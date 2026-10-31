@@ -1,0 +1,1183 @@
+{
+  "advanced_search": {
+    "after": "Efter",
+    "before": "Før",
+    "no_attachment": "Uden vedhæftning",
+    "not_starred": "Ikke stjernemarkerede"
+  },
+  "calendar": {
+    "alerts": {
+      "minutes_after": "{count, plural, one {# minut efter} other {# minutter efter}}"
+    },
+    "colors": {
+      "indigo": "Indigo",
+      "teal": "Blågrøn"
+    },
+    "drawer": {
+      "my_calendars": "Mine kalendere",
+      "no_calendars": "Ingen kalendere endnu.",
+      "shared_with_me": "Delt med mig",
+      "subscribed": "Abonnerede"
+    },
+    "event_modal": {
+      "participant_placeholder": "Tilføj deltager via e-mail"
+    },
+    "events": {
+      "copy_link_short": "Link",
+      "export_ics_short": ".ics",
+      "nothing_planned": "Intet planlagt. Tryk for at oprette.",
+      "tap_to_create": "Tryk på + for at oprette en"
+    },
+    "fab": {
+      "event": "Begivenhed",
+      "task": "Opgave"
+    },
+    "form": {
+      "description_placeholder": "Noter, dagsorden…",
+      "location_placeholder": "Sted eller adresse",
+      "time": "Tid"
+    },
+    "import": {
+      "file_too_large_max": "Filen er for stor (maks. {size} MB).",
+      "imported_count": "{count, plural, one {# begivenhed importeret.} other {# begivenheder importeret.}}",
+      "no_calendar": "Opret en kalender, før du importerer begivenheder.",
+      "no_calendar_title": "Ingen kalender",
+      "picker_error": "Kunne ikke åbne filvælgeren",
+      "picker_unavailable": "Filvælgeren er ikke installeret i denne build. Byg appen igen for at aktivere import.",
+      "picker_unavailable_title": "Import ikke tilgængelig",
+      "refused_count": "{count, plural, one {# begivenhed kunne ikke importeres:} other {# begivenheder kunne ikke importeres:}}",
+      "refused_message": "{count, plural, =1 {Begivenheden kunne ikke importeres: {reason}} one {# begivenhed kunne ikke importeres: {reason}} other {# begivenheder kunne ikke importeres: {reason}}}",
+      "selected_count": "{count, plural, one {# valgt} other {# valgte}}"
+    },
+    "invitation": {
+      "accept": "Ja",
+      "add_error": "Kunne ikke tilføje begivenheden",
+      "add_to_calendar": "Tilføj til kalender",
+      "added": "Tilføjet til kalender",
+      "already_in_calendar": "Allerede i din kalender",
+      "cancelled": "Denne begivenhed er aflyst",
+      "decline": "Nej",
+      "join_video": "Deltag i videoopkald",
+      "no_writable_calendar": "Ingen skrivbar kalender tilgængelig",
+      "organizer": "Arrangør",
+      "reading": "Læser invitation…",
+      "reply": "En deltager har svaret på denne invitation",
+      "response_error": "Kunne ikke sende dit svar",
+      "response_sent": "Svar sendt",
+      "tentative": "Måske",
+      "title": "Kalenderinvitation",
+      "trust_authentication_failed": "Denne besked bestod ikke afsendergodkendelsen (SPF/DKIM/DMARC).",
+      "trust_authentication_missing": "Afsenderen kunne ikke bekræftes.",
+      "trust_sender_mismatch": "Afsenderen er ikke begivenhedens arrangør.",
+      "trust_sender_mismatch_unverified": "Afsenderen matcher ikke arrangøren, og beskeden er ikke godkendt.",
+      "trust_verified": "Afsender bekræftet"
+    },
+    "management": {
+      "clear_confirm": "Fjern alle",
+      "clear_description": "Alle begivenheder i denne kalender slettes. Begivenheder, der også hører til en anden kalender, fjernes kun fra denne.",
+      "clear_title": "Fjern alle begivenheder?",
+      "delete_description": "Kalenderen og alle dens begivenheder slettes. Dette kan ikke fortrydes.",
+      "delete_title": "Slet kalender?",
+      "description_placeholder": "Valgfrit",
+      "edit_calendar": "Redigér kalender",
+      "new_calendar": "Ny kalender"
+    },
+    "notifications": {
+      "channel_name": "Kalenderpåmindelser",
+      "starts_in_days": "{count, plural, one {Starter om # dag} other {Starter om # dage}}",
+      "starts_in_hours": "{count, plural, one {Starter om # time} other {Starter om # timer}}",
+      "starts_in_minutes": "{count, plural, one {Starter om # minut} other {Starter om # minutter}}"
+    },
+    "recurrence": {
+      "editor_occurrences_count": "{count, plural, one {gentagelse} other {gentagelser}}",
+      "every_count_days": "{count, plural, one {Hver dag} other {Hver #. dag}}",
+      "every_count_months": "{count, plural, one {Hver måned} other {Hver #. måned}}",
+      "every_count_weeks": "{count, plural, one {Hver uge} other {Hver #. uge}}",
+      "every_count_years": "{count, plural, one {Hvert år} other {Hvert #. år}}",
+      "occurrence_count": "{count, plural, one {# forekomst} other {# forekomster}}",
+      "until_date": "Indtil {date}"
+    },
+    "settings": {
+      "device_sync_desc": "Vis dine kalendere i Kalender-appen og andre apps på denne enhed. Ændringer synkroniseres begge veje.",
+      "device_sync_title": "Synkronisér med denne enhed",
+      "show_week_numbers_mobile_desc": "Vis ugenumre i månedsvisningen.",
+      "time_zone": "Tidszone",
+      "time_zone_auto": "Enhedens tidszone",
+      "time_zone_auto_zone": "Enhedens tidszone ({zone})",
+      "time_zone_desc": "Tidszone til nye begivenheder og til visning af kalenderen. \"Enhedens tidszone\" følger telefonen."
+    },
+    "share": {
+      "add_people": "Tilføj personer",
+      "error": "Kunne ikke opdatere deling",
+      "no_matches": "Ingen match",
+      "no_principals": "Deling er ikke tilgængelig på denne server.",
+      "search_placeholder": "Søg efter navn eller e-mail",
+      "shared_with": "Delt med"
+    },
+    "subscription": {
+      "add_feed": "Tilføj et feed",
+      "feed_too_large": "Feedet er for stort",
+      "fetch_failed": "Kunne ikke hente feedet (HTTP {status})",
+      "name_and_url_required": "Indtast et navn og en feed-URL.",
+      "not_a_feed": "URL'en returnerede ikke et iCalendar-feed",
+      "not_synced": "Ikke synkroniseret endnu",
+      "url_scheme_invalid": "URL'en skal starte med https://, http://, webcal:// eller webcals://",
+      "your_subscriptions": "Dine abonnementer"
+    },
+    "tasks": {
+      "add_placeholder": "Tilføj en opgave…",
+      "add_time": "Tilføj tidspunkt",
+      "clear_due_date": "Ryd forfaldsdato",
+      "delete_error": "Kunne ikke slette opgaven",
+      "not_found": "Denne opgave er ikke længere tilgængelig.",
+      "save_error": "Kunne ikke gemme opgaven",
+      "update_error": "Kunne ikke opdatere opgaven"
+    },
+    "views": {
+      "schedule": "Tidsplan",
+      "three_days": "3 dage"
+    }
+  },
+  "common": {
+    "add": "Tilføj",
+    "back": "Tilbage",
+    "confirm": "Bekræft",
+    "create": "Opret",
+    "dismiss": "Afvis",
+    "done": "Færdig",
+    "open": "Åbn",
+    "open_link_message": "Dette åbner {host} uden for appen.",
+    "open_link_title": "Åbn link?",
+    "remove": "Fjern",
+    "retry": "Prøv igen",
+    "undo": "Fortryd",
+    "update": "Opdater"
+  },
+  "contacts": {
+    "address_books": {
+      "confirm_delete_count": "{count, plural, =0 {Slet \"{name}\"? Dette kan ikke fortrydes.} one {Slet \"{name}\"? # kontakt i adressebogen slettes også. Dette kan ikke fortrydes.} other {Slet \"{name}\"? # kontakter i adressebogen slettes også. Dette kan ikke fortrydes.}}"
+    },
+    "all_contacts": "Alle kontakter",
+    "bulk": {
+      "add_tag": "Tilføj kategori",
+      "delete_confirm_mobile": "{count, plural, one {Slet # kontakt? Dette kan ikke fortrydes.} other {Slet # kontakter? Dette kan ikke fortrydes.}}",
+      "move_to_address_book": "Flyt til adressebog",
+      "tag_failed": "Kunne ikke tildele kategori"
+    },
+    "contact": "Kontakt",
+    "create_hint_mobile": "Tryk længe for at oprette en gruppe i stedet",
+    "detail": {
+      "add_to_group_failed": "Kunne ikke tilføje til gruppe",
+      "copy_name": "{name} (kopi)",
+      "created_on": "Oprettet {date}",
+      "duplicate_failed": "Kunne ikke duplikere",
+      "duplicate_no_book": "Kan ikke duplikere uden en adressebog.",
+      "no_address_book": "Ingen adressebog",
+      "not_found": "Kontakten blev ikke fundet",
+      "open_dialer_failed": "Kan ikke åbne telefonappen",
+      "open_link_failed": "Kan ikke åbne linket",
+      "open_maps_failed": "Kan ikke åbne kortappen",
+      "open_sms_failed": "Kan ikke åbne beskedappen",
+      "share": "Del",
+      "share_title": "Del {name}",
+      "sms": "SMS",
+      "timezone_value": "Tidszone: {zone}",
+      "updated_on": "Opdateret {date}"
+    },
+    "empty_state_hint_mobile": "Tryk på + for at tilføje en",
+    "export": {
+      "failed": "Eksport mislykkedes"
+    },
+    "form": {
+      "add_nickname": "Tilføj kaldenavn",
+      "add_note": "Tilføj note",
+      "add_organization": "Tilføj organisation",
+      "address_book_required": "Vælg en adressebog for at gemme denne kontakt.",
+      "categories_placeholder_mobile": "Tilføj kategori, og tryk på Enter",
+      "context_none": "Ingen",
+      "date_placeholder": "YYYY-MM-DD, YYYY-MM, YYYY eller --MM-DD",
+      "display_name_optional": "Visningsnavn (valgfrit)",
+      "display_name_placeholder": "Brugerdefineret visningsnavn",
+      "edit_named": "Redigér {name}",
+      "gender_unspecified": "Ikke angivet",
+      "grammatical_gender": "Grammatisk køn",
+      "invalid_date_message": "\"{date}\" er ikke en dato. Brug YYYY-MM-DD, YYYY-MM, YYYY eller --MM-DD.",
+      "invalid_date_title": "Ugyldig dato",
+      "invalid_email_message": "\"{address}\" er ikke en gyldig e-mailadresse.",
+      "invalid_email_title": "Ugyldig e-mail",
+      "label": "Etiket",
+      "label_placeholder": "Arbejde, Privat, …",
+      "missing_address_book": "Adressebog mangler",
+      "missing_info": "Manglende oplysninger",
+      "name_or_email_required": "Tilføj et navn eller mindst én e-mail.",
+      "new_organization": "Ny organisation",
+      "org_name_required": "Tilføj organisationens navn.",
+      "photo_hint_mobile": "Tryk på billedet for at vælge et billede",
+      "photo_permission_message": "Giv adgang til fotobiblioteket for at vælge et kontaktbillede.",
+      "photo_permission_title": "Adgang til fotos påkrævet",
+      "pick_date": "Vælg en dato",
+      "pronouns": "Pronominer",
+      "pronouns_placeholder": "de/dem",
+      "url": "URL"
+    },
+    "group": "Gruppe",
+    "groups": {
+      "add_member": "Tilføj medlem",
+      "add_members": "Tilføj medlemmer",
+      "add_members_failed": "Kunne ikke tilføje medlemmer",
+      "create_ellipsis": "Ny gruppe…",
+      "delete_confirm_named": "Slet \"{name}\"? Medlemmerne slettes ikke.",
+      "delete_failed": "Kunne ikke slette gruppen",
+      "email_all": "Send e-mail til alle",
+      "members_with_count": "Medlemmer ({count})",
+      "no_emails": "Ingen e-mailadresser",
+      "no_members_hint": "Tryk på \"Tilføj medlem\" for at komme i gang",
+      "not_found": "Gruppen blev ikke fundet",
+      "remove_member": "Fjern medlem",
+      "remove_member_confirm": "Fjern \"{name}\" fra denne gruppe?",
+      "remove_member_failed": "Kunne ikke fjerne medlemmet"
+    },
+    "import": {
+      "change_target": "Skift",
+      "choose_file_mobile": "Vælg en vCard-fil",
+      "failed_count": "{count, plural, one {# kontakt kunne ikke importeres.} other {# kontakter kunne ikke importeres.}}",
+      "import_count": "Importér {count}",
+      "into_address_book": "Importér til adressebog",
+      "into_named": "Importér til {name}",
+      "no_address_book": "Opret en adressebog, før du importerer kontakter.",
+      "picker_failed": "Kunne ikke åbne filvælgeren"
+    },
+    "no_tags_hint": "Ingen kategorier endnu. Skriv en ovenfor.",
+    "picker": {
+      "add_count": "{count, plural, =0 {Tilføj} other {Tilføj (#)}}",
+      "title": "Tilføj kontakt"
+    },
+    "rename_tag_hint_mobile": "Tryk længe på en kategori for at omdøbe den",
+    "tag_name_placeholder": "Navn på ny kategori",
+    "unnamed": "Unavngivet"
+  },
+  "context_menu": {
+    "color_tag": "Tag",
+    "remove_color": "Fjern tag"
+  },
+  "device_sync": {
+    "auth_problem_text": "Serveren accepterer ikke længere login for {account}, så kontoens kontakter og kalendere på denne enhed synkroniseres ikke længere. Log ind igen for at fortsætte. Ændringer foretaget på denne enhed bevares.",
+    "auth_problem_title": "Log ind igen for at fortsætte synkroniseringen",
+    "problem_channel": "Synkroniseringsproblemer",
+    "sign_out_anyway": "Log ud",
+    "sign_out_pending_message": "{count, plural, one {# ændring foretaget på denne enhed er ikke nået frem til serveren. Den går tabt, hvis du logger ud nu.} other {# ændringer foretaget på denne enhed er ikke nået frem til serveren. De går tabt, hvis du logger ud nu.}}",
+    "sign_out_pending_title": "Vil du logge ud alligevel?",
+    "sign_out_unknown_message": "Ændringer foretaget på denne enhed er måske ikke nået frem til serveren. De går tabt, hvis du logger ud nu.",
+    "signed_out_text": "{account} blev logget ud, så kontoens kontakter og kalendere på denne enhed synkroniseres ikke længere. Log ind igen for at fortsætte. Ændringer foretaget på denne enhed bevares.",
+    "signed_out_title": "Log ind for at fortsætte synkroniseringen",
+    "signing_out": "Fjerner synkroniserede kontakter og kalendere fra denne enhed…"
+  },
+  "email_composer": {
+    "attach_camera": "Kamera",
+    "attachment_reminder_body": "Din besked nævner \"{keyword}\", men ingen fil er vedhæftet. Send alligevel?",
+    "attachment_reminder_title": "Glemt en vedhæftning?",
+    "attachments_too_large_total": "Vedhæftningerne ville overskride de {max}, som denne server tillader pr. besked.",
+    "editor_unavailable": "Beskedens indhold kunne ikke læses. Kopiér din tekst, og luk og genåbn derefter editoren.",
+    "from_options": "Afsenderindstillinger",
+    "group_chip": "{name} ({count})",
+    "identity_unavailable": "Identitet ikke tilgængelig",
+    "image_load_failed": "Kunne ikke indlæse billede",
+    "no_recipient": "(ingen modtager)",
+    "no_sent_folder": "Ingen Sendt-mappe fundet",
+    "permission_camera": "Der kræves kameratilladelse for at tage et foto.",
+    "permission_photos": "Der kræves tilladelse til fotobiblioteket for at vedhæfte billeder.",
+    "recipient_add_contact": "Tilføj til kontakter",
+    "recipient_copy": "Kopiér adresse",
+    "recipient_move_to": "Flyt til {field}",
+    "recipient_remove": "Fjern",
+    "remove_attachment": "Fjern vedhæftning",
+    "save_draft": "Gem kladde",
+    "save_failed_no_drafts": "Der er ingen Kladder-mappe at gemme denne kladde i.",
+    "save_failed_no_identity": "Dine afsenderidentiteter kunne ikke indlæses, så denne kladde kan ikke gemmes. Tjek din forbindelse, eller kopiér din tekst, før du lukker.",
+    "schedule_custom": "Vælg dato og tid…",
+    "schedule_in_1h": "Om 1 time",
+    "schedule_in_3h": "Om 3 timer",
+    "schedule_past_body": "Det planlagte tidspunkt skal ligge i fremtiden.",
+    "schedule_past_title": "Vælg et fremtidigt tidspunkt",
+    "schedule_tomorrow": "I morgen kl. 8.00",
+    "schedule_tomorrow_morning": "I morgen tidlig",
+    "schedule_too_late_body": "Det er senere, end denne server tillader. Vælg et tidligere tidspunkt.",
+    "schedule_too_late_title": "For langt ude i fremtiden",
+    "schedule_unsupported_body": "Denne mailserver understøtter ikke planlagt afsendelse.",
+    "schedule_unsupported_title": "Planlægning ikke tilgængelig",
+    "scheduled_body": "Din besked sendes {time}.",
+    "scheduled_title": "Planlagt",
+    "send_now": "Send nu",
+    "send_timeout_body": "Beskeden er muligvis allerede sendt. Tjek din Sendt-mappe, før du sender den igen.",
+    "send_timeout_title": "Intet svar fra serveren",
+    "undo_send_label": "Sender om {seconds} s…",
+    "upload_failed_short": "Upload mislykkedes",
+    "uploading": "Uploader...",
+    "uploading_pct": "Uploader {pct} %",
+    "validation": {
+      "subject_required": "Tilføj et emne"
+    }
+  },
+  "email_list": {
+    "cross_account_move_offline": "Flytning mellem konti kræver forbindelse",
+    "emails_archived_count": "{count, plural, one {# e-mail} other {# e-mails}} arkiveret",
+    "emails_moved_to": "{count, plural, one {# e-mail} other {# e-mails}} flyttet til {mailbox}",
+    "error": "Fejl",
+    "filter_chip": "{field}: {value}",
+    "filter_title": "Filtrér e-mails",
+    "folder_counts": "{total} i alt · {unread} ulæste",
+    "import": {
+      "none": "Ingen beskeder blev importeret.",
+      "partial": "{imported} importeret, {failed} mislykkedes.",
+      "success": "{count, plural, one {# besked importeret.} other {# beskeder importeret.}}",
+      "title": "Import"
+    },
+    "marked_as_spam": "Markeret som spam",
+    "marked_as_spam_count": "{count, plural, one {# e-mail} other {# e-mails}} markeret som spam",
+    "marked_not_spam": "Markeret som ikke spam",
+    "marked_not_spam_count": "{count, plural, one {# e-mail} other {# e-mails}} markeret som ikke spam",
+    "move_same_account": "Beskeder kan kun flyttes inden for samme konto",
+    "moved_to_trash": "E-mail flyttet til papirkurven",
+    "moved_to_trash_count": "{count, plural, one {# e-mail} other {# e-mails}} flyttet til papirkurven",
+    "no_archive_folder": "Kunne ikke finde en arkivmappe på serveren.",
+    "no_emails_in": "Ingen e-mails i {folder}",
+    "no_junk_folder": "Kunne ikke finde en spam-mappe på serveren.",
+    "no_mailboxes": "Ingen postkasser fundet",
+    "no_mailboxes_hint": "Tjek, at din JMAP-konto har mailfunktionen.",
+    "no_tags_defined": "Ingen tags defineret. Tilføj tags i Indstillinger.",
+    "no_trash_folder": "Kunne ikke finde en papirkurv på serveren. Tjek din mappekonfiguration.",
+    "offline_nothing_cached": "Ingen forbindelse. Intet vises, fordi der endnu ikke er gemt mail i cachen.",
+    "open_draft_failed": "Kunne ikke åbne kladden.",
+    "outbox_discard": "Kassér",
+    "outbox_failed": "{count} ændringer kunne ikke gemmes på serveren.",
+    "recent_searches": "Seneste søgninger",
+    "remove_filter": "Fjern filteret {label}",
+    "scope_all_folders": "Alle mapper",
+    "scope_this_folder": "Denne mappe",
+    "search_placeholder": "Søg i mail...",
+    "showing_cached": "Viser mail fra cachen",
+    "sort_toggle_hint": "Vender sorteringsrækkefølgen for mails om",
+    "swipe_move": "Flyt",
+    "swipe_spam": "Spam",
+    "total": "i alt",
+    "undo_failed": "Fortryd mislykkedes",
+    "unknown_tag": "ikke defineret her"
+  },
+  "email_viewer": {
+    "add_sender_to_contacts": "Tilføj afsender til kontakter",
+    "address_actions": {
+      "add_contact": "Tilføj til kontakter",
+      "compose": "Ny besked",
+      "copy": "Kopiér adresse",
+      "copy_failed": "Kunne ikke kopiere adressen."
+    },
+    "attachment_actions": {
+      "open": "Åbn",
+      "preview": "Forhåndsvisning",
+      "save": "Gem",
+      "share": "Del"
+    },
+    "attachment_failed": "Kunne ikke åbne vedhæftningen",
+    "authentication": {
+      "spoof_warning": "Afsenderadressen kunne ikke bekræftes - denne besked kan være forfalsket."
+    },
+    "body_truncated": "Denne besked er for stor til at blive vist i sin helhed.",
+    "bundle_too_large": "Vedhæftningerne er for store til at blive samlet.",
+    "color_tag": {
+      "blue": "Blå",
+      "green": "Grøn",
+      "none": "Ingen",
+      "orange": "Orange",
+      "pink": "Lyserød",
+      "purple": "Lilla",
+      "red": "Rød",
+      "title": "Farvetag",
+      "yellow": "Gul"
+    },
+    "delete_permanently_message": "Denne besked slettes permanent og kan ikke gendannes.",
+    "delete_permanently_title": "Slet permanent?",
+    "details": {
+      "attachment_count_size": "{count, plural, one {# fil} other {# filer}} · {size}",
+      "received_after_delay": "{date} · leveringstid {delay}",
+      "spam_score_value": "{score} ({status})"
+    },
+    "export_failed": "Eksport mislykkedes",
+    "forwarded": "Videresendt",
+    "load_failed": "Kunne ikke indlæse e-mail",
+    "preview": {
+      "open_external": "Åbn i app",
+      "pdf_external": "PDF'er åbnes i din PDF-fremviser på denne enhed.",
+      "unsupported": "Ingen forhåndsvisning for denne filtype."
+    },
+    "received_via": "til {name}",
+    "remove_color": "Fjern tag",
+    "replied": "Besvaret",
+    "sender_actions": "Afsender…",
+    "set_color": "Sæt tag",
+    "show_all_count": "Vis alle ({count})",
+    "show_less": "Vis færre",
+    "smime_unsupported": "Signeret/krypteret med S/MIME - understøttes ikke på mobil",
+    "source_too_large": "Beskeden er for stor til at blive vist i sin helhed. Del i stedet hele kilden.",
+    "thread_loading": "Indlæser samtale...",
+    "unsubscribe_banner": {
+      "no_identity": "Ingen afsenderidentitet tilgængelig"
+    },
+    "view_dark_mode": "Vis i mørk tilstand",
+    "view_light_mode": "Vis i lys tilstand"
+  },
+  "files": {
+    "delete_cascade_hint": "Mapper slettes sammen med alt deres indhold. Dette kan ikke fortrydes.",
+    "delete_item_title": "Slet dette element?",
+    "delete_items_title": "{count, plural, one {Slet # element?} other {Slet # elementer?}}",
+    "done": "Færdig",
+    "download_failed_status": "Download mislykkedes (HTTP {status})",
+    "folder_empty": "Denne mappe er tom",
+    "invalid_name": "Ugyldigt navn",
+    "invalid_name_slash": "Navne må ikke indeholde \"/\".",
+    "move_to": "Flyt til…",
+    "open_error": "Kunne ikke åbne filen",
+    "open_with": "Åbn med…",
+    "preview_too_large": "Denne fil er for stor til forhåndsvisning.",
+    "selected_count": "{count, plural, one {# valgt} other {# valgte}}",
+    "share_add_people": "Tilføj personer",
+    "share_empty": "Ikke delt med nogen endnu",
+    "share_error": "Kunne ikke opdatere deling",
+    "share_file_error": "Kunne ikke dele filen",
+    "share_folder_hint": "Når du deler en mappe, deles alt i den.",
+    "share_no_matches": "Ingen match",
+    "share_no_users": "Ingen andre brugere fundet",
+    "share_remove": "Fjern adgang",
+    "share_role_custom": "Tilpasset",
+    "share_search_placeholder": "Søg efter navn eller e-mail",
+    "share_unavailable": "Deling er ikke tilgængelig på denne enhed",
+    "shared_with": "Delt med",
+    "sharing_access": "Deling og adgang",
+    "upload_unavailable": "Filvælgeren er ikke installeret i denne build. Byg appen igen for at aktivere upload.",
+    "uploading_progress": "Uploader {current}/{total} · {name}"
+  },
+  "identities": {
+    "badge": {
+      "to": "til {identity}",
+      "via": "via {identity}"
+    }
+  },
+  "login": {
+    "mobile": {
+      "add_subtitle": "Du er allerede logget ind på disse.",
+      "add_title": "Tilføj en anden konto",
+      "camera_allow": "Tillad kameraadgang",
+      "camera_disabled": "Kameraadgang er slået fra. Slå det til i Indstillinger for at scanne en QR-loginkode.",
+      "camera_needed": "Bulwark Mail skal have adgang til kameraet for at scanne en QR-loginkode.",
+      "choose_subtitle": "Vælg, hvordan du vil logge ind.",
+      "confirm_check": "Tjek, at det ser rigtigt ud",
+      "confirm_found": "Din mailserver er fundet",
+      "confirm_subtitle": "Derefter logger du ind på din udbyders egen side.",
+      "connecting": "Forbinder til {host}",
+      "connecting_detail": "Konfigurerer din postkasse…",
+      "continue": "Fortsæt",
+      "different_server": "Brug en anden server",
+      "elsewhere_title": "En konto på en anden server",
+      "email_desc": "Vi finder din mailserver",
+      "email_step_hint": "Virker med Stalwart og enhver anden JMAP-mailserver.",
+      "email_step_subtitle": "Det er som regel alt, vi behøver for at finde din mailserver.",
+      "email_step_title": "Hvad er din e-mailadresse?",
+      "email_step_title_add": "Hvad er den anden adresse?",
+      "email_title": "Brug min e-mailadresse",
+      "err_account_limit_detail": "Fjern en konto i Indstillinger for at tilføje en ny.",
+      "err_bad_detail": "Tjek din e-mail og adgangskode. Hvis din konto bruger to-faktor-godkendelse, så opret en app-adgangskode i webmailen, og brug den her.",
+      "err_bad_title": "Det virkede ikke",
+      "err_cert_detail": "Serverens sikkerhedscertifikat blev afvist. Hvis det er din egen server, så tjek, at certifikatet er gyldigt og ikke udløbet.",
+      "err_cert_title": "Kunne ikke verificere {host}",
+      "err_code_expired_detail": "Loginkoder er gyldige i to minutter. Vis en ny i webmailen, og scan igen.",
+      "err_code_expired_or_used_detail": "Vis en ny i webmailen, og scan igen.",
+      "err_code_expired_or_used_title": "Den kode er udløbet eller allerede brugt",
+      "err_code_expired_title": "Koden er udløbet",
+      "err_code_invalid_detail": "Vis en ny kode i webmailen (Indstillinger → Sikkerhed → Tilknyt mobilapp), og scan den.",
+      "err_code_invalid_title": "Den kode er ikke gyldig",
+      "err_code_used_detail": "Hver kode virker kun én gang. Vis en ny i webmailen, og scan igen.",
+      "err_code_used_title": "Den kode er allerede brugt",
+      "err_generic_detail": "Noget gik galt. Prøv igen.",
+      "err_generic_title": "Login mislykkedes",
+      "err_interrupted_detail": "Svaret matchede ikke den anmodning, vi startede. Prøv at logge ind igen.",
+      "err_interrupted_title": "Login blev afbrudt",
+      "err_no_server_detail": "Dobbelttjek adressen, eller scan i stedet en loginkode fra webmailen.",
+      "err_no_server_title": "Ingen mailserver på {host}",
+      "err_no_webmail_detail": "Denne server har hverken Bulwark-webmail eller OAuth-login. Brug i stedet en adgangskode (eller en app-adgangskode).",
+      "err_no_webmail_title": "Ingen login-side på {host}",
+      "err_pair_connect_detail": "Vis en ny kode på din computer, og scan igen.",
+      "err_pair_connect_title": "Logget ind, men kunne ikke oprette forbindelse til {host}",
+      "err_pair_insecure_detail": "{host} vil bruge en ukrypteret forbindelse.",
+      "err_pair_network_detail": "Tjek din forbindelse, og at din telefon kan nå webmailen, og prøv så igen.",
+      "err_pair_rate_detail": "Vent et minut, og prøv så igen.",
+      "err_pair_server_detail": "Prøv igen med en ny kode. Hvis det bliver ved med at mislykkes, så kontakt din administrator.",
+      "err_pair_server_title": "Webmailen kunne ikke gennemføre login",
+      "err_pair_unsupported_detail": "{host} understøtter ikke loginkoder. Den skal måske opdateres, eller linket peger på den forkerte adresse.",
+      "err_pair_unsupported_title": "Denne webmail kan ikke tilknytte enheder",
+      "err_pair_untrusted_detail": "{host} sendte loginoplysninger til en server, som appen ikke kan bekræfte.",
+      "err_pair_untrusted_title": "Dette login kan ikke betros",
+      "err_rate_detail": "Serveren bad os vente et øjeblik. Prøv igen om lidt.",
+      "err_rate_detail_seconds": "Serveren bad os vente. Prøv igen om cirka {seconds} sekunder.",
+      "err_rate_title": "For mange forsøg",
+      "err_server_detail": "Serveren svarede med en fejl. Prøv igen om et par minutter.",
+      "err_server_title": "Problemer hos {host}",
+      "err_totp_bad_detail": "Tjek din adgangskode og den aktuelle kode fra din autentificeringsapp, og prøv igen.",
+      "err_totp_detail": "Denne konto er beskyttet med to-faktor-godkendelse. Indtast den 6-cifrede kode fra din autentificeringsapp.",
+      "err_totp_title": "Indtast din to-faktor-kode",
+      "err_unreachable_detail": "Tjek din forbindelse og serveradressen, og prøv igen.",
+      "err_unreachable_title": "Kan ikke nå {host}",
+      "know_server": "Jeg kender min serveradresse",
+      "known_server_desc": "Vi kender allerede denne server, så der skal ikke konfigureres noget",
+      "known_server_title": "En anden konto på {host}",
+      "link_confirm_connect": "Et link beder om at logge ind på denne side. Fortsæt kun, hvis du bruger {host} til din mail.",
+      "link_confirm_connect_add": "Et link beder om at tilføje en konto ved at logge ind på denne side. Fortsæt kun, hvis du bruger {host} til din mail.",
+      "link_confirm_connect_title": "Åbn login-siden for {host}?",
+      "link_confirm_pair": "Dette link logger ind på en konto fra {host}. Fortsæt kun, hvis du lige har vist en loginkode på din computer.",
+      "link_confirm_pair_add": "Dette link tilføjer en konto fra {host} og skifter appen til den. Fortsæt kun, hvis du lige har vist en loginkode på din computer.",
+      "link_confirm_title": "Log ind med et link?",
+      "looking_up": "Slår din server op…",
+      "manual": "Indtast serveroplysninger manuelt",
+      "notice_bad_qr": "Den kode er ikke en Bulwark-loginkode",
+      "notice_bad_qr_detail": "Åbn Bulwark på nettet, og gå til Indstillinger → Sikkerhed → Tilknyt mobilapp for at vise en.",
+      "notice_bad_server": "Det ligner ikke en serveradresse",
+      "notice_bad_server_detail": "Prøv den adresse, du bruger til webmail, f.eks. mail.example.com.",
+      "notice_full_email": "Indtast en fuld e-mailadresse",
+      "notice_full_email_detail": "F.eks. ada@example.com. Hvis du i stedet logger ind med et brugernavn, så brug “Jeg kender min serveradresse”.",
+      "notice_need_code": "Indtast den 6-cifrede kode fra din autentificeringsapp",
+      "notice_need_credentials": "Indtast din e-mail og adgangskode",
+      "notice_need_server": "Vi skal først bruge en serveradresse",
+      "open_settings": "Åbn Indstillinger",
+      "opening": "Åbner {host}",
+      "opening_detail": "Afslut login på den side, der lige er åbnet. Så klarer vi resten.",
+      "pairing": "Indløser din loginkode",
+      "pairing_detail": "Parrer denne enhed med {host}…",
+      "password_subtitle": "Din adgangskode sendes kun til denne server og gemmes i enhedens nøglering.",
+      "password_title": "Log ind på {host}",
+      "paste_button": "Indsæt",
+      "paste_clipboard_empty": "Der er intet at indsætte. Kopiér først linket i webmailen.",
+      "paste_hint": "Åbn Indstillinger → Sikkerhed → Tilknyt mobilapp i webmailen, kopiér loginlinket, og indsæt det her.",
+      "paste_invalid": "Det er ikke et Bulwark-loginlink",
+      "paste_label": "Loginlink",
+      "paste_title": "Indsæt loginlink",
+      "provider_detail": "Du indtaster den på deres side. Bulwark gemmer kun et login-token, som du til enhver tid kan tilbagekalde.",
+      "provider_title": "Din adgangskode bliver hos din udbyder",
+      "qr_hint": "Indstillinger → Sikkerhed → Tilknyt mobilapp viser en kode. Ret kameraet mod den.",
+      "qr_hint_title": "Åbn Bulwark på din computer",
+      "qr_title": "Loginkode",
+      "scan_desc": "Den hurtigste vej ind, hvis du er logget ind på nettet",
+      "scan_title": "Scan en loginkode",
+      "server_hint": "Samme adresse, som du skriver i browseren. Vi tilføjer https:// for dig.",
+      "server_label": "Serveradresse",
+      "server_not_found": "Vi kunne ikke finde en server for {domain}. Hvis du selv hoster, er det den adresse, du bruger til webmail.",
+      "server_paste_hint": "Har du i stedet et loginlink? Indsæt det her.",
+      "server_scan_hint": "Hvis du er i tvivl, så scan i stedet en loginkode. Den indeholder serveradressen.",
+      "server_subtitle": "Indtast den adresse, du bruger til at nå din webmail.",
+      "server_title": "Hvad er din serveradresse?",
+      "the_server": "serveren",
+      "unencrypted": "Ukrypteret forbindelse",
+      "use_password": "Log i stedet ind med en adgangskode",
+      "username_label": "E-mail eller brugernavn",
+      "your_server": "din server"
+    }
+  },
+  "offline": {
+    "banner": "Du er offline",
+    "queued_changes": "{count, plural, one {# ændring} other {# ændringer}} synkroniseres, når du har forbindelse igen",
+    "sync": {
+      "cached_count": "{count, plural, one {# ny besked gemt i cachen} other {# nye beskeder gemt i cachen}} • {size}",
+      "cancelled": "Synkronisering annulleret",
+      "failed": "Offlinesynkronisering mislykkedes",
+      "processed": "{completed}/{total} behandlet",
+      "ready": "Offlinemail er klar",
+      "syncing": "Synkroniserer offlinemail",
+      "title": "Offlinesynkronisering",
+      "unable_to_download": "Kan ikke downloade",
+      "up_to_date": "Allerede opdateret"
+    }
+  },
+  "push_prompt": {
+    "body": "Slå baggrundsnotifikationer til, så nye beskeder når frem til dig, mens appen er lukket.",
+    "dismiss": "Ikke nu",
+    "enable": "Aktivér",
+    "title": "Få besked om ny mail"
+  },
+  "scheduled": {
+    "cancel_body": "Beskeden bliver ikke leveret. En kopi bliver i din Sendt-mappe.",
+    "cancel_failed": "Annullering mislykkedes",
+    "edit_failed": "Kunne ikke åbne beskeden til redigering",
+    "keep_scheduled": "Behold planlagt",
+    "reschedule_failed": "Omplanlægning mislykkedes",
+    "send_now_failed": "Kunne ikke sende nu"
+  },
+  "settings": {
+    "account": {
+      "accounts": {
+        "description_mobile": "Ændr rækkefølgen af konti i kontoskifteren, vælg standardkontoen, eller log ud af en konto.",
+        "limit": "Du har nået grænsen på {count} konti."
+      },
+      "shared_accounts": {
+        "description_manage": "Gruppe- og delte konti, du kan læse via denne konto. Vælg en for at administrere dens filtre og fraværsbeskeder."
+      },
+      "unknown": "Ukendt"
+    },
+    "advanced": {
+      "about": {
+        "deprecated_update": "Opdatering påkrævet: {version}",
+        "mobile_title": "Bulwark Mobile",
+        "security_update": "Sikkerhedsopdatering: {version}",
+        "update_available": "Opdatering: {version}",
+        "update_store_hint": "tilgængelig i TestFlight / App Store"
+      },
+      "export_settings": {
+        "saved_to": "Gemt i {path}"
+      },
+      "reset_settings": {
+        "done": "Alle indstillinger er nulstillet til standardværdierne."
+      }
+    },
+    "appearance": {
+      "language": {
+        "restart_for_direction": "Genstart appen for at anvende den nye tekstretning.",
+        "system_default": "Systemstandard"
+      },
+      "toolbar_labels": {
+        "description_mobile": "Vis tekstetiketter ved siden af værktøjslinjeikoner."
+      }
+    },
+    "badges": {
+      "experimental": "Eksperimentel",
+      "not_implemented": "Ikke implementeret",
+      "unavailable": "Ikke tilgængelig"
+    },
+    "contacts": {
+      "book_count": "{count, plural, one {# kontakt} other {# kontakter}}",
+      "default_book": "Standardadressebog",
+      "description_mobile": "Visningsindstillinger og værktøjer til adressebøger.",
+      "device_sync_desc": "Vis dine adressebøger i Kontakter-appen og andre apps på denne enhed. Ændringer synkroniseres begge veje.",
+      "device_sync_title": "Synkronisér med denne enhed",
+      "export_description_count": "{count, plural, one {Eksportér # kontakt som én vCard-fil.} other {Eksportér # kontakter som én vCard-fil.}}",
+      "export_empty": "Ingen kontakter at eksportere",
+      "import_description_mobile": "Importér kontakter fra en vCard-fil (.vcf) med registrering af dubletter.",
+      "manage_description_mobile": "Opret, omdøb og fjern de adressebøger, der organiserer dine kontakter."
+    },
+    "device_sync": {
+      "also_synced_by": "Synkroniseres også for {accounts}, så den vises to gange på denne enhed.",
+      "android_settings": "Android-kontoindstillinger",
+      "blocked_calendar": "Android spørger ikke længere om adgang til kalendere. Tillad det i appens indstillinger, og slå derefter synkronisering til igen.",
+      "blocked_contacts": "Android spørger ikke længere om adgang til kontakter. Tillad det i appens indstillinger, og slå derefter synkronisering til igen.",
+      "blocked_title": "Adgang er slået fra",
+      "books_default": "Dine egne adressebøger synkroniseres; delte kun, når du vælger dem.",
+      "books_hint": "Dine egne adressebøger synkroniseres, medmindre du slår dem fra; delte kun, når du slår dem til.",
+      "books_label": "Adressebøger",
+      "calendars_default": "Dine egne kalendere synkroniseres; delte kun, når du vælger dem.",
+      "calendars_hint": "Dine egne kalendere synkroniseres, medmindre du slår dem fra; delte kun, når du slår dem til. Opgavelister bliver i Bulwark.",
+      "calendars_label": "Kalendere",
+      "choose": "Vælg",
+      "choose_books_title": "Adressebøger, der skal synkroniseres",
+      "choose_calendars_title": "Kalendere, der skal synkroniseres",
+      "collections_count": "{selected} af {total} synkroniseres",
+      "continue": "Fortsæt",
+      "deletions_delete": "Slet på serveren",
+      "deletions_message": "Mange elementer blev slettet på én gang på denne enhed, så de blev ikke slettet på serveren. Slet dem også der, eller hent dem tilbage på denne enhed.",
+      "deletions_restore": "Hent dem tilbage",
+      "deletions_title": "Vil du også slette dem på serveren?",
+      "denied_calendar": "Uden adgang til kalendere kan Bulwark ikke lægge dine kalendere på denne enhed.",
+      "denied_contacts": "Uden adgang til kontakter kan Bulwark ikke lægge dine adressebøger på denne enhed.",
+      "denied_title": "Synkronisering forbliver slået fra",
+      "failed_title": "Synkronisering kunne ikke slås til",
+      "grant_access": "Giv adgang",
+      "interval_15m": "Hvert 15. minut",
+      "interval_1h": "Hver time",
+      "interval_30m": "Hvert 30. minut",
+      "interval_6h": "Hver 6. time",
+      "interval_desc": "Hvor ofte Android synkroniserer af sig selv. Ændringer i Bulwark og ændringer, der meldes via push, synkroniseres hurtigere.",
+      "interval_label": "Synkroniseringsinterval",
+      "interval_manual": "Ingen regelmæssig synkronisering",
+      "keep_syncing": "Fortsæt synkronisering",
+      "list_error_auth": "Serveren accepterede ikke login.",
+      "list_error_network": "Serveren kunne ikke nås.",
+      "list_error_server": "Serveren kunne ikke vise listen.",
+      "list_error_signed_out": "Denne konto er ikke logget ind på denne enhed.",
+      "master_off": "Automatisk synkronisering er slået fra på denne enhed, så der synkroniseres kun, når du trykker på \"Synkronisér nu\".",
+      "new_contacts_default": "Standardadressebog",
+      "new_contacts_desc": "Adressebogen til kontakter, der oprettes i andre apps på denne enhed.",
+      "new_contacts_label": "Gem nye kontakter i",
+      "no_books": "Denne konto har ingen adressebøger.",
+      "no_calendars": "Denne konto har ingen kalendere at synkronisere.",
+      "ok": "OK",
+      "open_app_settings": "Åbn appindstillinger",
+      "own_collections": "Dine egne",
+      "rationale_calendar": "For at vise dine kalendere i Kalender-appen skal Bulwark have adgang til kalenderne på denne enhed. Bulwark ændrer kun kalenderne for sin egen konto.",
+      "rationale_contacts": "For at vise dine adressebøger i Kontakter-appen skal Bulwark have adgang til kontakterne på denne enhed. Bulwark ændrer kun kontakterne for sin egen konto.",
+      "rationale_title_calendar": "Giv adgang til kalendere",
+      "rationale_title_contacts": "Giv adgang til kontakter",
+      "read_only": "Skrivebeskyttet",
+      "reminder_owner_bulwark": "Bulwark",
+      "reminder_owner_device": "Kalender-app",
+      "reminder_question_message": "Påmindelser om synkroniserede begivenheder kan komme fra kalenderappen på denne enhed eller fra Bulwark. Vælg én af dem, så du ikke får to påmindelser. Du kan ændre det senere.",
+      "reminder_question_title": "Hvem skal minde dig om begivenheder?",
+      "reminders_desc": "Hvem der minder dig om synkroniserede begivenheder. Den anden forholder sig tavs, så du ikke får to påmindelser.",
+      "reminders_label": "Påmindelser",
+      "reminders_nobody": "Bulwarks notifikationer om begivenheder er slået fra, så intet minder dig om synkroniserede begivenheder.",
+      "remove": "Fjern",
+      "remove_from_device": "Fjern fra denne enhed",
+      "remove_message": "Kontoens kontakter og kalendere fjernes fra denne enhed. Ændringer foretaget her, som ikke er nået frem til serveren, går tabt.",
+      "remove_title": "Fjern fra denne enhed?",
+      "review_deletions": "Gennemgå sletninger",
+      "shared_by": "Delt af {name}",
+      "sign_in_again": "Log ind igen",
+      "status_auth": "Serveren accepterer ikke længere login. Log ind igen for at fortsætte synkroniseringen.",
+      "status_cancelled": "Den seneste synkronisering stoppede før tid. Den fortsætter næste gang.",
+      "status_failed": "Den seneste synkronisering mislykkedes: {message}",
+      "status_failed_plain": "Den seneste synkronisering mislykkedes.",
+      "status_io": "Serveren kunne ikke nås {when}. Android prøver igen.",
+      "status_item_errors": "{count, plural, one {# element kunne ikke synkroniseres.} other {# elementer kunne ikke synkroniseres.}}",
+      "status_off": "Fra",
+      "status_paused": "Sat på pause i Android-indstillinger",
+      "status_permission_calendar": "Adgangen til kalendere blev slået fra, så intet synkroniseres.",
+      "status_permission_contacts": "Adgangen til kontakter blev slået fra, så intet synkroniseres.",
+      "status_removed": "Fjernet i Android-indstillinger. Slå synkronisering til for at tilføje kontoen igen.",
+      "status_safety_abort": "Stoppet: Serveren returnerede intet, selvom denne enhed stadig har elementer. Tjek serveren, og synkronisér derefter igen.",
+      "status_synced": "Sidst synkroniseret: {when}",
+      "status_syncing": "Synkroniserer…",
+      "status_too_many_deletions": "Mange elementer blev slettet på denne enhed. De slettes ikke på serveren, før du bekræfter.",
+      "status_unsupported_calendar": "Serveren tilbyder ingen kalendere til denne konto.",
+      "status_unsupported_contacts": "Serveren tilbyder ingen adressebøger til denne konto.",
+      "status_waiting": "Venter på den første synkronisering",
+      "status_waiting_next": "Venter på den næste synkronisering",
+      "suspended_desc": "Logget ud. Kontoens kontakter og kalendere bliver på denne enhed sammen med de ændringer, der er foretaget her, og synkroniseres igen, når du logger ind.",
+      "switch_label": "Synkronisér {account} med denne enhed",
+      "sync_now": "Synkronisér nu",
+      "turn_off_anyway": "Slå fra",
+      "turn_off_failed": "De synkroniserede data kunne ikke fjernes fra denne enhed. Synkroniseringen er sat på pause; prøv igen senere.",
+      "turn_off_failed_title": "Synkronisering kunne ikke slås fra",
+      "turn_off_pending": "{count, plural, one {# ændring foretaget på denne enhed er endnu ikke nået frem til serveren. Den går tabt, hvis du slår synkronisering fra nu.} other {# ændringer foretaget på denne enhed er endnu ikke nået frem til serveren. De går tabt, hvis du slår synkronisering fra nu.}}",
+      "turn_off_title": "Vil du slå fra alligevel?",
+      "turn_off_unknown": "Bulwark kunne ikke kontrollere, om ændringer foretaget på denne enhed er nået frem til serveren. De går tabt, hvis du slår synkronisering fra nu.",
+      "turning_off": "Uploader ændringer og fjerner derefter data fra denne enhed…",
+      "turning_on": "Konfigurerer…"
+    },
+    "downloads": {
+      "attachment_template": {
+        "description_mobile": "Skabelon, der bruges, når en vedhæftning gemmes eller deles."
+      },
+      "email_template": {
+        "description_mobile": "Skabelon, der bruges, når en besked eksporteres som .eml-fil."
+      },
+      "strip_diacritics": {
+        "description_mobile": "Konvertér bogstaver med accenter til almindelig ASCII (ä → a)."
+      },
+      "transform_description": "Anvendes på alle eksporterede filnavne.",
+      "transform_title": "Filnavnstransformation"
+    },
+    "email_behavior": {
+      "archive_mode": {
+        "no_archive": "Ingen arkivmappe fundet.",
+        "reorganize_result": "Flyttede {moved} af {total} e-mails.",
+        "reorganizing": "Omorganiserer…"
+      },
+      "attachment_click_action": {
+        "description_mobile": "Hvad der sker, når du trykker på en vedhæftning."
+      },
+      "auto_select_reply_identity": {
+        "description_mobile": "Svar sendes altid fra den identitet, som en besked blev sendt til. Når dette er slået til, sendes et svar til en anden adresse på dine domæner (et catch-all-alias) også fra den adresse."
+      },
+      "content_senders_description_mobile": "Styr, hvordan eksterne ressourcer og sporingspixels håndteres.",
+      "external_content": {
+        "allow_mobile": "Tillad",
+        "ask_mobile": "Spørg",
+        "block_mobile": "Blokér"
+      },
+      "plain_text_mode": {
+        "description_mobile": "Skriv og læs kun i ren tekst."
+      },
+      "send_delay": {
+        "description_mobile": "Hold udgående mail tilbage i nogle sekunder, så du kan annullere afsendelsen. Kræver serverunderstøttelse."
+      },
+      "swipe_actions": {
+        "move": "Flyt til mappe",
+        "pin": "Fastgør"
+      },
+      "swipe_left_action": {
+        "description_mobile": "Handling, når du trækker en række fra dens højre kant mod venstre.",
+        "label_mobile": "Stryg til venstre (højre → venstre)"
+      },
+      "swipe_right_action": {
+        "description_mobile": "Handling, når du trækker en række fra dens venstre kant mod højre.",
+        "label_mobile": "Stryg til højre (venstre → højre)"
+      },
+      "trusted_senders": {
+        "description_mobile": "Eksternt indhold indlæses altid for afsendere på denne liste.",
+        "description_synced_mobile": "Eksternt indhold indlæses altid for afsendere på denne liste. {count} synkroniseret via din adressebog.",
+        "sync_add_failed": "Kunne ikke synkronisere til adressebogen",
+        "sync_remove_failed": "Kunne ikke fjerne fra adressebogen",
+        "synced_badge": "Synkroniseret via adressebog"
+      }
+    },
+    "experimental": {
+      "title": "Eksperimentel funktion"
+    },
+    "filters": {
+      "remove_action": "Fjern handling",
+      "remove_condition": "Fjern betingelse",
+      "sieve_editor": {
+        "line_count": "{count, plural, one {# linje} other {# linjer}}"
+      }
+    },
+    "folders": {
+      "account": "Konto",
+      "cannot_delete": "Kan ikke slette",
+      "description_mobile": "Opret, omdøb, flyt og slet mapper. Tryk længe på en mappe i sidepanelet for hurtige handlinger.",
+      "edit_folder": "Redigér \"{name}\"",
+      "folder_name": "Mappenavn",
+      "move_under": "Flyt under",
+      "name_placeholder": "Kvitteringer",
+      "name_required": "Navn påkrævet",
+      "new_folder": "Ny mappe",
+      "not_empty_message": "\"{name}\" indeholder {count} e-mails. Slet alligevel?",
+      "not_empty_title": "Mappen er ikke tom",
+      "own_account": "Mine mapper",
+      "role": "Mappens rolle",
+      "role_hint": "Tildel denne mappe en særlig rolle (Arkiv, Spam, …). Hver rolle kan kun tildeles én mappe.",
+      "save_failed": "Kunne ikke gemme",
+      "system_folder_delete": "Systemmapper kan ikke fjernes.",
+      "system_folder_rename": "Systemmapper kan ikke omdøbes.",
+      "top_level": "Øverste niveau"
+    },
+    "identities": {
+      "cannot_delete": "Den primære identitet kan ikke fjernes.",
+      "cannot_delete_title": "Kan ikke slette",
+      "count": "{count, plural, =0 {Ingen identiteter} one {# identitet} other {# identiteter}}",
+      "create": "Ny identitet",
+      "delete_confirm": "Fjern \"{name}\"?",
+      "delete_failed": "Sletning mislykkedes",
+      "delete_title": "Slet identitet",
+      "description_mobile": "Administrér afsendernavne, e-mailadresser og signaturer. Tryk på en række for at redigere.",
+      "display_name": "Visningsnavn",
+      "display_name_placeholder": "Jens Hansen",
+      "edit": "Redigér identitet",
+      "email_address": "E-mailadresse",
+      "email_locked": "JMAP tillader ikke, at en identitets e-mailadresse ændres; opret i stedet en ny.",
+      "invalid_email": "Indtast en gyldig e-mailadresse til denne identitet.",
+      "invalid_email_title": "Ugyldig e-mail",
+      "new": "Ny",
+      "no_name": "(intet navn)",
+      "primary": "primær",
+      "save_failed": "Kunne ikke gemme",
+      "text_signature": "Signatur i ren tekst"
+    },
+    "keywords": {
+      "description_mobile": "Farvede tags til at organisere din mail.",
+      "discover": {
+        "add_all": "Tilføj alle",
+        "found": "{count} tags fundet, som ikke er defineret her.",
+        "none": "Ingen ukendte tags fundet i {scanned} beskeder.",
+        "partial": "(Scanningen omfattede kun de nyeste beskeder.)",
+        "progress": "Scannet {scanned} af {total} beskeder…",
+        "scan": "Find tags i postkassen"
+      },
+      "reset_confirm": "Erstat din tagliste med standardtags? Tags, der allerede er sat på beskeder, bliver på serveren.",
+      "reset_defaults": "Nulstil til standard"
+    },
+    "layout": {
+      "description": "Tilpas interaktionerne i e-maillisten til mobil.",
+      "quick_actions": {
+        "description": "De tre knapper mellem Forrige/Næste nederst i en åben e-mail. Standard er Svar, Svar alle og Videresend.",
+        "label": "Hurtighandlinger ved læsning",
+        "mark_unread": "Markér læst/ulæst",
+        "relocated": "{count, plural, one {{actions} flyttes til den øverste værktøjslinje, så du stadig kan bruge den.} other {{actions} flyttes til den øverste værktøjslinje, så du stadig kan bruge dem.}}",
+        "slot": "Plads {n}",
+        "spam": "Spam",
+        "star": "Stjerne",
+        "tag": "Tag"
+      },
+      "show_avatars_in_junk": "Vis afsenderavatarer i spam",
+      "show_avatars_in_junk_description": "Indlæs afsenderlogoer for beskeder i spam-mappen. Når det er slået fra, kontaktes spamafsendere ikke.",
+      "show_folder_total_count": "Vis samlet antal beskeder ved mapper",
+      "show_folder_total_count_description": "Vis det samlede antal ved siden af antallet af ulæste i mappelisten.",
+      "swipe_mode": {
+        "description": "Vælg Øjeblikkelig (stryg forbi tærsklen for at udføre handlingen) eller Vis (stryg for at vise en handlingsbjælke, og tryk så for at bekræfte).",
+        "instant": "Øjeblikkelig (stryg = handling)",
+        "label": "Strygeadfærd",
+        "reveal": "Vis (stryg, og tryk så)"
+      },
+      "unified_cross_account": "Samlede visninger på tværs af konti",
+      "unified_cross_account_description": "Saml alle indloggede konti i \"Samlet indbakke\". Når det er slået fra, holdes de samlede visninger inden for den aktive konto og dens delte mapper."
+    },
+    "message_list_order": {
+      "description": "Hvilke beskeder der kommer først i listen. Inden for hver gruppe kommer de nyeste først; knappen i overskriften skifter stadig mellem ældste og nyeste.",
+      "preset_chronological": "Nyeste først",
+      "preset_custom": "Tilpasset",
+      "preset_starred_first": "Stjernemarkerede først",
+      "preset_tagged_first": "Med mærkat først",
+      "preset_unread_first": "Ulæste først",
+      "scope": "Anvend på",
+      "scope_all": "Alle mapper",
+      "scope_inbox": "Kun indbakke",
+      "tag": "Tag",
+      "title": "Rækkefølge i beskedlisten"
+    },
+    "notifications": {
+      "email": {
+        "app_icon_badge": "Antal ulæste på appikonet",
+        "app_icon_badge_desc": "Vis antallet af ulæste i indbakken som et badge på appikonet.",
+        "sound_channel_hint": "Lyd og vibration for mailnotifikationer styres af Android-notifikationskanalen: Tryk længe på en notifikation, eller åbn systemets appindstillinger."
+      },
+      "push": {
+        "confirm_disable_message_mobile": "Denne enhed stopper med at modtage notifikationer om ny mail for denne konto.",
+        "description_mobile": "Modtag systemnotifikationer om ny mail, når appen er lukket. Leveres via Bulwark-push-relæet; relæet ser aldrig mailindhold.",
+        "err_android_only": "Pushnotifikationer er kun tilgængelige på Android.",
+        "err_fcm_empty": "Firebase returnerede et tomt enhedstoken.",
+        "err_fcm_token": "Firebase kunne ikke udstede et enhedstoken ({detail}). Push via FCM kræver Google Play-tjenester på denne enhed.",
+        "err_fcm_token_up": "Firebase kunne ikke udstede et enhedstoken ({detail}). Push via FCM kræver Google Play-tjenester på denne enhed. Denne enhed har en UnifiedPush-distributør installeret - skift leveringsmetoden til UnifiedPush i stedet.",
+        "err_jmap_refused": "Mailserveren afviste pushabonnementet: {detail}",
+        "err_no_account": "Ingen konto indlæst - kan ikke konfigurere push.",
+        "err_permission": "Tilladelse til notifikationer blev ikke givet.",
+        "err_relay_https": "Relæets URL skal bruge https://.",
+        "err_relay_rejected": "Push-relæet afviste registreringen: {detail}",
+        "err_relay_unreachable": "Kunne ikke nå push-relæet på {url} ({detail}).",
+        "err_up_android_only": "UnifiedPush er kun tilgængelig på Android.",
+        "err_verify_rejected": "Mailserveren afviste bekræftelseskoden: {detail}",
+        "err_verify_relay": "Relæet modtog aldrig bekræftelseskoden fra mailserveren (seneste svar fra relæet: {detail}).",
+        "err_verify_timeout": "Mailserveren sendte ikke en bekræftelseskode til relæet inden for 75 s. Tjek, at serveren kan nå relæets URL.",
+        "phase_account": "Konto",
+        "phase_distributor": "UnifiedPush-distributør",
+        "phase_jmap": "Abonnement på mailserver",
+        "phase_permission": "Notifikationstilladelse",
+        "phase_platform": "Platform",
+        "phase_relay": "Registrering hos relæ",
+        "phase_token": "Enhedstoken",
+        "phase_verify": "Bekræftelse",
+        "relay_desc_mobile": "Serveren, der leverer dine notifikationer. Som standard det hostede Bulwark-relæ; ændr det kun, hvis du selv hoster. Skal bruge https.",
+        "relay_invalid": "Indtast en gyldig https://-URL",
+        "setup_failed": "Opsætning mislykkedes",
+        "status_android_only": "Baggrundsnotifikationer er kun tilgængelige på Android.",
+        "transport_desc": "Hvordan notifikationer når frem til denne enhed: Googles Firebase Cloud Messaging eller en UnifiedPush-distributørapp (f.eks. ntfy) til levering uden Google.",
+        "transport_fcm": "Google (FCM)",
+        "transport_label": "Leveringsmetode",
+        "transport_unifiedpush": "UnifiedPush",
+        "up_distributor_desc": "Der er installeret flere UnifiedPush-distributørapps - vælg den, der skal levere notifikationer.",
+        "up_distributor_label": "Distributør",
+        "up_no_distributor": "Der er ingen UnifiedPush-distributørapp installeret på denne enhed. Installer en (f.eks. ntfy), og prøv igen."
+      }
+    },
+    "offline": {
+      "cached_count": "{count, plural, one {# besked} other {# beskeder}}",
+      "clear": "Ryd",
+      "clear_cache": "Ryd cache",
+      "clear_message": "Fjern {count, plural, one {# besked i cachen} other {# beskeder i cachen}} ({size})?",
+      "clear_title": "Ryd offlinemail",
+      "days_ago": "{count, plural, one {# dag siden} other {# dage siden}}",
+      "description": "Download de seneste beskeder, så de åbner med det samme og kan læses uden forbindelse. Kun beskedtekst — vedhæftninger hentes stadig efter behov.",
+      "downloading": "Downloader {completed}/{total}…",
+      "enabled": "Gem seneste mail i cache",
+      "enabled_desc": "Når det er slået til, gemmer appen beskedtekster fra det valgte tidsrum på denne enhed.",
+      "hours_ago": "{count, plural, one {# time siden} other {# timer siden}}",
+      "just_now": "lige nu",
+      "last_sync": "Sidste synkronisering: {when}",
+      "last_sync_failed": "Sidste synkronisering mislykkedes: {message}",
+      "max_size": "Maksimal størrelse",
+      "max_size_desc": "De ældste beskeder fjernes, når cachen bliver større end dette.",
+      "minutes_ago": "{count} min. siden",
+      "never": "aldrig",
+      "nothing_cached": "Intet i cachen endnu",
+      "queued_changes": "{count, plural, one {# ændring venter} other {# ændringer venter}} på synkronisering",
+      "scanning": "Scanner seneste mail…",
+      "sync_now": "Synkronisér nu",
+      "syncing": "Synkroniserer…",
+      "title": "Offlinemail",
+      "window": "Tidsrum",
+      "window_24h": "Seneste 24 timer",
+      "window_days": "Seneste {count} dage",
+      "window_desc": "Hvor langt tilbage der gemmes i cachen, målt efter beskedens modtagelsesdato."
+    },
+    "plugins": {
+      "mobile_description": "Plugins kører i webmailen og udvider den i browseren.",
+      "mobile_explainer": "Mobilappen har ikke et plugin-runtime. Installér og administrér plugins i webmailen under Indstillinger → Plugins; temaer og filtre, som de leverer, anvendes ikke her."
+    },
+    "security": {
+      "client_cert": {
+        "active": "Aktiv: {alias}",
+        "choose_another": "Vælg et andet",
+        "clear": "Ryd",
+        "clear_message": "Nye anmodninger præsenterer ikke længere et certifikat. Certifikatet forbliver installeret i Android.",
+        "clear_title": "Stop med at bruge klientcertifikat?",
+        "description": "Vælger et installeret Android-certifikat til godkendelse over for serveren under TLS-handshaket. Nyttigt, når reverse proxyen kræver mTLS.",
+        "hint": "Installer certifikatet via Android-indstillinger → Sikkerhed → Kryptering og loginoplysninger, og vælg det derefter her.",
+        "not_set": "Ikke angivet",
+        "pick": "Vælg certifikat",
+        "pick_failed": "Valg mislykkedes",
+        "title": "TLS-klientcertifikat"
+      },
+      "credentials": {
+        "allowed_ips": "Tilladte IP'er (valgfrit)",
+        "allowed_ips_hint": "Adskilt med komma eller mellemrum. Lad feltet være tomt for at tillade alle IP'er.",
+        "clear_expiry": "Ryd udløbsdato",
+        "copy_now": "Kopiér den nu — den vises kun én gang. Tryk og hold for at markere.",
+        "create_error": "Kunne ikke oprette",
+        "expires": "Udløber (valgfrit)",
+        "expires_on": "udløber {date}",
+        "no_expiry": "Ingen udløbsdato",
+        "none": "Ingen endnu.",
+        "remove_error": "Kunne ikke fjerne",
+        "remove_message": "Enhver klient, der bruger den, holder op med at virke.",
+        "remove_title": "Fjern loginoplysning?"
+      },
+      "display_name": {
+        "error_title": "Opdatering mislykkedes"
+      },
+      "encryption": {
+        "no_keys": "Tilføj først en offentlig nøgle - kryptering af lagrede data kræver en."
+      },
+      "load_error": "Kunne ikke indlæse sikkerhedsindstillinger.",
+      "not_supported": "Administration af kontosikkerhed kræver en Stalwart-server. Disse funktioner er ikke tilgængelige for denne konto.",
+      "offline": "Du er offline. Kontoens sikkerhedsindstillinger kræver en aktiv forbindelse til serveren.",
+      "password": {
+        "change": "Skift adgangskode",
+        "changed": "Adgangskoden til din konto er opdateret.",
+        "changed_title": "Adgangskode ændret",
+        "description": "Skift adgangskoden til denne konto.",
+        "error": "Kunne ikke ændre adgangskode.",
+        "mismatch": "Adgangskoderne er ikke ens.",
+        "toggle_visibility": "Vis eller skjul adgangskode",
+        "too_short": "Den nye adgangskode skal være på mindst 8 tegn."
+      },
+      "public_keys": {
+        "add_error": "Kunne ikke tilføje offentlig nøgle",
+        "description": "S/MIME-certifikater og PGP-nøgler gemt på serveren. De bruges til kryptering af lagrede data.",
+        "expires": "udløber {date}",
+        "remove_error": "Kunne ikke fjerne offentlig nøgle",
+        "remove_message": "Kryptering af lagrede data, der bruger denne nøgle, holder op med at virke.",
+        "remove_title": "Fjern offentlig nøgle?",
+        "title": "Offentlige nøgler"
+      },
+      "two_factor": {
+        "active": "Aktiv",
+        "code": "Bekræftelseskode",
+        "code_required": "Indtast den 6-cifrede kode fra din app.",
+        "description": "Kræv en engangskode ved login.",
+        "disable": "Deaktivér",
+        "disable_error": "Kunne ikke deaktivere to-faktor-godkendelse.",
+        "disable_hint": "Indtast din adgangskode for at slå to-faktor-godkendelse fra.",
+        "enable_error": "Kunne ikke aktivere to-faktor-godkendelse.",
+        "enabled_message": "Du bliver bedt om en kode ved næste login.",
+        "enabled_title": "To-faktor-godkendelse aktiveret",
+        "enrol_hint": "Tilføj denne hemmelighed til din autentificeringsapp, og indtast derefter den 6-cifrede kode for at bekræfte.",
+        "inactive": "Inaktiv",
+        "label": "Autentificeringsapp",
+        "manual_secret": "Eller indtast denne hemmelighed manuelt",
+        "no_app": "Kunne ikke åbne en autentificeringsapp. Tilføj hemmeligheden nedenfor manuelt.",
+        "no_app_title": "Ingen autentificeringsapp",
+        "open_app": "Tilføj til autentificeringsapp",
+        "password_required": "Indtast din nuværende adgangskode.",
+        "section_title": "To-faktor-godkendelse"
+      }
+    },
+    "sidebar_apps": {
+      "add": "Tilføj app",
+      "empty": "Ingen apps tilføjet endnu.",
+      "form": {
+        "name": "Navn",
+        "name_placeholder": "App-navn",
+        "open_mode": "Åbningstilstand",
+        "show_on_mobile": "Vis på mobil",
+        "url": "URL"
+      },
+      "keep_loaded_description_mobile": "Hold indlejrede apps kørende i baggrunden, når du skifter væk.",
+      "open_mode": {
+        "inline": "Indlejret",
+        "new_tab": "Ny fane",
+        "tab": "Fane"
+      }
+    },
+    "smime": {
+      "mobile_description": "Signér og kryptér mail med S/MIME-certifikater.",
+      "mobile_explainer": "S/MIME er endnu ikke tilgængelig i mobilappen. Administrér nøgler og certifikater i webmailen; signerede beskeder vises her uden verifikation."
+    },
+    "tabs": {
+      "plugins": "Plugins",
+      "themes": "Temaer",
+      "updates": "Opdateringer"
+    },
+    "templates": {
+      "delete_confirm": "Slet \"{name}\" permanent?",
+      "delete_title": "Slet skabelon",
+      "description_mobile": "Genanvendelige tekststykker til almindelige svar. Tryk på et for at redigere; tryk længe for at slette.",
+      "export_failed": "Eksport mislykkedes",
+      "import_failed": "Import mislykkedes",
+      "imported": "Importeret",
+      "imported_count": "{count, plural, one {# skabelon} other {# skabeloner}} tilføjet.",
+      "is_html": "Brødteksten er HTML",
+      "placeholders_hint": "Pladsholdere: {{recipient_name}}, {{company}}, {{date}}, {{day_of_week}}, {{sender_name}}",
+      "share_unavailable": "Kan ikke dele"
+    },
+    "themes": {
+      "default_description": "Standardpaletterne til lys og mørk.",
+      "default_name": "Bulwark",
+      "mobile_description": "Vælg et farvetema. Temaer følger indstillingen for lys/mørk under Udseende; brugerdefinerede temapakker administreres i webmailen.",
+      "title": "Temaer"
+    },
+    "vacation": {
+      "warnings": {
+        "date_format": "Datoer skal have formatet \"YYYY-MM-DD\" eller \"YYYY-MM-DD HH:MM\""
+      }
+    }
+  },
+  "sidebar": {
+    "account_error": "Kræver handling",
+    "remove_account_hint": "Tryk længe for at fjerne denne konto",
+    "remove_account_message": "Log ud af {account} på denne enhed. Din mail bliver på serveren.",
+    "remove_account_title": "Fjern konto?",
+    "show_unread": "Vis ulæste",
+    "tab_unavailable": "{name} (ikke tilgængelig)"
+  },
+  "unified_mailbox": {
+    "accounts_failed": "{count, plural, one {# konto kunne ikke indlæses} other {# konti kunne ikke indlæses}}"
+  },
+  "updates": {
+    "advisory": "Sikkerhedsmeddelelse",
+    "advisory_desc": "Detaljer om det problem, som denne udgivelse løser.",
+    "auto_check": "Tjek automatisk",
+    "auto_check_desc": "Tjek for opdateringer med få timers mellemrum, når appen starter.",
+    "available": "Opdatering tilgængelig",
+    "available_desc": "Tryk på Installer for at downloade v{version} og åbne den med Androids pakkeinstallationsprogram.",
+    "banner": {
+      "advisory": "Læs meddelelsen",
+      "deprecated_subtitle": "Installer v{version} for at blive ved med at bruge appen.",
+      "deprecated_title": "Denne version understøttes ikke længere",
+      "security_subtitle": "v{version} løser et sikkerhedsproblem. Installer den hurtigst muligt.",
+      "security_title": "Sikkerhedsopdatering tilgængelig",
+      "subtitle": "v{version} er klar til installation.",
+      "title": "Opdatering tilgængelig"
+    },
+    "building": "Opdateringen bygges",
+    "building_desc": "v{version} er udgivet, men APK'en bygges stadig. Denne side tjekker igen hvert 30. sekund.",
+    "check": "Søg efter opdateringer",
+    "check_again": "Tjek igen",
+    "check_now": "Tjek nu",
+    "checking": "Kontrollerer…",
+    "current_version": "Nuværende version",
+    "description": "Søg efter nye versioner, og installer dem.",
+    "downloading": "Downloader…",
+    "downloading_pct": "Downloader {pct} %",
+    "install": "Installer",
+    "installing": "Installerer…",
+    "last_checked": "Sidst tjekket",
+    "last_error": "Seneste fejl: {message}",
+    "latest_version": "Nyeste version",
+    "never": "aldrig",
+    "open": "Åbn",
+    "open_github": "Åbn på GitHub",
+    "opening_installer": "Åbner installationsprogram…",
+    "progress_of": "{written} af {total}",
+    "published": "Udgivet {date}",
+    "rate_limited": "GitHub begrænser opdateringstjek; prøver igen senere.",
+    "release_notes": "Udgivelsesnoter",
+    "release_page": "Udgivelsesside",
+    "release_page_desc": "Fulde udgivelsesnoter og downloads på GitHub.",
+    "release_page_pending_desc": "Følg buildets fremskridt, eller download APK'en manuelt.",
+    "severity_deprecated": "Påkrævet",
+    "severity_security": "Sikkerhed",
+    "title": "Appopdateringer",
+    "verifying": "Verificerer…"
+  }
+}

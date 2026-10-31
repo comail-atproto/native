@@ -1,0 +1,88 @@
+{
+  "name": "default",
+  "copy": {
+    "mascotTagline": "your mail stays yours"
+  },
+  "colors": {
+    "brand": {
+      "lightBlue": "#3fa1c0",
+      "darkBlue": "#02413c",
+      "darkestBlue": "#012102",
+      "yellow": "#e1c240",
+      "background": "#dfe0c0"
+    },
+    "semantic": {
+      "muted": "#5b6660",
+      "line": "#b9bd9a",
+      "surface": "#f5f5e0",
+      "accentSoft": "#eef2ff",
+      "selectionBg": "#e1c240",
+      "selectionInk": "#012102",
+      "suggestionHover": "oklch(0.30 0.02 70)",
+      "suggestionAvatar": "oklch(0.40 0.01 70)",
+      "suggestionMuted": "oklch(0.65 0.01 70)",
+      "skeletonShine": "oklch(0.92 0.01 70)"
+    },
+    "status": {
+      "success": "oklch(0.60 0.14 150)",
+      "warning": "oklch(0.68 0.15 68)",
+      "danger": "oklch(0.55 0.18 25)",
+      "dangerBg": "oklch(0.95 0.03 25)",
+      "dangerBorder": "oklch(0.85 0.06 25)",
+      "warningBg": "oklch(0.95 0.04 68)",
+      "warningBorder": "oklch(0.85 0.08 68)",
+      "successBg": "oklch(0.95 0.03 150)",
+      "successBorder": "oklch(0.85 0.06 150)"
+    },
+    "docs": {
+      "light": {
+        "bg": "#dfe0c0",
+        "bgNav": "#dfe0c0",
+        "bgSidebar": "#dfe0c0",
+        "bgInlineCode": "#efefd0",
+        "text": "#012102",
+        "textAccent": "#02413c",
+        "textInvert": "#dfe0c0",
+        "white": "#012102",
+        "hairline": "#b9bd9a",
+        "hairlineLight": "#c6c9a8",
+        "hairlineShade": "#a8ac88",
+        "gray1": "#1d2a22",
+        "gray2": "#3d4a3f",
+        "gray3": "#5b6660",
+        "gray4": "#b9bd9a",
+        "gray5": "#c6c9a8",
+        "gray6": "#dfe0c0",
+        "gray7": "#efefd0",
+        "accent": "#3fa1c0",
+        "accentHigh": "#02413c",
+        "accentLow": "#c4dee6",
+        "asidesTextAccent": "#02413c"
+      },
+      "dark": {
+        "bg": "#1c1f24",
+        "bgNav": "#1c1f24",
+        "bgSidebar": "#16181d",
+        "bgInlineCode": "#2a2d33",
+        "text": "#e7e9ea",
+        "textAccent": "#6dbfd6",
+        "textInvert": "#1c1f24",
+        "white": "#f1f2f3",
+        "hairline": "#2e3138",
+        "hairlineLight": "#3a3d44",
+        "hairlineShade": "#25282e",
+        "gray1": "#f1f2f3",
+        "gray2": "#d4d6d8",
+        "gray3": "#a8acb1",
+        "gray4": "#6d7178",
+        "gray5": "#3a3d44",
+        "gray6": "#25282e",
+        "gray7": "#1c1f24",
+        "accent": "#3fa1c0",
+        "accentHigh": "#6dbfd6",
+        "accentLow": "#1e3a45",
+        "asidesTextAccent": "#6dbfd6"
+      }
+    }
+  }
+}
