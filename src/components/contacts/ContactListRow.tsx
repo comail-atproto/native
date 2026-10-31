@@ -1,0 +1,141 @@
+import React from 'react';
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
+import { Check, Users } from '../icons';
+import type { ContactCard } from '../../api/types';
+import {
+  getContactDisplayName,
+  getContactPrimaryEmail,
+  getContactPhotoUri,
+  getPrimaryOrg,
+  isGroup,
+} from '../../lib/contact-utils';
+import SenderAvatar from '../SenderAvatar';
+import { spacing, radius, typography, componentSizes, type ThemePalette } from '../../theme/tokens';
+import { useColors } from '../../theme/colors';
+import { useLocaleStore } from '../../stores/locale-store';
+
+interface ContactListRowProps {
+  contact: ContactCard;
+  onPress?: () => void;
+  onLongPress?: () => void;
+  selected?: boolean;
+  /** The contact open in the detail pane of a split view. */
+  active?: boolean;
+  selectionMode?: boolean;
+  secondaryText?: string;
+}
+
+export default function ContactListRow({
+  contact,
+  onPress,
+  onLongPress,
+  selected,
+  active = false,
+  selectionMode,
+  secondaryText,
+}: ContactListRowProps) {
+  const c = useColors();
+  const styles = React.useMemo(() => makeStyles(c), [c]);
+  const t = useLocaleStore((s) => s.t);
+  const name = getContactDisplayName(contact) || t('contacts.unnamed', 'Unnamed');
+  const email = getContactPrimaryEmail(contact);
+  const org = getPrimaryOrg(contact);
+  const photoUri = getContactPhotoUri(contact);
+  const group = isGroup(contact);
+
+  const subtitle = secondaryText ?? (email || org);
+  const tertiary = email && org && org !== name ? org : undefined;
+
+  return (
+    <Pressable
+      onPress={onPress}
+      onLongPress={onLongPress}
+      accessibilityRole={selectionMode ? 'checkbox' : 'button'}
+      accessibilityState={selectionMode ? { checked: !!selected } : undefined}
+      style={({ pressed }) => [
+        styles.row,
+        pressed && styles.rowPressed,
+        active && styles.rowActive,
+        selected && styles.rowSelected,
+      ]}
+    >
+      {selectionMode && (
+        <View style={[styles.checkbox, selected && styles.checkboxSelected]}>
+          {selected && <Check size={14} color={c.primaryForeground} />}
+        </View>
+      )}
+
+      {photoUri ? (
+        <Image source={{ uri: photoUri }} style={styles.avatarImage} />
+      ) : group ? (
+        <View style={styles.groupAvatar}>
+          <Users size={18} color={c.primary} />
+        </View>
+      ) : (
+        <SenderAvatar name={name} email={email} size={componentSizes.avatarMd} />
+      )}
+
+      <View style={styles.info}>
+        <Text style={styles.name} numberOfLines={1}>{name}</Text>
+        {!!subtitle && (
+          <Text style={styles.subtitle} numberOfLines={1}>{subtitle}</Text>
+        )}
+        {!!tertiary && (
+          <Text style={styles.tertiary} numberOfLines={1}>{tertiary}</Text>
+        )}
+      </View>
+    </Pressable>
+  );
+}
+
+function makeStyles(c: ThemePalette) {
+  return StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.md,
+    gap: spacing.md,
+  },
+  rowPressed: { backgroundColor: c.surfaceHover },
+  rowSelected: { backgroundColor: c.primaryBg },
+  // Same as the open message in the mail list (webmail bg-selection + bar).
+  rowActive: {
+    backgroundColor: c.selection,
+    borderLeftWidth: 2,
+    borderLeftColor: c.primary,
+    paddingLeft: spacing.lg - 2,
+  },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: radius.xs,
+    borderWidth: 2,
+    borderColor: c.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkboxSelected: {
+    backgroundColor: c.primary,
+    borderColor: c.primary,
+  },
+  avatarImage: {
+    width: componentSizes.avatarMd,
+    height: componentSizes.avatarMd,
+    borderRadius: componentSizes.avatarMd / 2,
+    backgroundColor: c.surface,
+  },
+  groupAvatar: {
+    width: componentSizes.avatarMd,
+    height: componentSizes.avatarMd,
+    borderRadius: componentSizes.avatarMd / 2,
+    backgroundColor: c.primaryBg,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  info: { flex: 1, minWidth: 0 },
+  name: { ...typography.bodyMedium, color: c.text },
+  subtitle: { ...typography.caption, color: c.textMuted, marginTop: 1 },
+  tertiary: { ...typography.caption, color: c.mutedForeground, marginTop: 1 },
+  });
+}

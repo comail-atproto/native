@@ -1,0 +1,368 @@
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+
+type Listener = (state: Record<string, unknown>, prev: Record<string, unknown>) => void;
+
+const h = vi.hoisted(() => ({
+  pending: [] as Array<{ identifier: string; content: { data: Record<string, unknown> } }>,
+  permission: { granted: true, canAskAgain: true },
+  auth: { hasRestoredSession: true, isAuthenticated: true, session: null as unknown, activeAccountId: 'app-1' as string | null },
+  lastResponse: null as unknown,
+  responseListener: null as ((response: unknown) => void) | null,
+  settings: { hydrated: true, calendarNotificationsEnabled: true, enableCalendarTasks: false },
+  calendar: {
+    calendars: [{ id: 'cal-1', name: 'Personal' }],
+    events: [] as unknown[],
+    tasks: [] as unknown[],
+    taskOnlyCalendarIds: [] as string[],
+    loadedRange: null as unknown,
+    fetchCalendars: vi.fn(async () => undefined),
+    fetchTasks: vi.fn(async () => undefined),
+  },
+  client: { isConnected: true, accountId: 'acc-1' },
+  loadEventsInRange: vi.fn(),
+  calendarListener: null as Listener | null,
+  // Device sync (#34): which events the device's calendar app reminds of.
+  onDevice: null as ((event: { id: string }) => boolean) | null,
+  reminderListener: null as (() => void) | null,
+}));
+
+vi.mock('react-native', () => ({
+  Platform: { OS: 'android' },
+  AppState: { addEventListener: vi.fn(() => ({ remove: () => undefined })) },
+}));
+
+vi.mock('expo-notifications', () => ({
+  getPermissionsAsync: vi.fn(async () => ({ ...h.permission })),
+  requestPermissionsAsync: vi.fn(async () => ({ granted: true })),
+  setNotificationChannelAsync: vi.fn(async () => undefined),
+  getAllScheduledNotificationsAsync: vi.fn(async () => h.pending),
+  cancelScheduledNotificationAsync: vi.fn(async () => undefined),
+  scheduleNotificationAsync: vi.fn(async () => 'id'),
+  setNotificationHandler: vi.fn(),
+  getLastNotificationResponseAsync: vi.fn(async () => h.lastResponse),
+  clearLastNotificationResponseAsync: vi.fn(async () => undefined),
+  addNotificationResponseReceivedListener: vi.fn((listener: (response: unknown) => void) => {
+    h.responseListener = listener;
+    return { remove: vi.fn() };
+  }),
+  DEFAULT_ACTION_IDENTIFIER: 'expo.modules.notifications.actions.DEFAULT',
+  AndroidImportance: { HIGH: 4 },
+  IosAuthorizationStatus: { PROVISIONAL: 3 },
+  SchedulableTriggerInputTypes: { DATE: 'date' },
+}));
+
+vi.mock('../../api/jmap-client', () => ({ jmapClient: h.client }));
+vi.mock('../../stores/auth-store', () => ({
+  useAuthStore: { getState: () => h.auth, subscribe: vi.fn() },
+}));
+vi.mock('../../stores/settings-store', () => ({
+  useSettingsStore: { getState: () => h.settings, subscribe: vi.fn() },
+}));
+vi.mock('../../stores/calendar-store', () => ({
+  useCalendarStore: {
+    getState: () => h.calendar,
+    subscribe: vi.fn((listener: Listener) => { h.calendarListener = listener; }),
+  },
+  loadEventsInRange: h.loadEventsInRange,
+}));
+vi.mock('../capabilities', () => ({ hasCalendarCapability: () => true }));
+vi.mock('../../device-sync/app/reminders', () => ({
+  remindedOnDevice: vi.fn(() => h.onDevice),
+  onDeviceRemindersChange: vi.fn((listener: () => void) => {
+    h.reminderListener = listener;
+    return () => undefined;
+  }),
+}));
+
+const NOW = new Date('2026-09-24T08:00:00Z').getTime();
+const TAG = 'bulwark-calendar-alert';
+
+const upcoming = {
+  id: 'ev1',
+  title: 'Standup',
+  calendarIds: { 'cal-1': true },
+  start: '2026-09-24T12:00:00',
+  timeZone: 'Europe/Berlin',
+  utcStart: '2026-09-24T10:00:00Z',
+  utcEnd: '2026-09-24T10:30:00Z',
+  duration: 'PT30M',
+  alerts: { a1: { trigger: { '@type': 'OffsetTrigger', offset: '-PT15M' }, action: 'display' } },
+};
+const upcomingKey = `ev1:a1:${new Date('2026-09-24T09:45:00Z').getTime()}`;
+
+function reminder(identifier: string, key: string) {
+  return { identifier, content: { data: { tag: TAG, key } } };
+}
+
+let mod: typeof import('../calendar-notifications');
+let N: typeof import('expo-notifications');
+let bus: typeof import('../state-change-bus');
+
+beforeEach(async () => {
+  vi.useFakeTimers({ now: NOW });
+  vi.resetModules();
+  vi.clearAllMocks();
+  h.pending = [];
+  h.permission = { granted: true, canAskAgain: true };
+  h.auth = { hasRestoredSession: true, isAuthenticated: true, session: null, activeAccountId: 'app-1' };
+  h.lastResponse = null;
+  h.responseListener = null;
+  h.settings = { hydrated: true, calendarNotificationsEnabled: true, enableCalendarTasks: false };
+  h.calendar.events = [];
+  h.calendar.tasks = [];
+  h.calendar.loadedRange = null;
+  h.client.isConnected = true;
+  h.calendarListener = null;
+  h.onDevice = null;
+  h.reminderListener = null;
+  h.loadEventsInRange.mockResolvedValue([upcoming]);
+  mod = await import('../calendar-notifications');
+  N = await import('expo-notifications');
+  bus = await import('../state-change-bus');
+});
+
+afterEach(() => {
+  vi.useRealTimers();
+});
+
+describe('calendar reminders (B17)', () => {
+  it('schedules from an upcoming window of its own, whatever month the calendar shows', async () => {
+    // The calendar shows another month: nothing upcoming is in the store.
+    h.calendar.events = [{ id: 'old', start: '2026-03-02T09:00:00' }];
+
+    await mod.rescheduleCalendarNotifications();
+
+    expect(h.loadEventsInRange).toHaveBeenCalledTimes(1);
+    const [calendars, ids, after, before] = h.loadEventsInRange.mock.calls[0];
+    expect(calendars).toBe(h.calendar.calendars);
+    expect(ids).toEqual(['cal-1']);
+    expect(new Date(after).getTime()).toBeLessThanOrEqual(NOW);
+    expect(new Date(before).getTime()).toBeGreaterThanOrEqual(NOW + 7 * 24 * 3600_000);
+    expect(N.scheduleNotificationAsync).toHaveBeenCalledTimes(1);
+    const request = vi.mocked(N.scheduleNotificationAsync).mock.calls[0][0];
+    expect(request.content.data).toMatchObject({ tag: TAG, key: upcomingKey });
+  });
+
+  it('cancels only its own reminders that are no longer wanted', async () => {
+    h.pending = [
+      reminder('keep', upcomingKey),
+      reminder('stale', 'gone:a1:1'),
+      { identifier: 'other', content: { data: { kind: 'something-else' } } },
+    ];
+
+    await mod.rescheduleCalendarNotifications();
+
+    expect(N.cancelScheduledNotificationAsync).toHaveBeenCalledTimes(1);
+    expect(N.cancelScheduledNotificationAsync).toHaveBeenCalledWith('stale');
+    // Already pending: not scheduled twice.
+    expect(N.scheduleNotificationAsync).not.toHaveBeenCalled();
+  });
+
+  it('words reminders in the app language and rewords them after a switch', async () => {
+    const { useLocaleStore } = await import('../../stores/locale-store');
+    await mod.rescheduleCalendarNotifications();
+
+    let request = vi.mocked(N.scheduleNotificationAsync).mock.calls[0][0];
+    expect(request.content.body).toBe('Starts in 15 minutes');
+    expect(request.content.data).toMatchObject({ key: upcomingKey, locale: 'en' });
+    expect(vi.mocked(N.setNotificationChannelAsync).mock.calls[0][1]).toMatchObject({ name: 'Calendar reminders' });
+
+    // Pending in English; the app is now in German.
+    h.pending = [{ identifier: 'en-1', content: { data: { tag: TAG, key: upcomingKey, locale: 'en' } } }];
+    vi.mocked(N.scheduleNotificationAsync).mockClear();
+    useLocaleStore.setState({ locale: 'de' });
+    await mod.rescheduleCalendarNotifications();
+
+    expect(N.cancelScheduledNotificationAsync).toHaveBeenCalledWith('en-1');
+    request = vi.mocked(N.scheduleNotificationAsync).mock.calls[0][0];
+    expect(request.content.data).toMatchObject({ key: upcomingKey, locale: 'de' });
+    // The channel is renamed too.
+    expect(N.setNotificationChannelAsync).toHaveBeenCalledTimes(2);
+  });
+
+  it('keeps the scheduled reminders when the upcoming events cannot be loaded', async () => {
+    h.pending = [reminder('keep', upcomingKey)];
+    h.loadEventsInRange.mockRejectedValue(new Error('offline'));
+
+    await mod.rescheduleCalendarNotifications();
+    h.client.isConnected = false;
+    await mod.rescheduleCalendarNotifications();
+
+    expect(N.cancelScheduledNotificationAsync).not.toHaveBeenCalled();
+    expect(h.loadEventsInRange).toHaveBeenCalledTimes(1);
+  });
+
+  it('cancels its reminders after sign-out or when switched off', async () => {
+    h.pending = [
+      reminder('r1', upcomingKey),
+      { identifier: 'other', content: { data: {} } },
+    ];
+    h.auth = { hasRestoredSession: true, isAuthenticated: false, session: null, activeAccountId: 'app-1' };
+
+    await mod.rescheduleCalendarNotifications();
+    expect(N.cancelScheduledNotificationAsync).toHaveBeenCalledTimes(1);
+    expect(N.cancelScheduledNotificationAsync).toHaveBeenCalledWith('r1');
+
+    vi.mocked(N.cancelScheduledNotificationAsync).mockClear();
+    h.auth = { hasRestoredSession: true, isAuthenticated: true, session: null, activeAccountId: 'app-1' };
+    h.settings.calendarNotificationsEnabled = false;
+    await mod.rescheduleCalendarNotifications();
+    expect(N.cancelScheduledNotificationAsync).toHaveBeenCalledWith('r1');
+    expect(h.loadEventsInRange).not.toHaveBeenCalled();
+  });
+
+  it('asks for permission only once the calendar allows it', async () => {
+    h.permission = { granted: false, canAskAgain: true };
+
+    await mod.rescheduleCalendarNotifications();
+    expect(N.requestPermissionsAsync).not.toHaveBeenCalled();
+    expect(N.scheduleNotificationAsync).not.toHaveBeenCalled();
+
+    mod.startCalendarNotificationSync({ askPermission: true });
+    await mod.rescheduleCalendarNotifications();
+    expect(N.requestPermissionsAsync).toHaveBeenCalledTimes(1);
+    expect(N.scheduleNotificationAsync).toHaveBeenCalledTimes(1);
+  });
+
+  it('shows its reminders in the foreground and leaves other notifications alone', async () => {
+    mod.startCalendarNotificationSync();
+
+    expect(N.setNotificationHandler).toHaveBeenCalledTimes(1);
+    const handler = vi.mocked(N.setNotificationHandler).mock.calls[0][0]!;
+    const ours = await handler.handleNotification({
+      request: { content: { data: { tag: TAG, key: upcomingKey } } },
+    } as never);
+    const other = await handler.handleNotification({
+      request: { content: { data: {} } },
+    } as never);
+    expect(ours).toMatchObject({ shouldShowBanner: true, shouldShowList: true, shouldPlaySound: true });
+    expect(other).toMatchObject({ shouldShowBanner: false, shouldShowList: false, shouldPlaySound: false });
+  });
+
+  it('runs at launch and after calendar changes on the server, not when the view moves', async () => {
+    mod.startCalendarNotificationSync();
+    await vi.advanceTimersByTimeAsync(1500);
+    expect(h.loadEventsInRange).toHaveBeenCalledTimes(1);
+
+    bus.dispatchStateChange({ '@type': 'StateChange', changed: { 'acc-1': { CalendarEvent: 's2' } } });
+    await vi.advanceTimersByTimeAsync(1500);
+    expect(h.loadEventsInRange).toHaveBeenCalledTimes(2);
+
+    // Navigating the calendar loads another window: no reminder changes.
+    const prev = { events: [], tasks: h.calendar.tasks, loadedRange: { after: 'a', before: 'b' } };
+    h.calendarListener!({ ...prev, events: [{}], loadedRange: { after: 'c', before: 'd' } }, prev);
+    await vi.advanceTimersByTimeAsync(1500);
+    expect(h.loadEventsInRange).toHaveBeenCalledTimes(2);
+
+    // An edit in the same window does.
+    h.calendarListener!({ ...prev, events: [{}], loadedRange: { after: 'a', before: 'b' } }, prev);
+    await vi.advanceTimersByTimeAsync(1500);
+    expect(h.loadEventsInRange).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe('reminders of events synced to the device (#34)', () => {
+  const task = {
+    id: 'task-1',
+    '@type': 'Task',
+    title: 'Pay rent',
+    calendarIds: { 'cal-1': true },
+    alerts: { a1: { trigger: { '@type': 'AbsoluteTrigger', when: '2026-09-24T09:30:00Z' }, action: 'display' } },
+  };
+
+  it("leaves synced events to the device's calendar app; tasks keep their reminders", async () => {
+    const reminders = await import('../../device-sync/app/reminders');
+    h.calendar.tasks = [task];
+    h.onDevice = (event) => event.id === 'ev1';
+
+    await mod.rescheduleCalendarNotifications();
+
+    expect(reminders.remindedOnDevice).toHaveBeenCalledWith('app-1', 'acc-1');
+    expect(N.scheduleNotificationAsync).toHaveBeenCalledTimes(1);
+    const request = vi.mocked(N.scheduleNotificationAsync).mock.calls[0][0];
+    expect(request.content.data).toMatchObject({ kind: 'task', eventId: 'task-1' });
+  });
+
+  it('cancels the reminders the calendar app took over', async () => {
+    h.pending = [reminder('ours', upcomingKey)];
+    h.onDevice = () => true;
+
+    await mod.rescheduleCalendarNotifications();
+
+    expect(N.cancelScheduledNotificationAsync).toHaveBeenCalledWith('ours');
+    expect(N.scheduleNotificationAsync).not.toHaveBeenCalled();
+  });
+
+  it('reschedules when who reminds, or what syncs, changes', async () => {
+    mod.startCalendarNotificationSync();
+    await vi.advanceTimersByTimeAsync(1500);
+    expect(h.loadEventsInRange).toHaveBeenCalledTimes(1);
+
+    h.reminderListener!();
+    await vi.advanceTimersByTimeAsync(1500);
+    expect(h.loadEventsInRange).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('tapping a calendar reminder', () => {
+  const DEFAULT = 'expo.modules.notifications.actions.DEFAULT';
+  function response(identifier: string, data: Record<string, unknown>, action = DEFAULT) {
+    return { actionIdentifier: action, notification: { request: { identifier, content: { data } } } };
+  }
+
+  it('schedules each reminder with what a tap needs to find the event again', async () => {
+    h.loadEventsInRange.mockResolvedValue([
+      { ...upcoming, id: 'acc-2:ev1:2026-09-24T10:00:00Z', originalId: 'ev1', accountId: 'acc-2', recurrenceId: '2026-09-24T10:00:00Z' },
+    ]);
+
+    await mod.rescheduleCalendarNotifications();
+
+    const request = vi.mocked(N.scheduleNotificationAsync).mock.calls[0][0];
+    expect(request.content.data).toEqual({
+      tag: TAG,
+      key: expect.any(String),
+      locale: 'en',
+      eventId: 'acc-2:ev1:2026-09-24T10:00:00Z',
+      kind: 'event',
+      serverId: 'ev1',
+      accountId: 'acc-2',
+      recurrenceId: '2026-09-24T10:00:00Z',
+      startMs: new Date('2026-09-24T10:00:00Z').getTime(),
+      appAccountId: 'app-1',
+    });
+  });
+
+  it('opens the reminder that launched the app, once', async () => {
+    const data = { tag: TAG, key: upcomingKey, eventId: 'ev1', kind: 'event', serverId: 'ev1', startMs: 5, appAccountId: 'app-1' };
+    h.lastResponse = response('n1', data);
+    const open = vi.fn();
+
+    mod.startCalendarReminderTapHandling(open);
+    await vi.advanceTimersByTimeAsync(0);
+    // Some platforms report the launching tap to the listener as well.
+    h.responseListener!(response('n1', data));
+
+    expect(open).toHaveBeenCalledTimes(1);
+    expect(open).toHaveBeenCalledWith({
+      kind: 'event', eventId: 'ev1', serverId: 'ev1', startMs: 5, appAccountId: 'app-1',
+      accountId: undefined, recurrenceId: undefined,
+    });
+    expect(N.clearLastNotificationResponseAsync).toHaveBeenCalled();
+  });
+
+  it('opens tapped reminders while running and ignores every other notification', async () => {
+    const open = vi.fn();
+    const stop = mod.startCalendarReminderTapHandling(open);
+    await vi.advanceTimersByTimeAsync(0);
+
+    h.responseListener!(response('mail', { emailId: 'e1', threadId: 't1' }));
+    h.responseListener!(response('dismissed', { tag: TAG, key: 'k', eventId: 'ev2' }, 'expo.modules.notifications.actions.DISMISS'));
+    h.responseListener!(response('task', { tag: TAG, key: 'k2', eventId: 't1', kind: 'task' }));
+    expect(open).toHaveBeenCalledTimes(1);
+    expect(open.mock.calls[0][0]).toMatchObject({ kind: 'task', eventId: 't1' });
+
+    stop();
+    h.responseListener!(response('later', { tag: TAG, key: 'k3', eventId: 'ev3' }));
+    expect(open).toHaveBeenCalledTimes(1);
+  });
+});

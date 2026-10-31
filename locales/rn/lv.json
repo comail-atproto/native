@@ -1,0 +1,1183 @@
+{
+  "advanced_search": {
+    "after": "Pēc",
+    "before": "Pirms",
+    "no_attachment": "Bez pielikuma",
+    "not_starred": "Bez zvaigznītes"
+  },
+  "calendar": {
+    "alerts": {
+      "minutes_after": "{count, plural, zero {# minūtes pēc sākuma} one {# minūti pēc sākuma} other {# minūtes pēc sākuma}}"
+    },
+    "colors": {
+      "indigo": "Indigo",
+      "teal": "Zilganzaļš"
+    },
+    "drawer": {
+      "my_calendars": "Mani kalendāri",
+      "no_calendars": "Vēl nav kalendāru.",
+      "shared_with_me": "Kopīgots ar mani",
+      "subscribed": "Abonētie"
+    },
+    "event_modal": {
+      "participant_placeholder": "Pievienot dalībnieku pēc e-pasta"
+    },
+    "events": {
+      "copy_link_short": "Saite",
+      "export_ics_short": ".ics",
+      "nothing_planned": "Nekas nav ieplānots. Pieskarieties, lai izveidotu.",
+      "tap_to_create": "Pieskarieties +, lai izveidotu notikumu"
+    },
+    "fab": {
+      "event": "Notikums",
+      "task": "Uzdevums"
+    },
+    "form": {
+      "description_placeholder": "Piezīmes, darba kārtība…",
+      "location_placeholder": "Vieta vai adrese",
+      "time": "Laiks"
+    },
+    "import": {
+      "file_too_large_max": "Fails ir pārāk liels (maks. {size} MB).",
+      "imported_count": "{count, plural, zero {Importēti # notikumi.} one {Importēts # notikums.} other {Importēti # notikumi.}}",
+      "no_calendar": "Pirms notikumu importēšanas izveidojiet kalendāru.",
+      "no_calendar_title": "Nav kalendāra",
+      "picker_error": "Neizdevās atvērt failu atlasītāju",
+      "picker_unavailable": "Failu atlasītājs šajā būvējumā nav instalēts. Lai iespējotu importēšanu, pārbūvējiet lietotni.",
+      "picker_unavailable_title": "Imports nav pieejams",
+      "refused_count": "{count, plural, zero {Neizdevās importēt # notikumus:} one {Neizdevās importēt # notikumu:} other {Neizdevās importēt # notikumus:}}",
+      "refused_message": "{count, plural, =1 {Notikumu neizdevās importēt: {reason}} zero {Neizdevās importēt # notikumus: {reason}} one {Neizdevās importēt # notikumu: {reason}} other {Neizdevās importēt # notikumus: {reason}}}",
+      "selected_count": "Atlasīti: {count}"
+    },
+    "invitation": {
+      "accept": "Jā",
+      "add_error": "Neizdevās pievienot notikumu",
+      "add_to_calendar": "Pievienot kalendāram",
+      "added": "Pievienots kalendāram",
+      "already_in_calendar": "Jau ir jūsu kalendārā",
+      "cancelled": "Šis notikums ir atcelts",
+      "decline": "Nē",
+      "join_video": "Pievienoties videozvanam",
+      "no_writable_calendar": "Nav pieejams rakstāms kalendārs",
+      "organizer": "Organizators",
+      "reading": "Nolasa uzaicinājumu…",
+      "reply": "Dalībnieks atbildēja uz šo uzaicinājumu",
+      "response_error": "Neizdevās nosūtīt jūsu atbildi",
+      "response_sent": "Atbilde nosūtīta",
+      "tentative": "Varbūt",
+      "title": "Kalendāra uzaicinājums",
+      "trust_authentication_failed": "Šim ziņojumam neizdevās sūtītāja autentifikācija (SPF/DKIM/DMARC).",
+      "trust_authentication_missing": "Sūtītāju neizdevās pārbaudīt.",
+      "trust_sender_mismatch": "Sūtītājs atšķiras no notikuma organizatora.",
+      "trust_sender_mismatch_unverified": "Sūtītājs neatbilst organizatoram, un ziņojums nav autentificēts.",
+      "trust_verified": "Sūtītājs pārbaudīts"
+    },
+    "management": {
+      "clear_confirm": "Noņemt visus",
+      "clear_description": "Visi šī kalendāra notikumi tiks dzēsti. Notikumi, kas pieder arī citam kalendāram, tiks tikai atsaistīti.",
+      "clear_title": "Noņemt visus notikumus?",
+      "delete_description": "Kalendārs un visi tā notikumi tiks dzēsti. To nevar atsaukt.",
+      "delete_title": "Dzēst kalendāru?",
+      "description_placeholder": "Neobligāti",
+      "edit_calendar": "Rediģēt kalendāru",
+      "new_calendar": "Jauns kalendārs"
+    },
+    "notifications": {
+      "channel_name": "Kalendāra atgādinājumi",
+      "starts_in_days": "{count, plural, zero {Sākas pēc # dienām} one {Sākas pēc # dienas} other {Sākas pēc # dienām}}",
+      "starts_in_hours": "{count, plural, zero {Sākas pēc # stundām} one {Sākas pēc # stundas} other {Sākas pēc # stundām}}",
+      "starts_in_minutes": "{count, plural, zero {Sākas pēc # minūtēm} one {Sākas pēc # minūtes} other {Sākas pēc # minūtēm}}"
+    },
+    "recurrence": {
+      "editor_occurrences_count": "{count, plural, zero {reizēm} one {reizes} other {reizēm}}",
+      "every_count_days": "{count, plural, zero {Ik pēc # dienām} one {Ik pēc # dienas} other {Ik pēc # dienām}}",
+      "every_count_months": "{count, plural, zero {Ik pēc # mēnešiem} one {Ik pēc # mēneša} other {Ik pēc # mēnešiem}}",
+      "every_count_weeks": "{count, plural, zero {Ik pēc # nedēļām} one {Ik pēc # nedēļas} other {Ik pēc # nedēļām}}",
+      "every_count_years": "{count, plural, zero {Ik pēc # gadiem} one {Ik pēc # gada} other {Ik pēc # gadiem}}",
+      "occurrence_count": "{count, plural, zero {# reizes} one {# reize} other {# reizes}}",
+      "until_date": "Līdz {date}"
+    },
+    "settings": {
+      "device_sync_desc": "Rādiet savus kalendārus lietotnē Kalendārs un citās šīs ierīces lietotnēs. Izmaiņas tiek sinhronizētas abos virzienos.",
+      "device_sync_title": "Sinhronizēt ar šo ierīci",
+      "show_week_numbers_mobile_desc": "Rādīt nedēļu numurus mēneša skatā.",
+      "time_zone": "Laika josla",
+      "time_zone_auto": "Ierīces laika josla",
+      "time_zone_auto_zone": "Ierīces laika josla ({zone})",
+      "time_zone_desc": "Josla, ko izmanto jauniem notikumiem un kalendāra attēlošanai. \"Ierīces laika josla\" seko tālrunim."
+    },
+    "share": {
+      "add_people": "Pievienot personas",
+      "error": "Neizdevās atjaunināt kopīgošanu",
+      "no_matches": "Nav atbilstību",
+      "no_principals": "Kopīgošana šajā serverī nav pieejama.",
+      "search_placeholder": "Meklēt pēc vārda vai e-pasta",
+      "shared_with": "Kopīgots ar"
+    },
+    "subscription": {
+      "add_feed": "Pievienot plūsmu",
+      "feed_too_large": "Plūsma ir pārāk liela",
+      "fetch_failed": "Neizdevās ielādēt plūsmu (HTTP {status})",
+      "name_and_url_required": "Ievadiet nosaukumu un plūsmas URL.",
+      "not_a_feed": "Šis URL neatgrieza iCalendar plūsmu",
+      "not_synced": "Vēl nav sinhronizēts",
+      "url_scheme_invalid": "URL jāsākas ar https://, http://, webcal:// vai webcals://",
+      "your_subscriptions": "Jūsu abonementi"
+    },
+    "tasks": {
+      "add_placeholder": "Pievienot uzdevumu…",
+      "add_time": "Pievienot laiku",
+      "clear_due_date": "Notīrīt izpildes termiņu",
+      "delete_error": "Neizdevās dzēst uzdevumu",
+      "not_found": "Šis uzdevums vairs nav pieejams.",
+      "save_error": "Neizdevās saglabāt uzdevumu",
+      "update_error": "Neizdevās atjaunināt uzdevumu"
+    },
+    "views": {
+      "schedule": "Grafiks",
+      "three_days": "3 dienas"
+    }
+  },
+  "common": {
+    "add": "Pievienot",
+    "back": "Atpakaļ",
+    "confirm": "Apstiprināt",
+    "create": "Izveidot",
+    "dismiss": "Aizvērt",
+    "done": "Gatavs",
+    "open": "Atvērt",
+    "open_link_message": "Adrese {host} tiks atvērta ārpus lietotnes.",
+    "open_link_title": "Atvērt saiti?",
+    "remove": "Noņemt",
+    "retry": "Mēģināt vēlreiz",
+    "undo": "Atsaukt",
+    "update": "Atjaunināt"
+  },
+  "contacts": {
+    "address_books": {
+      "confirm_delete_count": "{count, plural, =0 {Dzēst \"{name}\"? To nevar atsaukt.} zero {Dzēst \"{name}\"? Kopā ar to tiks dzēsti arī # kontakti. To nevar atsaukt.} one {Dzēst \"{name}\"? Kopā ar to tiks dzēsts arī # kontakts. To nevar atsaukt.} other {Dzēst \"{name}\"? Kopā ar to tiks dzēsti arī # kontakti. To nevar atsaukt.}}"
+    },
+    "all_contacts": "Visi kontakti",
+    "bulk": {
+      "add_tag": "Pievienot tagu",
+      "delete_confirm_mobile": "{count, plural, zero {Dzēst # kontaktus? To nevar atsaukt.} one {Dzēst # kontaktu? To nevar atsaukt.} other {Dzēst # kontaktus? To nevar atsaukt.}}",
+      "move_to_address_book": "Pārvietot uz adrešu grāmatu",
+      "tag_failed": "Neizdevās pievienot tagu"
+    },
+    "contact": "Kontakts",
+    "create_hint_mobile": "Turiet nospiestu, lai tā vietā izveidotu grupu",
+    "detail": {
+      "add_to_group_failed": "Neizdevās pievienot grupai",
+      "copy_name": "{name} (kopija)",
+      "created_on": "Izveidots {date}",
+      "duplicate_failed": "Neizdevās dublēt",
+      "duplicate_no_book": "Bez adrešu grāmatas nevar dublēt.",
+      "no_address_book": "Nav adrešu grāmatas",
+      "not_found": "Kontakts nav atrasts",
+      "open_dialer_failed": "Nevar atvērt zvanītāju",
+      "open_link_failed": "Nevar atvērt saiti",
+      "open_maps_failed": "Nevar atvērt kartes",
+      "open_sms_failed": "Nevar atvērt ziņojumapmaiņas lietotni",
+      "share": "Kopīgot",
+      "share_title": "Kopīgot: {name}",
+      "sms": "SMS",
+      "timezone_value": "Laika josla: {zone}",
+      "updated_on": "Atjaunināts {date}"
+    },
+    "empty_state_hint_mobile": "Pieskarieties +, lai pievienotu kontaktu",
+    "export": {
+      "failed": "Eksports neizdevās"
+    },
+    "form": {
+      "add_nickname": "Pievienot segvārdu",
+      "add_note": "Pievienot piezīmi",
+      "add_organization": "Pievienot organizāciju",
+      "address_book_required": "Lai saglabātu šo kontaktu, atlasiet adrešu grāmatu.",
+      "categories_placeholder_mobile": "Ievadiet tagu un nospiediet Enter",
+      "context_none": "Nav",
+      "date_placeholder": "YYYY-MM-DD, YYYY-MM, YYYY vai --MM-DD",
+      "display_name_optional": "Redzamais vārds (pēc izvēles)",
+      "display_name_placeholder": "Pielāgots redzamais vārds",
+      "edit_named": "Rediģēt: {name}",
+      "gender_unspecified": "Nav norādīts",
+      "grammatical_gender": "Gramatiskā dzimte",
+      "invalid_date_message": "\"{date}\" nav datums. Izmantojiet YYYY-MM-DD, YYYY-MM, YYYY vai --MM-DD.",
+      "invalid_date_title": "Nederīgs datums",
+      "invalid_email_message": "\"{address}\" nav derīga e-pasta adrese.",
+      "invalid_email_title": "Nederīgs e-pasts",
+      "label": "Etiķete",
+      "label_placeholder": "Darba, Personīgais, …",
+      "missing_address_book": "Trūkst adrešu grāmatas",
+      "missing_info": "Trūkst informācijas",
+      "name_or_email_required": "Pievienojiet vārdu vai vismaz vienu e-pasta adresi.",
+      "new_organization": "Jauna organizācija",
+      "org_name_required": "Pievienojiet organizācijas nosaukumu.",
+      "photo_hint_mobile": "Pieskarieties fotoattēlam, lai izvēlētos attēlu",
+      "photo_permission_message": "Lai izvēlētos kontakta fotoattēlu, piešķiriet fotoattēlu bibliotēkas atļauju.",
+      "photo_permission_title": "Nepieciešama piekļuve fotoattēliem",
+      "pick_date": "Izvēlēties datumu",
+      "pronouns": "Vietniekvārdi",
+      "pronouns_placeholder": "viņa/viņu",
+      "url": "URL"
+    },
+    "group": "Grupa",
+    "groups": {
+      "add_member": "Pievienot dalībnieku",
+      "add_members": "Pievienot dalībniekus",
+      "add_members_failed": "Neizdevās pievienot dalībniekus",
+      "create_ellipsis": "Jauna grupa…",
+      "delete_confirm_named": "Dzēst \"{name}\"? Dalībnieki netiks dzēsti.",
+      "delete_failed": "Neizdevās dzēst grupu",
+      "email_all": "Rakstīt visiem",
+      "members_with_count": "Dalībnieki ({count})",
+      "no_emails": "Nav e-pasta adrešu",
+      "no_members_hint": "Pieskarieties \"Pievienot dalībnieku\", lai sāktu",
+      "not_found": "Grupa nav atrasta",
+      "remove_member": "Noņemt dalībnieku",
+      "remove_member_confirm": "Noņemt \"{name}\" no šīs grupas?",
+      "remove_member_failed": "Neizdevās noņemt dalībnieku"
+    },
+    "import": {
+      "change_target": "Mainīt",
+      "choose_file_mobile": "Izvēlieties vCard failu",
+      "failed_count": "{count, plural, zero {Neizdevās importēt # kontaktus.} one {Neizdevās importēt # kontaktu.} other {Neizdevās importēt # kontaktus.}}",
+      "import_count": "Importēt ({count})",
+      "into_address_book": "Importēt adrešu grāmatā",
+      "into_named": "Importēt adrešu grāmatā: {name}",
+      "no_address_book": "Pirms kontaktu importēšanas izveidojiet adrešu grāmatu.",
+      "picker_failed": "Neizdevās atvērt failu atlasītāju"
+    },
+    "no_tags_hint": "Tagu vēl nav. Ievadiet tagu augstāk.",
+    "picker": {
+      "add_count": "{count, plural, =0 {Pievienot} zero {Pievienot (#)} one {Pievienot (#)} other {Pievienot (#)}}",
+      "title": "Pievienot kontaktu"
+    },
+    "rename_tag_hint_mobile": "Turiet nospiestu tagu, lai to pārdēvētu",
+    "tag_name_placeholder": "Jaunā taga nosaukums",
+    "unnamed": "Bez vārda"
+  },
+  "context_menu": {
+    "color_tag": "Tags",
+    "remove_color": "Noņemt tagu"
+  },
+  "device_sync": {
+    "auth_problem_text": "Serveris vairs nepieņem konta {account} pierakstīšanos, tāpēc tā kontakti un kalendāri šajā ierīcē vairs netiek sinhronizēti. Lai turpinātu, pierakstieties vēlreiz. Šajā ierīcē veiktās izmaiņas tiek saglabātas.",
+    "auth_problem_title": "Pierakstieties vēlreiz, lai turpinātu sinhronizāciju",
+    "problem_channel": "Sinhronizācijas problēmas",
+    "sign_out_anyway": "Izrakstīties",
+    "sign_out_pending_message": "{count, plural, zero {# izmaiņas, kas veiktas šajā ierīcē, nav nonākušas serverī. Tās tiks zaudētas, ja tagad izrakstīsieties.} one {# izmaiņa, kas veikta šajā ierīcē, nav nonākusi serverī. Tā tiks zaudēta, ja tagad izrakstīsieties.} other {# izmaiņas, kas veiktas šajā ierīcē, nav nonākušas serverī. Tās tiks zaudētas, ja tagad izrakstīsieties.}}",
+    "sign_out_pending_title": "Tomēr izrakstīties?",
+    "sign_out_unknown_message": "Šajā ierīcē veiktās izmaiņas, iespējams, nav nonākušas serverī. Tās tiks zaudētas, ja tagad izrakstīsieties.",
+    "signed_out_text": "Konts {account} tika izrakstīts, tāpēc tā kontakti un kalendāri šajā ierīcē vairs netiek sinhronizēti. Lai turpinātu, pierakstieties vēlreiz. Šajā ierīcē veiktās izmaiņas tiek saglabātas.",
+    "signed_out_title": "Pierakstieties, lai turpinātu sinhronizāciju",
+    "signing_out": "Sinhronizētie kontakti un kalendāri tiek noņemti no šīs ierīces…"
+  },
+  "email_composer": {
+    "attach_camera": "Kamera",
+    "attachment_reminder_body": "Jūsu ziņojumā minēts \"{keyword}\", bet nav pievienots neviens fails. Vai tomēr sūtīt?",
+    "attachment_reminder_title": "Aizmirsāt pielikumu?",
+    "attachments_too_large_total": "Pielikumi pārsniegtu {max}, ko šis serveris atļauj vienam ziņojumam.",
+    "editor_unavailable": "Neizdevās nolasīt ziņojuma saturu. Nokopējiet savu tekstu, pēc tam aizveriet un atkal atveriet redaktoru.",
+    "from_options": "Sūtītāja opcijas",
+    "group_chip": "{name} ({count})",
+    "identity_unavailable": "Identitāte nav pieejama",
+    "image_load_failed": "Neizdevās ielādēt attēlu",
+    "no_recipient": "(nav saņēmēja)",
+    "no_sent_folder": "Mape Nosūtītie nav atrasta",
+    "permission_camera": "Lai uzņemtu fotoattēlu, nepieciešama kameras atļauja.",
+    "permission_photos": "Lai pievienotu attēlus, nepieciešama fotoattēlu bibliotēkas atļauja.",
+    "recipient_add_contact": "Pievienot kontaktpersonām",
+    "recipient_copy": "Kopēt adresi",
+    "recipient_move_to": "Pārvietot uz lauku {field}",
+    "recipient_remove": "Noņemt",
+    "remove_attachment": "Noņemt pielikumu",
+    "save_draft": "Saglabāt melnrakstu",
+    "save_failed_no_drafts": "Nav mapes Melnraksti, kurā saglabāt šo melnrakstu.",
+    "save_failed_no_identity": "Neizdevās ielādēt jūsu sūtītāja identitātes, tāpēc šo melnrakstu nevar saglabāt. Pārbaudiet savienojumu vai pirms aizvēršanas nokopējiet tekstu.",
+    "schedule_custom": "Izvēlēties datumu un laiku…",
+    "schedule_in_1h": "Pēc 1 stundas",
+    "schedule_in_3h": "Pēc 3 stundām",
+    "schedule_past_body": "Ieplānotajam laikam jābūt nākotnē.",
+    "schedule_past_title": "Izvēlieties laiku nākotnē",
+    "schedule_tomorrow": "Rīt, 8:00",
+    "schedule_tomorrow_morning": "Rīt no rīta",
+    "schedule_too_late_body": "Tas ir vēlāk, nekā šis serveris atļauj. Izvēlieties agrāku laiku.",
+    "schedule_too_late_title": "Pārāk tālu nākotnē",
+    "schedule_unsupported_body": "Šis pasta serveris neatbalsta ieplānotu sūtīšanu.",
+    "schedule_unsupported_title": "Plānošana nav pieejama",
+    "scheduled_body": "Jūsu ziņojums tiks nosūtīts {time}.",
+    "scheduled_title": "Ieplānots",
+    "send_now": "Sūtīt tagad",
+    "send_timeout_body": "Ziņojums, iespējams, jau ir nosūtīts. Pirms sūtāt to vēlreiz, pārbaudiet mapi Nosūtītie.",
+    "send_timeout_title": "Serveris neatbild",
+    "undo_send_label": "Sūtīšana pēc {seconds} s…",
+    "upload_failed_short": "Augšupielāde neizdevās",
+    "uploading": "Augšupielādē...",
+    "uploading_pct": "Augšupielādē {pct}%",
+    "validation": {
+      "subject_required": "Pievienojiet tematu"
+    }
+  },
+  "email_list": {
+    "cross_account_move_offline": "Pārvietošanai starp kontiem nepieciešams savienojums",
+    "emails_archived_count": "{count, plural, zero {Arhivētas # vēstules} one {Arhivēta # vēstule} other {Arhivētas # vēstules}}",
+    "emails_moved_to": "{count, plural, zero {# vēstules pārvietotas} one {# vēstule pārvietota} other {# vēstules pārvietotas}} uz mapi {mailbox}",
+    "error": "Kļūda",
+    "filter_chip": "{field}: {value}",
+    "filter_title": "Filtrēt vēstules",
+    "folder_counts": "Kopā: {total} · nelasītas: {unread}",
+    "import": {
+      "none": "Neviens ziņojums netika importēts.",
+      "partial": "Importēti: {imported}, neizdevās: {failed}.",
+      "success": "{count, plural, zero {Importēti # ziņojumi.} one {Importēts # ziņojums.} other {Importēti # ziņojumi.}}",
+      "title": "Imports"
+    },
+    "marked_as_spam": "Atzīmēts kā mēstule",
+    "marked_as_spam_count": "{count, plural, zero {# vēstules atzīmētas kā mēstules} one {# vēstule atzīmēta kā mēstule} other {# vēstules atzīmētas kā mēstules}}",
+    "marked_not_spam": "Atzīmēts, ka nav mēstule",
+    "marked_not_spam_count": "{count, plural, zero {# vēstules atzīmētas, ka nav mēstules} one {# vēstule atzīmēta, ka nav mēstule} other {# vēstules atzīmētas, ka nav mēstules}}",
+    "move_same_account": "Vēstules var pārvietot tikai tā paša konta ietvaros",
+    "moved_to_trash": "Vēstule pārvietota uz atkritni",
+    "moved_to_trash_count": "{count, plural, zero {# vēstules pārvietotas uz atkritni} one {# vēstule pārvietota uz atkritni} other {# vēstules pārvietotas uz atkritni}}",
+    "no_archive_folder": "Serverī neizdevās atrast mapi Arhīvs.",
+    "no_emails_in": "Mapē {folder} nav vēstuļu",
+    "no_junk_folder": "Serverī neizdevās atrast mēstuļu mapi.",
+    "no_mailboxes": "Nav atrasta neviena pastkaste",
+    "no_mailboxes_hint": "Pārbaudiet, vai jūsu JMAP kontam ir pasta iespējas.",
+    "no_tags_defined": "Nav definētu tagu. Pievienojiet tagus iestatījumos.",
+    "no_trash_folder": "Serverī neizdevās atrast mapi Atkritne. Lūdzu, pārbaudiet pastkastes konfigurāciju.",
+    "offline_nothing_cached": "Nav savienojuma. Nekas netiek rādīts, jo kešatmiņā vēl nav saglabāta neviena vēstule.",
+    "open_draft_failed": "Neizdevās atvērt melnrakstu.",
+    "outbox_discard": "Atmest",
+    "outbox_failed": "Izmaiņas, ko neizdevās saglabāt serverī: {count}.",
+    "recent_searches": "Nesenie meklējumi",
+    "remove_filter": "Noņemt filtru: {label}",
+    "scope_all_folders": "Visas mapes",
+    "scope_this_folder": "Šī mape",
+    "search_placeholder": "Meklēt pastā...",
+    "showing_cached": "Tiek rādīts kešatmiņā saglabātais pasts",
+    "sort_toggle_hint": "Apgriež pasta kārtošanas secību",
+    "swipe_move": "Pārvietot",
+    "swipe_spam": "Mēstule",
+    "total": "kopā",
+    "undo_failed": "Atsaukšana neizdevās",
+    "unknown_tag": "šeit nav definēts"
+  },
+  "email_viewer": {
+    "add_sender_to_contacts": "Pievienot sūtītāju kontaktpersonām",
+    "address_actions": {
+      "add_contact": "Pievienot kontaktpersonām",
+      "compose": "Jauns ziņojums",
+      "copy": "Kopēt adresi",
+      "copy_failed": "Neizdevās nokopēt adresi."
+    },
+    "attachment_actions": {
+      "open": "Atvērt",
+      "preview": "Priekšskatīt",
+      "save": "Saglabāt",
+      "share": "Kopīgot"
+    },
+    "attachment_failed": "Neizdevās atvērt pielikumu",
+    "authentication": {
+      "spoof_warning": "Sūtītāja adresi neizdevās pārbaudīt – šis ziņojums var būt viltots."
+    },
+    "body_truncated": "Šis ziņojums ir pārāk liels, lai to parādītu pilnībā.",
+    "bundle_too_large": "Pielikumi ir pārāk lieli, lai tos apvienotu vienā arhīvā.",
+    "color_tag": {
+      "blue": "Zils",
+      "green": "Zaļš",
+      "none": "Nav",
+      "orange": "Oranžs",
+      "pink": "Rozā",
+      "purple": "Violets",
+      "red": "Sarkans",
+      "title": "Krāsas tags",
+      "yellow": "Dzeltens"
+    },
+    "delete_permanently_message": "Šis ziņojums tiks neatgriezeniski dzēsts, un to nevarēs atgūt.",
+    "delete_permanently_title": "Dzēst neatgriezeniski?",
+    "details": {
+      "attachment_count_size": "{count, plural, zero {# faili} one {# fails} other {# faili}} · {size}",
+      "received_after_delay": "{date} · piegādes laiks: {delay}",
+      "spam_score_value": "{score} ({status})"
+    },
+    "export_failed": "Eksportēšana neizdevās",
+    "forwarded": "Pārsūtīts",
+    "load_failed": "Neizdevās ielādēt vēstuli",
+    "preview": {
+      "open_external": "Atvērt lietotnē",
+      "pdf_external": "PDF faili tiek atvērti šīs ierīces PDF skatītājā.",
+      "unsupported": "Šim faila tipam nav priekšskatījuma."
+    },
+    "received_via": "kam: {name}",
+    "remove_color": "Noņemt tagu",
+    "replied": "Atbildēts",
+    "sender_actions": "Sūtītājs…",
+    "set_color": "Iestatīt tagu",
+    "show_all_count": "Rādīt visus ({count})",
+    "show_less": "Rādīt mazāk",
+    "smime_unsupported": "Parakstīts/šifrēts ar S/MIME – mobilajā lietotnē netiek atbalstīts",
+    "source_too_large": "Ziņojums ir pārāk liels, lai to parādītu pilnībā. Tā vietā kopīgojiet pilno avotu.",
+    "thread_loading": "Ielādē sarunu...",
+    "unsubscribe_banner": {
+      "no_identity": "Nav pieejamas sūtīšanas identitātes"
+    },
+    "view_dark_mode": "Skatīt tumšajā režīmā",
+    "view_light_mode": "Skatīt gaišajā režīmā"
+  },
+  "files": {
+    "delete_cascade_hint": "Mapes tiek dzēstas kopā ar visu to saturu. To nevar atsaukt.",
+    "delete_item_title": "Dzēst šo vienumu?",
+    "delete_items_title": "{count, plural, zero {Dzēst # elementus?} one {Dzēst # elementu?} other {Dzēst # elementus?}}",
+    "done": "Gatavs",
+    "download_failed_status": "Lejupielāde neizdevās (HTTP {status})",
+    "folder_empty": "Šī mape ir tukša",
+    "invalid_name": "Nederīgs nosaukums",
+    "invalid_name_slash": "Nosaukumos nedrīkst būt \"/\".",
+    "move_to": "Pārvietot uz…",
+    "open_error": "Neizdevās atvērt failu",
+    "open_with": "Atvērt ar…",
+    "preview_too_large": "Šis fails ir pārāk liels priekšskatīšanai.",
+    "selected_count": "{count, plural, zero {Atlasīti #} one {Atlasīts #} other {Atlasīti #}}",
+    "share_add_people": "Pievienot personas",
+    "share_empty": "Vēl nav kopīgots ne ar vienu",
+    "share_error": "Neizdevās atjaunināt kopīgošanu",
+    "share_file_error": "Neizdevās kopīgot failu",
+    "share_folder_hint": "Kopīgojot mapi, tiek kopīgots viss tās saturs.",
+    "share_no_matches": "Nav atbilstību",
+    "share_no_users": "Citi lietotāji nav atrasti",
+    "share_remove": "Noņemt piekļuvi",
+    "share_role_custom": "Pielāgots",
+    "share_search_placeholder": "Meklēt pēc vārda vai e-pasta",
+    "share_unavailable": "Kopīgošana šajā ierīcē nav pieejama",
+    "shared_with": "Kopīgots ar",
+    "sharing_access": "Kopīgošana un piekļuve",
+    "upload_unavailable": "Failu atlasītājs šajā būvējumā nav instalēts. Lai iespējotu augšupielādi, pārbūvējiet lietotni.",
+    "uploading_progress": "Augšupielādē {current}/{total} · {name}"
+  },
+  "identities": {
+    "badge": {
+      "to": "kam: {identity}",
+      "via": "caur {identity}"
+    }
+  },
+  "login": {
+    "mobile": {
+      "add_subtitle": "Šie konti jau ir pierakstīti.",
+      "add_title": "Pievienot vēl vienu kontu",
+      "camera_allow": "Atļaut piekļuvi kamerai",
+      "camera_disabled": "Piekļuve kamerai ir atspējota. Iespējojiet to iestatījumos, lai skenētu pierakstīšanās QR kodu.",
+      "camera_needed": "Bulwark Mail nepieciešama piekļuve kamerai, lai skenētu pierakstīšanās QR kodu.",
+      "choose_subtitle": "Izvēlieties, kā vēlaties pierakstīties.",
+      "confirm_check": "Pārbaudiet, vai viss ir pareizi",
+      "confirm_found": "Jūsu pasta serveris ir atrasts",
+      "confirm_subtitle": "Tālāk jūs pierakstīsieties sava pakalpojumu sniedzēja lapā.",
+      "connecting": "Tiek izveidots savienojums: {host}",
+      "connecting_detail": "Notiek pastkastes iestatīšana…",
+      "continue": "Turpināt",
+      "different_server": "Izmantot citu serveri",
+      "elsewhere_title": "Konts citur",
+      "email_desc": "Mēs atradīsim jūsu pasta serveri",
+      "email_step_hint": "Darbojas ar Stalwart un jebkuru citu JMAP pasta serveri.",
+      "email_step_subtitle": "Parasti ar to pietiek, lai atrastu jūsu pasta serveri.",
+      "email_step_title": "Kāda ir jūsu e-pasta adrese?",
+      "email_step_title_add": "Kāda ir otra adrese?",
+      "email_title": "Izmantot manu e-pasta adresi",
+      "err_account_limit_detail": "Lai pievienotu citu kontu, noņemiet kādu kontu iestatījumos.",
+      "err_bad_detail": "Pārbaudiet e-pasta adresi un paroli. Ja jūsu kontā tiek izmantota divpakāpju pierakstīšanās, izveidojiet lietotnes paroli tīmekļa pastā un izmantojiet to šeit.",
+      "err_bad_title": "Tas neizdevās",
+      "err_cert_detail": "Servera drošības sertifikāts tika noraidīts. Ja tas ir jūsu serveris, pārbaudiet, vai sertifikāts ir derīgs un tā termiņš nav beidzies.",
+      "err_cert_title": "Neizdevās pārbaudīt: {host}",
+      "err_code_expired_detail": "Pierakstīšanās kodi ir derīgi divas minūtes. Parādiet jaunu tīmekļa pastā un skenējiet vēlreiz.",
+      "err_code_expired_or_used_detail": "Parādiet jaunu tīmekļa pastā un skenējiet vēlreiz.",
+      "err_code_expired_or_used_title": "Šī koda derīgums ir beidzies, vai tas jau ir izmantots",
+      "err_code_expired_title": "Šī koda derīgums ir beidzies",
+      "err_code_invalid_detail": "Parādiet jaunu kodu tīmekļa pastā (Iestatījumi → Drošība → Saistīt mobilo lietotni) un noskenējiet to.",
+      "err_code_invalid_title": "Šis kods nav derīgs",
+      "err_code_used_detail": "Katrs kods darbojas tikai vienu reizi. Parādiet jaunu tīmekļa pastā un skenējiet vēlreiz.",
+      "err_code_used_title": "Šis kods jau ir izmantots",
+      "err_generic_detail": "Kaut kas nogāja greizi. Mēģiniet vēlreiz.",
+      "err_generic_title": "Pierakstīšanās neizdevās",
+      "err_interrupted_detail": "Atbilde neatbilda sāktajam pieprasījumam. Mēģiniet pierakstīties vēlreiz.",
+      "err_interrupted_title": "Pierakstīšanās tika pārtraukta",
+      "err_no_server_detail": "Vēlreiz pārbaudiet adresi vai tā vietā skenējiet pierakstīšanās kodu no tīmekļa pasta.",
+      "err_no_server_title": "Pasta serveris nav atrasts: {host}",
+      "err_no_webmail_detail": "Šim serverim nav Bulwark tīmekļa pasta un OAuth pierakstīšanās. Tā vietā izmantojiet paroli (vai lietotnes paroli).",
+      "err_no_webmail_title": "Pierakstīšanās lapa nav atrasta: {host}",
+      "err_pair_connect_detail": "Parādiet jaunu kodu datorā un skenējiet vēlreiz.",
+      "err_pair_connect_title": "Pierakstījāties, bet neizdevās izveidot savienojumu ar {host}",
+      "err_pair_insecure_detail": "{host} vēlas izmantot nešifrētu savienojumu.",
+      "err_pair_network_detail": "Pārbaudiet savienojumu un to, vai tālrunis var piekļūt tīmekļa pastam, un mēģiniet vēlreiz.",
+      "err_pair_rate_detail": "Uzgaidiet minūti un mēģiniet vēlreiz.",
+      "err_pair_server_detail": "Mēģiniet vēlreiz ar jaunu kodu. Ja tas joprojām neizdodas, sazinieties ar administratoru.",
+      "err_pair_server_title": "Tīmekļa pasts nevarēja pabeigt pierakstīšanos",
+      "err_pair_unsupported_detail": "{host} neatbalsta pierakstīšanās kodus. Iespējams, tam nepieciešams atjauninājums, vai saite norāda uz nepareizu adresi.",
+      "err_pair_unsupported_title": "Šis tīmekļa pasts nevar saistīt ierīces",
+      "err_pair_untrusted_detail": "{host} nosūtīja pierakstīšanās datus serverim, ko lietotne nevar pārbaudīt.",
+      "err_pair_untrusted_title": "Šai pierakstīšanās reizei nevar uzticēties",
+      "err_rate_detail": "Serveris lūdza brīdi uzgaidīt. Drīz mēģiniet vēlreiz.",
+      "err_rate_detail_seconds": "Serveris lūdza uzgaidīt. Mēģiniet vēlreiz pēc aptuveni {seconds} s.",
+      "err_rate_title": "Pārāk daudz mēģinājumu",
+      "err_server_detail": "Serveris atbildēja ar kļūdu. Mēģiniet vēlreiz pēc dažām minūtēm.",
+      "err_server_title": "{host} nedarbojas pareizi",
+      "err_totp_bad_detail": "Pārbaudiet paroli un pašreizējo kodu autentifikācijas lietotnē, pēc tam mēģiniet vēlreiz.",
+      "err_totp_detail": "Šis konts ir aizsargāts ar divpakāpju pierakstīšanos. Ievadiet 6 ciparu kodu no autentifikācijas lietotnes.",
+      "err_totp_title": "Ievadiet divfaktoru kodu",
+      "err_unreachable_detail": "Pārbaudiet savienojumu un servera adresi, pēc tam mēģiniet vēlreiz.",
+      "err_unreachable_title": "{host} nav sasniedzams",
+      "know_server": "Es zinu sava servera adresi",
+      "known_server_desc": "Šis serveris mums jau ir zināms, tāpēc nekas nav jāiestata",
+      "known_server_title": "Vēl viens konts: {host}",
+      "link_confirm_connect": "Saite aicina pierakstīties šajā lapā. Turpiniet tikai tad, ja izmantojat {host} savam e-pastam.",
+      "link_confirm_connect_add": "Saite aicina pievienot kontu, pierakstoties šajā lapā. Turpiniet tikai tad, ja izmantojat {host} savam e-pastam.",
+      "link_confirm_connect_title": "Atvērt {host} pierakstīšanās lapu?",
+      "link_confirm_pair": "Šī saite pierakstās kontā no {host}. Turpiniet tikai tad, ja tikko datorā parādījāt pierakstīšanās kodu.",
+      "link_confirm_pair_add": "Šī saite pievieno kontu no {host} un pārslēdz lietotni uz to. Turpiniet tikai tad, ja tikko datorā parādījāt pierakstīšanās kodu.",
+      "link_confirm_title": "Pierakstīties ar saiti?",
+      "looking_up": "Meklē jūsu serveri…",
+      "manual": "Ievadīt servera datus manuāli",
+      "notice_bad_qr": "Šis nav Bulwark pierakstīšanās kods",
+      "notice_bad_qr_detail": "Atveriet Bulwark tīmeklī un sadaļā Iestatījumi → Drošība → Saistīt mobilo lietotni parādiet kodu.",
+      "notice_bad_server": "Tas neizskatās pēc servera adreses",
+      "notice_bad_server_detail": "Izmēģiniet adresi, ko izmantojat tīmekļa pastam, piemēram, mail.example.com.",
+      "notice_full_email": "Ievadiet pilnu e-pasta adresi",
+      "notice_full_email_detail": "Piemēram, ada@example.com. Ja pierakstāties ar lietotājvārdu, izmantojiet \"Es zinu sava servera adresi\".",
+      "notice_need_code": "Ievadiet 6 ciparu kodu no autentifikācijas lietotnes",
+      "notice_need_credentials": "Ievadiet e-pasta adresi un paroli",
+      "notice_need_server": "Vispirms mums vajag servera adresi",
+      "open_settings": "Atvērt iestatījumus",
+      "opening": "Tiek atvērts: {host}",
+      "opening_detail": "Pabeidziet pierakstīšanos tikko atvērtajā lapā. Tālāk par visu parūpēsimies mēs.",
+      "pairing": "Tiek izmantots pierakstīšanās kods",
+      "pairing_detail": "Šī ierīce tiek savienota pārī: {host}…",
+      "password_subtitle": "Jūsu parole tiek nosūtīta tikai uz šo serveri un glabāta ierīces atslēgu krātuvē.",
+      "password_title": "Pierakstīšanās: {host}",
+      "paste_button": "Ielīmēt",
+      "paste_clipboard_empty": "Nav ko ielīmēt. Vispirms nokopējiet saiti tīmekļa pastā.",
+      "paste_hint": "Tīmekļa pastā atveriet Iestatījumi → Drošība → Saistīt mobilo lietotni, nokopējiet pierakstīšanās saiti un ielīmējiet to šeit.",
+      "paste_invalid": "Šī nav Bulwark pierakstīšanās saite",
+      "paste_label": "Pierakstīšanās saite",
+      "paste_title": "Ielīmēt pierakstīšanās saiti",
+      "provider_detail": "Jūs to ievadīsiet pakalpojumu sniedzēja lapā. Bulwark glabā tikai pierakstīšanās tokenu, ko varat jebkurā laikā atsaukt.",
+      "provider_title": "Jūsu parole paliek pie pakalpojumu sniedzēja",
+      "qr_hint": "Sadaļā Iestatījumi → Drošība → Saistīt mobilo lietotni tiek parādīts kods. Pavērsiet pret to kameru.",
+      "qr_hint_title": "Atveriet Bulwark savā datorā",
+      "qr_title": "Pierakstīšanās kods",
+      "scan_desc": "Ātrākais veids, ja tīmeklī jums jau ir aktīva sesija",
+      "scan_title": "Skenēt pierakstīšanās kodu",
+      "server_hint": "Tā pati adrese, ko rakstāt pārlūkā. https:// pievienosim mēs.",
+      "server_label": "Servera adrese",
+      "server_not_found": "Mēs neatradām serveri domēnam {domain}. Ja izmantojat savu serveri, norādiet adresi, ko lietojat tīmekļa pastam.",
+      "server_paste_hint": "Jums ir pierakstīšanās saite? Ielīmējiet to šeit.",
+      "server_scan_hint": "Ja šaubāties, tā vietā skenējiet pierakstīšanās kodu. Tajā ir servera adrese.",
+      "server_subtitle": "Ievadiet adresi, ar kuru atverat savu tīmekļa pastu.",
+      "server_title": "Kāda ir jūsu servera adrese?",
+      "the_server": "serveris",
+      "unencrypted": "Nešifrēts savienojums",
+      "use_password": "Tā vietā pierakstīties ar paroli",
+      "username_label": "E-pasts vai lietotājvārds",
+      "your_server": "jūsu serveris"
+    }
+  },
+  "offline": {
+    "banner": "Jūs esat bezsaistē",
+    "queued_changes": "{count, plural, zero {# izmaiņas tiks sinhronizētas} one {# izmaiņa tiks sinhronizēta} other {# izmaiņas tiks sinhronizētas}}, kad atjaunosies savienojums",
+    "sync": {
+      "cached_count": "{count, plural, zero {Lejupielādēti # jauni ziņojumi} one {Lejupielādēts # jauns ziņojums} other {Lejupielādēti # jauni ziņojumi}} • {size}",
+      "cancelled": "Sinhronizācija atcelta",
+      "failed": "Bezsaistes sinhronizācija neizdevās",
+      "processed": "Apstrādāti {completed}/{total}",
+      "ready": "Bezsaistes pasts ir gatavs",
+      "syncing": "Sinhronizē bezsaistes pastu",
+      "title": "Bezsaistes sinhronizācija",
+      "unable_to_download": "Nevar lejupielādēt",
+      "up_to_date": "Viss jau ir atjaunināts"
+    }
+  },
+  "push_prompt": {
+    "body": "Ieslēdziet fona paziņojumus, lai jaunas vēstules jūs sasniegtu arī tad, kad lietotne ir aizvērta.",
+    "dismiss": "Ne tagad",
+    "enable": "Iespējot",
+    "title": "Saņemiet paziņojumus par jaunu pastu"
+  },
+  "scheduled": {
+    "cancel_body": "Ziņojums netiks piegādāts. Kopija paliek mapē Nosūtītie.",
+    "cancel_failed": "Atcelšana neizdevās",
+    "edit_failed": "Neizdevās atvērt ziņojumu rediģēšanai",
+    "keep_scheduled": "Paturēt ieplānotu",
+    "reschedule_failed": "Pārplānošana neizdevās",
+    "send_now_failed": "Neizdevās nosūtīt tagad"
+  },
+  "settings": {
+    "account": {
+      "accounts": {
+        "description_mobile": "Mainiet kontu secību kontu pārslēdzējā, izvēlieties noklusējuma kontu vai izrakstieties no kāda konta.",
+        "limit": "Sasniegts maksimālais kontu skaits ({count})."
+      },
+      "shared_accounts": {
+        "description_manage": "Grupas un kopīgotie konti, kurus varat lasīt, izmantojot šo kontu. Atlasiet vienu, lai pārvaldītu tā filtrus un atvaļinājuma atbildi."
+      },
+      "unknown": "Nezināms"
+    },
+    "advanced": {
+      "about": {
+        "deprecated_update": "Nepieciešams atjauninājums: {version}",
+        "mobile_title": "Bulwark Mobile",
+        "security_update": "Drošības atjauninājums: {version}",
+        "update_available": "Atjauninājums: {version}",
+        "update_store_hint": "pieejams TestFlight / App Store"
+      },
+      "export_settings": {
+        "saved_to": "Saglabāts: {path}"
+      },
+      "reset_settings": {
+        "done": "Visiem iestatījumiem ir atjaunotas noklusējuma vērtības."
+      }
+    },
+    "appearance": {
+      "language": {
+        "restart_for_direction": "Restartējiet lietotni, lai lietotu jauno teksta virzienu.",
+        "system_default": "Sistēmas noklusējums"
+      },
+      "toolbar_labels": {
+        "description_mobile": "Rādīt teksta aprakstus blakus rīkjoslas ikonām."
+      }
+    },
+    "badges": {
+      "experimental": "Eksperimentāls",
+      "not_implemented": "Nav ieviests",
+      "unavailable": "Nav pieejams"
+    },
+    "contacts": {
+      "book_count": "{count, plural, zero {# kontakti} one {# kontakts} other {# kontakti}}",
+      "default_book": "Noklusējuma adrešu grāmata",
+      "description_mobile": "Attēlošanas preferences un adrešu grāmatu rīki.",
+      "device_sync_desc": "Rādiet savas adrešu grāmatas lietotnē Kontakti un citās šīs ierīces lietotnēs. Izmaiņas tiek sinhronizētas abos virzienos.",
+      "device_sync_title": "Sinhronizēt ar šo ierīci",
+      "export_description_count": "{count, plural, zero {Eksportēt # kontaktus vienā vCard failā.} one {Eksportēt # kontaktu vienā vCard failā.} other {Eksportēt # kontaktus vienā vCard failā.}}",
+      "export_empty": "Nav kontaktu, ko eksportēt",
+      "import_description_mobile": "Importēt kontaktus no vCard (.vcf) faila ar dublikātu noteikšanu.",
+      "manage_description_mobile": "Izveidojiet, pārdēvējiet un noņemiet adrešu grāmatas, kurās kārtoti jūsu kontakti."
+    },
+    "device_sync": {
+      "also_synced_by": "Sinhronizējas arī kontiem {accounts}, tāpēc šajā ierīcē parādās divreiz.",
+      "android_settings": "Android konta iestatījumi",
+      "blocked_calendar": "Android vairs neprasa piekļuvi kalendāriem. Atļaujiet to lietotnes iestatījumos un pēc tam atkal ieslēdziet sinhronizāciju.",
+      "blocked_contacts": "Android vairs neprasa piekļuvi kontaktiem. Atļaujiet to lietotnes iestatījumos un pēc tam atkal ieslēdziet sinhronizāciju.",
+      "blocked_title": "Piekļuve ir izslēgta",
+      "books_default": "Jūsu adrešu grāmatas tiek sinhronizētas, koplietotās — tikai tad, ja tās izvēlaties.",
+      "books_hint": "Jūsu adrešu grāmatas tiek sinhronizētas, ja vien tās neizslēdzat; koplietotās — tikai tad, ja tās ieslēdzat.",
+      "books_label": "Adrešu grāmatas",
+      "calendars_default": "Jūsu kalendāri tiek sinhronizēti, koplietotie — tikai tad, ja tos izvēlaties.",
+      "calendars_hint": "Jūsu kalendāri tiek sinhronizēti, ja vien tos neizslēdzat; koplietotie — tikai tad, ja tos ieslēdzat. Uzdevumu saraksti paliek Bulwark.",
+      "calendars_label": "Kalendāri",
+      "choose": "Izvēlēties",
+      "choose_books_title": "Sinhronizējamās adrešu grāmatas",
+      "choose_calendars_title": "Sinhronizējamie kalendāri",
+      "collections_count": "Sinhronizē: {selected} no {total}",
+      "continue": "Turpināt",
+      "deletions_delete": "Dzēst serverī",
+      "deletions_message": "Šajā ierīcē vienlaikus tika izdzēsts daudz vienumu, tāpēc tie netika izdzēsti serverī. Izdzēsiet tos arī tur vai atjaunojiet tos šajā ierīcē.",
+      "deletions_restore": "Atjaunot",
+      "deletions_title": "Vai dzēst tos arī serverī?",
+      "denied_calendar": "Bez piekļuves kalendāriem Bulwark nevar ievietot jūsu kalendārus šajā ierīcē.",
+      "denied_contacts": "Bez piekļuves kontaktiem Bulwark nevar ievietot jūsu adrešu grāmatas šajā ierīcē.",
+      "denied_title": "Sinhronizācija paliek izslēgta",
+      "failed_title": "Sinhronizāciju neizdevās ieslēgt",
+      "grant_access": "Piešķirt piekļuvi",
+      "interval_15m": "Ik pēc 15 minūtēm",
+      "interval_1h": "Ik pēc stundas",
+      "interval_30m": "Ik pēc 30 minūtēm",
+      "interval_6h": "Ik pēc 6 stundām",
+      "interval_desc": "Cik bieži Android sinhronizē patstāvīgi. Labojumi Bulwark un ar push paziņotās izmaiņas tiek sinhronizēti ātrāk.",
+      "interval_label": "Sinhronizācijas intervāls",
+      "interval_manual": "Bez regulāras sinhronizācijas",
+      "keep_syncing": "Turpināt sinhronizāciju",
+      "list_error_auth": "Serveris nepieņēma pierakstīšanos.",
+      "list_error_network": "Neizdevās sazināties ar serveri.",
+      "list_error_server": "Serveris nespēja sniegt sarakstu.",
+      "list_error_signed_out": "Šis konts šajā ierīcē nav pierakstīts.",
+      "master_off": "Automātiskā sinhronizācija šajā ierīcē ir izslēgta, tāpēc sinhronizācija notiek tikai tad, kad pieskaraties \"Sinhronizēt tagad\".",
+      "new_contacts_default": "Noklusējuma adrešu grāmata",
+      "new_contacts_desc": "Adrešu grāmata kontaktiem, kas izveidoti citās šīs ierīces lietotnēs.",
+      "new_contacts_label": "Kur saglabāt jaunos kontaktus",
+      "no_books": "Šim kontam nav adrešu grāmatu.",
+      "no_calendars": "Šim kontam nav sinhronizējamu kalendāru.",
+      "ok": "Labi",
+      "open_app_settings": "Atvērt iestatījumus",
+      "own_collections": "Jūsu",
+      "rationale_calendar": "Lai rādītu jūsu kalendārus lietotnē Kalendārs, Bulwark nepieciešama piekļuve šīs ierīces kalendāriem. Bulwark maina tikai sava konta kalendārus.",
+      "rationale_contacts": "Lai rādītu jūsu adrešu grāmatas lietotnē Kontakti, Bulwark nepieciešama piekļuve šīs ierīces kontaktiem. Bulwark maina tikai sava konta kontaktus.",
+      "rationale_title_calendar": "Atļaut piekļuvi kalendāriem",
+      "rationale_title_contacts": "Atļaut piekļuvi kontaktiem",
+      "read_only": "Tikai lasāms",
+      "reminder_owner_bulwark": "Bulwark",
+      "reminder_owner_device": "Lietotne Kalendārs",
+      "reminder_question_message": "Atgādinājumus par sinhronizētajiem notikumiem var sūtīt šīs ierīces kalendāra lietotne vai Bulwark. Izvēlieties vienu, lai nesaņemtu atgādinājumus divreiz. Vēlāk to var mainīt.",
+      "reminder_question_title": "Kas jums atgādinās?",
+      "reminders_desc": "Kas jums atgādina par sinhronizētajiem notikumiem. Otrs klusē, lai jūs nesaņemtu atgādinājumus divreiz.",
+      "reminders_label": "Atgādinājumi",
+      "reminders_nobody": "Bulwark notikumu paziņojumi ir izslēgti, tāpēc nekas neatgādina par sinhronizētajiem notikumiem.",
+      "remove": "Noņemt",
+      "remove_from_device": "Noņemt no šīs ierīces",
+      "remove_message": "Konta kontakti un kalendāri tiks noņemti no šīs ierīces. Šeit veiktās izmaiņas, kas nav nonākušas serverī, tiks zaudētas.",
+      "remove_title": "Vai noņemt no šīs ierīces?",
+      "review_deletions": "Pārskatīt dzēšanas",
+      "shared_by": "Kopīgoja: {name}",
+      "sign_in_again": "Pierakstīties vēlreiz",
+      "status_auth": "Serveris vairs nepieņem pierakstīšanos. Pierakstieties vēlreiz, lai turpinātu sinhronizāciju.",
+      "status_cancelled": "Pēdējā sinhronizācija apstājās priekšlaicīgi. Nākamreiz tā turpināsies.",
+      "status_failed": "Pēdējā sinhronizācija neizdevās: {message}",
+      "status_failed_plain": "Pēdējā sinhronizācija neizdevās.",
+      "status_io": "Serveris {when} nebija sasniedzams. Android mēģinās vēlreiz.",
+      "status_item_errors": "{count, plural, zero {# vienumus neizdevās sinhronizēt.} one {# vienumu neizdevās sinhronizēt.} other {# vienumus neizdevās sinhronizēt.}}",
+      "status_off": "Izslēgta",
+      "status_paused": "Apturēta Android iestatījumos",
+      "status_permission_calendar": "Piekļuve kalendāriem tika izslēgta, tāpēc nekas netiek sinhronizēts.",
+      "status_permission_contacts": "Piekļuve kontaktiem tika izslēgta, tāpēc nekas netiek sinhronizēts.",
+      "status_removed": "Noņemts Android iestatījumos. Ieslēdziet sinhronizāciju, lai kontu pievienotu vēlreiz.",
+      "status_safety_abort": "Apturēts: serveris neatgrieza neko, lai gan šajā ierīcē joprojām ir vienumi. Pārbaudiet serveri un pēc tam sinhronizējiet vēlreiz.",
+      "status_synced": "Sinhronizēts {when}",
+      "status_syncing": "Sinhronizē…",
+      "status_too_many_deletions": "Šajā ierīcē tika izdzēsts daudz vienumu. Serverī tie netiks izdzēsti, kamēr jūs to neapstiprināsiet.",
+      "status_unsupported_calendar": "Serveris šim kontam nepiedāvā kalendārus.",
+      "status_unsupported_contacts": "Serveris šim kontam nepiedāvā adrešu grāmatas.",
+      "status_waiting": "Gaida pirmo sinhronizāciju",
+      "status_waiting_next": "Gaida nākamo sinhronizāciju",
+      "suspended_desc": "Izrakstīts. Konta kontakti un kalendāri paliek šajā ierīcē kopā ar šeit veiktajām izmaiņām un tiks atkal sinhronizēti, tiklīdz pierakstīsieties.",
+      "switch_label": "Sinhronizēt {account} ar šo ierīci",
+      "sync_now": "Sinhronizēt tagad",
+      "turn_off_anyway": "Izslēgt",
+      "turn_off_failed": "Sinhronizētos datus neizdevās noņemt no šīs ierīces. Sinhronizācija ir apturēta; vēlāk mēģiniet vēlreiz.",
+      "turn_off_failed_title": "Sinhronizāciju neizdevās izslēgt",
+      "turn_off_pending": "{count, plural, zero {# izmaiņas, kas veiktas šajā ierīcē, vēl nav nonākušas serverī. Tās tiks zaudētas, ja tagad izslēgsiet sinhronizāciju.} one {# izmaiņa, kas veikta šajā ierīcē, vēl nav nonākusi serverī. Tā tiks zaudēta, ja tagad izslēgsiet sinhronizāciju.} other {# izmaiņas, kas veiktas šajā ierīcē, vēl nav nonākušas serverī. Tās tiks zaudētas, ja tagad izslēgsiet sinhronizāciju.}}",
+      "turn_off_title": "Tomēr izslēgt?",
+      "turn_off_unknown": "Bulwark nevarēja pārbaudīt, vai šajā ierīcē veiktās izmaiņas ir nonākušas serverī. Tās tiks zaudētas, ja tagad izslēgsiet sinhronizāciju.",
+      "turning_off": "Augšupielādē izmaiņas, pēc tam noņem datus no šīs ierīces…",
+      "turning_on": "Notiek iestatīšana…"
+    },
+    "downloads": {
+      "attachment_template": {
+        "description_mobile": "Veidne, ko izmanto, saglabājot vai kopīgojot pielikumu."
+      },
+      "email_template": {
+        "description_mobile": "Veidne, ko izmanto, eksportējot ziņojumu kā .eml failu."
+      },
+      "strip_diacritics": {
+        "description_mobile": "Pārvērst burtus ar diakritiskajām zīmēm par vienkāršiem ASCII burtiem (ä → a)."
+      },
+      "transform_description": "Tiek piemērota katram eksportētā faila nosaukumam.",
+      "transform_title": "Faila nosaukuma pārveidošana"
+    },
+    "email_behavior": {
+      "archive_mode": {
+        "no_archive": "Arhīva mape nav atrasta.",
+        "reorganize_result": "Pārvietotas {moved} no {total} vēstulēm.",
+        "reorganizing": "Reorganizē…"
+      },
+      "attachment_click_action": {
+        "description_mobile": "Kas notiek, kad pieskaraties pielikumam."
+      },
+      "auto_select_reply_identity": {
+        "description_mobile": "Atbildes vienmēr tiek sūtītas no identitātes, uz kuru ziņojums tika nosūtīts. Ja šī opcija ir ieslēgta, atbilde uz citu adresi jūsu domēnos (catch-all aizstājvārds) arī tiek sūtīta no šīs adreses."
+      },
+      "content_senders_description_mobile": "Nosakiet, kā apstrādāt ārējos resursus un izsekošanas pikseļus.",
+      "external_content": {
+        "allow_mobile": "Atļaut",
+        "ask_mobile": "Jautāt",
+        "block_mobile": "Bloķēt"
+      },
+      "plain_text_mode": {
+        "description_mobile": "Rakstīt un lasīt tikai vienkāršā tekstā."
+      },
+      "send_delay": {
+        "description_mobile": "Aizturēt izejošās vēstules dažas sekundes, lai tās varētu atcelt. Nepieciešams servera atbalsts."
+      },
+      "swipe_actions": {
+        "move": "Pārvietot uz mapi",
+        "pin": "Piespraust"
+      },
+      "swipe_left_action": {
+        "description_mobile": "Darbība, velkot rindu no labās malas pa kreisi.",
+        "label_mobile": "Vilkt pa kreisi (labā → kreisā)"
+      },
+      "swipe_right_action": {
+        "description_mobile": "Darbība, velkot rindu no kreisās malas pa labi.",
+        "label_mobile": "Vilkt pa labi (kreisā → labā)"
+      },
+      "trusted_senders": {
+        "description_mobile": "Šī saraksta sūtītājiem ārējais saturs vienmēr tiek ielādēts.",
+        "description_synced_mobile": "Šī saraksta sūtītājiem ārējais saturs vienmēr tiek ielādēts. Sinhronizēti ar adrešu grāmatu: {count}.",
+        "sync_add_failed": "Neizdevās sinhronizēt ar adrešu grāmatu",
+        "sync_remove_failed": "Neizdevās noņemt no adrešu grāmatas",
+        "synced_badge": "Sinhronizēts ar adrešu grāmatu"
+      }
+    },
+    "experimental": {
+      "title": "Eksperimentāla funkcija"
+    },
+    "filters": {
+      "remove_action": "Noņemt darbību",
+      "remove_condition": "Noņemt nosacījumu",
+      "sieve_editor": {
+        "line_count": "{count, plural, zero {# rindas} one {# rinda} other {# rindas}}"
+      }
+    },
+    "folders": {
+      "account": "Konts",
+      "cannot_delete": "Nevar dzēst",
+      "description_mobile": "Veidojiet, pārdēvējiet, pārvietojiet un dzēsiet mapes. Lai piekļūtu ātrajām darbībām, sānu joslā turiet nospiestu mapi.",
+      "edit_folder": "Rediģēt \"{name}\"",
+      "folder_name": "Mapes nosaukums",
+      "move_under": "Vecākmape",
+      "name_placeholder": "Kvītis",
+      "name_required": "Nepieciešams nosaukums",
+      "new_folder": "Jauna mape",
+      "not_empty_message": "Mapē \"{name}\" ir vēstules ({count}). Vai tomēr dzēst?",
+      "not_empty_title": "Mape nav tukša",
+      "own_account": "Manas mapes",
+      "role": "Īpašs lietojums",
+      "role_hint": "Piešķiriet šai mapei īpašu lomu (Arhīvs, Mēstules, …). Katru lomu var piešķirt tikai vienai mapei.",
+      "save_failed": "Saglabāšana neizdevās",
+      "system_folder_delete": "Sistēmas mapes nevar noņemt.",
+      "system_folder_rename": "Sistēmas mapes nevar pārdēvēt.",
+      "top_level": "Augstākais līmenis"
+    },
+    "identities": {
+      "cannot_delete": "Galveno identitāti nevar noņemt.",
+      "cannot_delete_title": "Nevar dzēst",
+      "count": "{count, plural, =0 {Nav identitāšu} zero {# identitātes} one {# identitāte} other {# identitātes}}",
+      "create": "Jauna identitāte",
+      "delete_confirm": "Noņemt \"{name}\"?",
+      "delete_failed": "Dzēšana neizdevās",
+      "delete_title": "Dzēst identitāti",
+      "description_mobile": "Pārvaldiet sūtītāju vārdus, e-pasta adreses un parakstus. Pieskarieties rindai, lai to rediģētu.",
+      "display_name": "Parādāmais vārds",
+      "display_name_placeholder": "Jānis Bērziņš",
+      "edit": "Rediģēt identitāti",
+      "email_address": "E-pasta adrese",
+      "email_locked": "JMAP neļauj mainīt identitātes e-pasta adresi; tā vietā izveidojiet jaunu.",
+      "invalid_email": "Ievadiet derīgu e-pasta adresi šai identitātei.",
+      "invalid_email_title": "Nederīgs e-pasts",
+      "new": "Jauna",
+      "no_name": "(bez vārda)",
+      "primary": "galvenā",
+      "save_failed": "Saglabāšana neizdevās",
+      "text_signature": "Teksta paraksts"
+    },
+    "keywords": {
+      "description_mobile": "Krāsaini tagi pasta kārtošanai.",
+      "discover": {
+        "add_all": "Pievienot visus",
+        "found": "Atrasti tagi, kas šeit nav definēti: {count}.",
+        "none": "Nezināmi tagi nav atrasti (pārbaudītās vēstules: {scanned}).",
+        "partial": "(Skenēšana aptvēra tikai jaunākās vēstules.)",
+        "progress": "Pārbaudītas {scanned} no {total} vēstulēm…",
+        "scan": "Meklēt tagus pastkastē"
+      },
+      "reset_confirm": "Aizstāt tagu sarakstu ar noklusējuma tagiem? Vēstulēm jau piešķirtie tagi paliek serverī.",
+      "reset_defaults": "Atiestatīt noklusējumus"
+    },
+    "layout": {
+      "description": "Pielāgojiet vēstuļu saraksta mijiedarbību mobilajā ierīcē.",
+      "quick_actions": {
+        "description": "Trīs pogas starp Iepr./Nāk. atvērtas vēstules apakšā. Pēc noklusējuma: Atbildēt, Atbildēt visiem un Pārsūtīt.",
+        "label": "Lasītāja ātrās darbības",
+        "mark_unread": "Atzīmēt kā lasītu/nelasītu",
+        "relocated": "{count, plural, zero {Darbības {actions} tiek pārvietotas uz augšējo rīkjoslu, lai jūs tās joprojām varētu izmantot.} one {Darbība {actions} tiek pārvietota uz augšējo rīkjoslu, lai jūs to joprojām varētu izmantot.} other {Darbības {actions} tiek pārvietotas uz augšējo rīkjoslu, lai jūs tās joprojām varētu izmantot.}}",
+        "slot": "Vieta {n}",
+        "spam": "Mēstule",
+        "star": "Pievienot zvaigznīti",
+        "tag": "Tags"
+      },
+      "show_avatars_in_junk": "Rādīt sūtītāju avatarus mēstuļu mapē",
+      "show_avatars_in_junk_description": "Ielādēt sūtītāju logotipus vēstulēm mēstuļu mapē. Ja izslēgts, ar mēstuļu sūtītājiem netiek veidots savienojums.",
+      "show_folder_total_count": "Rādīt kopējo vēstuļu skaitu pie mapēm",
+      "show_folder_total_count_description": "Rādīt kopējo skaitu blakus nelasīto skaitam mapju sarakstā.",
+      "swipe_mode": {
+        "description": "Izvēlieties tūlītēju režīmu (velkot pāri slieksnim, darbība tiek izpildīta) vai atklāšanu (velkot tiek atklāta darbību josla, pēc tam pieskarieties, lai apstiprinātu).",
+        "instant": "Tūlītēji (vilkšana = darbība)",
+        "label": "Vilkšanas darbība",
+        "reveal": "Atklāt (vilkt, tad pieskarties)"
+      },
+      "unified_cross_account": "Apvienotie skati visiem kontiem",
+      "unified_cross_account_description": "Apvienot visus pierakstītos kontus sadaļā \"Apvienotā iesūtne\". Ja izslēgts, apvienotie skati aptver tikai aktīvo kontu un tā kopīgotās mapes."
+    },
+    "message_list_order": {
+      "description": "Kuras vēstules sarakstā ir pirmās. Katras grupas ietvaros pirmās ir jaunākās; virsraksta slēdzis joprojām maina secību vecākās/jaunākās.",
+      "preset_chronological": "Jaunākās vispirms",
+      "preset_custom": "Pielāgota",
+      "preset_starred_first": "Ar zvaigznīti vispirms",
+      "preset_tagged_first": "Ar tagu vispirms",
+      "preset_unread_first": "Nelasītās vispirms",
+      "scope": "Piemērot",
+      "scope_all": "Visas mapes",
+      "scope_inbox": "Tikai iesūtne",
+      "tag": "Tags",
+      "title": "Ziņu saraksta secība"
+    },
+    "notifications": {
+      "email": {
+        "app_icon_badge": "Nelasīto skaits uz lietotnes ikonas",
+        "app_icon_badge_desc": "Rādīt iesūtnes nelasīto vēstuļu skaitu kā emblēmu uz lietotnes ikonas.",
+        "sound_channel_hint": "Pasta paziņojumu skaņu un vibrāciju nosaka Android paziņojumu kanāls: turiet nospiestu paziņojumu vai atveriet sistēmas lietotnes iestatījumus."
+      },
+      "push": {
+        "confirm_disable_message_mobile": "Šī ierīce vairs nesaņems paziņojumus par jaunu pastu šim kontam.",
+        "description_mobile": "Saņemt sistēmas paziņojumus par jaunu pastu, kad lietotne ir aizvērta. Piegādā Bulwark push relejs; relejs nekad neredz pasta saturu.",
+        "err_android_only": "Push paziņojumi ir pieejami tikai Android ierīcēs.",
+        "err_fcm_empty": "Firebase atgrieza tukšu ierīces tokenu.",
+        "err_fcm_token": "Firebase nevarēja izsniegt ierīces tokenu ({detail}). Lai izmantotu push ar FCM, šajā ierīcē nepieciešami Google Play pakalpojumi.",
+        "err_fcm_token_up": "Firebase nevarēja izsniegt ierīces tokenu ({detail}). Lai izmantotu push ar FCM, šajā ierīcē nepieciešami Google Play pakalpojumi. Šajā ierīcē ir instalēts UnifiedPush izplatītājs – tā vietā pārslēdziet piegādes veidu uz UnifiedPush.",
+        "err_jmap_refused": "Pasta serveris noraidīja push abonementu: {detail}",
+        "err_no_account": "Nav ielādēts neviens konts – push nevar iestatīt.",
+        "err_permission": "Paziņojumu atļauja netika piešķirta.",
+        "err_relay_https": "Releja URL jāizmanto https://.",
+        "err_relay_rejected": "Push relejs noraidīja reģistrāciju: {detail}",
+        "err_relay_unreachable": "Neizdevās sasniegt push releju adresē {url} ({detail}).",
+        "err_up_android_only": "UnifiedPush ir pieejams tikai Android ierīcēs.",
+        "err_verify_rejected": "Pasta serveris noraidīja verifikācijas kodu: {detail}",
+        "err_verify_relay": "Relejs tā arī nesaņēma verifikācijas kodu no pasta servera (pēdējā releja atbilde: {detail}).",
+        "err_verify_timeout": "Pasta serveris 75 s laikā nenosūtīja relejam verifikācijas kodu. Pārbaudiet, vai serveris var sasniegt releja URL.",
+        "phase_account": "Konts",
+        "phase_distributor": "UnifiedPush izplatītājs",
+        "phase_jmap": "Pasta servera abonements",
+        "phase_permission": "Paziņojumu atļauja",
+        "phase_platform": "Platforma",
+        "phase_relay": "Reģistrācija relejā",
+        "phase_token": "Ierīces tokens",
+        "phase_verify": "Pārbaude",
+        "relay_desc_mobile": "Serveris, kas piegādā jūsu paziņojumus. Pēc noklusējuma tas ir Bulwark mitinātais relejs; mainiet tikai tad, ja izmantojat savu. Jāizmanto https.",
+        "relay_invalid": "Ievadiet derīgu https:// URL",
+        "setup_failed": "Iestatīšana neizdevās",
+        "status_android_only": "Fona paziņojumi ir pieejami tikai Android ierīcēs.",
+        "transport_desc": "Kā paziņojumi nonāk šajā ierīcē: ar Google Firebase Cloud Messaging vai ar UnifiedPush izplatītāja lietotni (piemēram, ntfy) bez Google.",
+        "transport_fcm": "Google (FCM)",
+        "transport_label": "Piegādes veids",
+        "transport_unifiedpush": "UnifiedPush",
+        "up_distributor_desc": "Ir instalētas vairākas UnifiedPush izplatītāja lietotnes – izvēlieties, kurai jāpiegādā paziņojumi.",
+        "up_distributor_label": "Izplatītājs",
+        "up_no_distributor": "Šajā ierīcē nav instalēta neviena UnifiedPush izplatītāja lietotne. Instalējiet kādu (piemēram, ntfy) un mēģiniet vēlreiz."
+      }
+    },
+    "offline": {
+      "cached_count": "{count, plural, zero {# vēstules} one {# vēstule} other {# vēstules}}",
+      "clear": "Notīrīt",
+      "clear_cache": "Notīrīt kešatmiņu",
+      "clear_message": "Vai noņemt {count, plural, zero {# kešatmiņā saglabātās vēstules} one {# kešatmiņā saglabāto vēstuli} other {# kešatmiņā saglabātās vēstules}} ({size})?",
+      "clear_title": "Notīrīt bezsaistes pastu",
+      "days_ago": "pirms {count} d.",
+      "description": "Lejupielādēt jaunākās vēstules, lai tās atvērtos uzreiz un būtu lasāmas bez savienojuma. Tikai vēstuļu saturs — pielikumi joprojām tiek ielādēti pēc pieprasījuma.",
+      "downloading": "Lejupielādē {completed}/{total}…",
+      "enabled": "Saglabāt jaunāko pastu kešatmiņā",
+      "enabled_desc": "Ja ieslēgts, lietotne šajā ierīcē glabā vēstuļu saturu par izvēlēto periodu.",
+      "hours_ago": "pirms {count} st.",
+      "just_now": "tikko",
+      "last_sync": "Pēdējā sinhronizācija: {when}",
+      "last_sync_failed": "Pēdējā sinhronizācija neizdevās: {message}",
+      "max_size": "Maksimālais izmērs",
+      "max_size_desc": "Kad kešatmiņa pārsniedz šo izmēru, vecākās vēstules tiek noņemtas.",
+      "minutes_ago": "pirms {count} min",
+      "never": "nekad",
+      "nothing_cached": "Kešatmiņā vēl nekā nav",
+      "queued_changes": "{count, plural, zero {# izmaiņas gaida} one {# izmaiņa gaida} other {# izmaiņas gaida}} sinhronizāciju",
+      "scanning": "Skenē jaunāko pastu…",
+      "sync_now": "Sinhronizēt tagad",
+      "syncing": "Sinhronizē…",
+      "title": "Bezsaistes pasts",
+      "window": "Periods",
+      "window_24h": "Pēdējās 24 stundas",
+      "window_days": "Pēdējās {count} dienas",
+      "window_desc": "Cik tālu pagātnē saglabāt, pēc vēstules saņemšanas datuma."
+    },
+    "plugins": {
+      "mobile_description": "Spraudņi darbojas tīmekļa pastā un paplašina to pārlūkā.",
+      "mobile_explainer": "Mobilajai lietotnei nav spraudņu izpildvides. Instalējiet un pārvaldiet spraudņus tīmekļa pastā sadaļā Iestatījumi → Spraudņi; to nodrošinātās tēmas un filtri šeit netiek lietoti."
+    },
+    "security": {
+      "client_cert": {
+        "active": "Aktīvs: {alias}",
+        "choose_another": "Izvēlēties citu",
+        "clear": "Notīrīt",
+        "clear_message": "Jaunie pieprasījumi vairs neuzrādīs sertifikātu. Sertifikāts paliek instalēts Android ierīcē.",
+        "clear_title": "Pārtraukt klienta sertifikāta izmantošanu?",
+        "description": "Izvēlas Android ierīcē instalētu sertifikātu autentifikācijai serverī TLS rokasspiediena laikā. Noderīgi, ja reversais starpniekserveris pieprasa mTLS.",
+        "hint": "Instalējiet sertifikātu sadaļā Android iestatījumi → Drošība → Šifrēšana un akreditācijas dati, pēc tam izvēlieties to šeit.",
+        "not_set": "Nav iestatīts",
+        "pick": "Izvēlēties sertifikātu",
+        "pick_failed": "Izvēle neizdevās",
+        "title": "TLS klienta sertifikāts"
+      },
+      "credentials": {
+        "allowed_ips": "Atļautās IP (neobligāti)",
+        "allowed_ips_hint": "Atdaliet ar komatu vai atstarpi. Atstājiet tukšu, lai atļautu jebkuru IP.",
+        "clear_expiry": "Noņemt derīguma termiņu",
+        "copy_now": "Nokopējiet to tagad — tas tiek rādīts tikai vienreiz. Lai atlasītu, pieskarieties un turiet.",
+        "create_error": "Neizdevās izveidot",
+        "expires": "Derīguma termiņš (pēc izvēles)",
+        "expires_on": "beidzas {date}",
+        "no_expiry": "Bez derīguma termiņa",
+        "none": "Vēl nav.",
+        "remove_error": "Neizdevās noņemt",
+        "remove_message": "Visi klienti, kas tos izmanto, pārstās darboties.",
+        "remove_title": "Noņemt piekļuves datus?"
+      },
+      "display_name": {
+        "error_title": "Atjaunināšana neizdevās"
+      },
+      "encryption": {
+        "no_keys": "Vispirms pievienojiet publisko atslēgu – krātuves šifrēšanai tā ir nepieciešama."
+      },
+      "load_error": "Neizdevās ielādēt drošības iestatījumus.",
+      "not_supported": "Konta drošības pārvaldībai nepieciešams Stalwart serveris. Šīs funkcijas šim kontam nav pieejamas.",
+      "offline": "Jūs esat bezsaistē. Konta drošības iestatījumiem nepieciešams aktīvs savienojums ar serveri.",
+      "password": {
+        "change": "Mainīt paroli",
+        "changed": "Jūsu konta parole ir atjaunināta.",
+        "changed_title": "Parole nomainīta",
+        "description": "Mainiet šī konta paroli.",
+        "error": "Neizdevās mainīt paroli.",
+        "mismatch": "Paroles nesakrīt.",
+        "toggle_visibility": "Rādīt vai slēpt paroli",
+        "too_short": "Jaunajai parolei jābūt vismaz 8 rakstzīmes garai."
+      },
+      "public_keys": {
+        "add_error": "Neizdevās pievienot publisko atslēgu",
+        "description": "Serverī glabātie S/MIME sertifikāti un PGP atslēgas. Tās tiek izmantotas krātuves šifrēšanai.",
+        "expires": "beidzas {date}",
+        "remove_error": "Neizdevās noņemt publisko atslēgu",
+        "remove_message": "Krātuves šifrēšana, kas izmanto šo atslēgu, pārstās darboties.",
+        "remove_title": "Noņemt publisko atslēgu?",
+        "title": "Publiskās atslēgas"
+      },
+      "two_factor": {
+        "active": "Aktīva",
+        "code": "Verifikācijas kods",
+        "code_required": "Ievadiet 6 ciparu kodu no lietotnes.",
+        "description": "Pieprasīt vienreizējo kodu, pierakstoties.",
+        "disable": "Atspējot",
+        "disable_error": "Neizdevās atspējot divfaktoru autentifikāciju.",
+        "disable_hint": "Ievadiet paroli, lai izslēgtu divfaktoru autentifikāciju.",
+        "enable_error": "Neizdevās iespējot divfaktoru autentifikāciju.",
+        "enabled_message": "Nākamajā pierakstīšanās reizē jums tiks prasīts kods.",
+        "enabled_title": "Divfaktoru autentifikācija iespējota",
+        "enrol_hint": "Pievienojiet šo noslēpumu autentifikācijas lietotnei, pēc tam ievadiet 6 ciparu kodu, lai apstiprinātu.",
+        "inactive": "Neaktīva",
+        "label": "Autentifikācijas lietotne",
+        "manual_secret": "Vai ievadiet šo noslēpumu manuāli",
+        "no_app": "Neizdevās atvērt autentifikācijas lietotni. Pievienojiet tālāk norādīto noslēpumu manuāli.",
+        "no_app_title": "Nav autentifikācijas lietotnes",
+        "open_app": "Pievienot autentifikācijas lietotnei",
+        "password_required": "Ievadiet pašreizējo paroli.",
+        "section_title": "Divfaktoru autentifikācija"
+      }
+    },
+    "sidebar_apps": {
+      "add": "Pievienot lietotni",
+      "empty": "Lietotnes vēl nav pievienotas.",
+      "form": {
+        "name": "Nosaukums",
+        "name_placeholder": "Lietotnes nosaukums",
+        "open_mode": "Atvēršanas režīms",
+        "show_on_mobile": "Rādīt mobilajā ierīcē",
+        "url": "URL adrese"
+      },
+      "keep_loaded_description_mobile": "Paturēt iebūvētās lietotnes darbībā fonā, pārslēdzoties uz citu skatu.",
+      "open_mode": {
+        "inline": "Iebūvēts",
+        "new_tab": "Jaunā cilnē",
+        "tab": "Cilne"
+      }
+    },
+    "smime": {
+      "mobile_description": "Parakstiet un šifrējiet pastu ar S/MIME sertifikātiem.",
+      "mobile_explainer": "S/MIME mobilajā lietotnē vēl nav pieejams. Pārvaldiet atslēgas un sertifikātus tīmekļa pastā; parakstītie ziņojumi šeit tiek rādīti bez pārbaudes."
+    },
+    "tabs": {
+      "plugins": "Spraudņi",
+      "themes": "Tēmas",
+      "updates": "Atjauninājumi"
+    },
+    "templates": {
+      "delete_confirm": "Neatgriezeniski dzēst \"{name}\"?",
+      "delete_title": "Dzēst veidni",
+      "description_mobile": "Atkārtoti lietojami teksta fragmenti biežām atbildēm. Pieskarieties, lai rediģētu; turiet nospiestu, lai dzēstu.",
+      "export_failed": "Eksports neizdevās",
+      "import_failed": "Imports neizdevās",
+      "imported": "Importēts",
+      "imported_count": "{count, plural, zero {Pievienotas # veidnes.} one {Pievienota # veidne.} other {Pievienotas # veidnes.}}",
+      "is_html": "Pamatteksts ir HTML",
+      "placeholders_hint": "Vietturi: {{recipient_name}}, {{company}}, {{date}}, {{day_of_week}}, {{sender_name}}",
+      "share_unavailable": "Nevar kopīgot"
+    },
+    "themes": {
+      "default_description": "Noklusējuma gaišās un tumšās paletes.",
+      "default_name": "Bulwark",
+      "mobile_description": "Izvēlieties krāsu tēmu. Tēmas seko gaišā/tumšā režīma iestatījumam sadaļā Izskats; pielāgotas tēmu pakotnes tiek pārvaldītas tīmekļa pastā.",
+      "title": "Tēmas"
+    },
+    "vacation": {
+      "warnings": {
+        "date_format": "Datumiem jābūt formātā \"YYYY-MM-DD\" vai \"YYYY-MM-DD HH:MM\""
+      }
+    }
+  },
+  "sidebar": {
+    "account_error": "Nepieciešama uzmanība",
+    "remove_account_hint": "Turiet nospiestu, lai noņemtu šo kontu",
+    "remove_account_message": "Izrakstīties no konta {account} šajā ierīcē. Jūsu pasts paliek serverī.",
+    "remove_account_title": "Noņemt kontu?",
+    "show_unread": "Rādīt nelasītās",
+    "tab_unavailable": "{name} (nav pieejams)"
+  },
+  "unified_mailbox": {
+    "accounts_failed": "{count, plural, zero {Neizdevās ielādēt # kontus} one {Neizdevās ielādēt # kontu} other {Neizdevās ielādēt # kontus}}"
+  },
+  "updates": {
+    "advisory": "Drošības paziņojums",
+    "advisory_desc": "Informācija par problēmu, ko novērš šis laidiens.",
+    "auto_check": "Pārbaudīt automātiski",
+    "auto_check_desc": "Pārbaudīt atjauninājumus ik pēc dažām stundām, startējot lietotni.",
+    "available": "Pieejams atjauninājums",
+    "available_desc": "Pieskarieties Instalēt, lai lejupielādētu v{version} un atvērtu to ar Android pakotņu instalētāju.",
+    "banner": {
+      "advisory": "Lasīt paziņojumu",
+      "deprecated_subtitle": "Instalējiet v{version}, lai turpinātu lietot lietotni.",
+      "deprecated_title": "Šī versija vairs netiek atbalstīta",
+      "security_subtitle": "v{version} novērš drošības problēmu. Instalējiet to pēc iespējas ātrāk.",
+      "security_title": "Pieejams drošības atjauninājums",
+      "subtitle": "v{version} ir gatava instalēšanai.",
+      "title": "Pieejams atjauninājums"
+    },
+    "building": "Atjauninājums tiek būvēts",
+    "building_desc": "v{version} ir publicēta, bet APK vēl tiek būvēts. Šī lapa pārbaudīs vēlreiz ik pēc 30 sekundēm.",
+    "check": "Pārbaudīt atjauninājumus",
+    "check_again": "Pārbaudīt vēlreiz",
+    "check_now": "Pārbaudīt tagad",
+    "checking": "Pārbauda…",
+    "current_version": "Pašreizējā versija",
+    "description": "Pārbaudiet, vai ir jaunas versijas, un instalējiet tās.",
+    "downloading": "Lejupielādē…",
+    "downloading_pct": "Lejupielādē {pct}%",
+    "install": "Instalēt",
+    "installing": "Instalē…",
+    "last_checked": "Pēdējoreiz pārbaudīts",
+    "last_error": "Pēdējā kļūda: {message}",
+    "latest_version": "Jaunākā versija",
+    "never": "nekad",
+    "open": "Atvērt",
+    "open_github": "Atvērt GitHub",
+    "opening_installer": "Atver instalētāju…",
+    "progress_of": "{written} no {total}",
+    "published": "Publicēts {date}",
+    "rate_limited": "GitHub ierobežo atjauninājumu pārbaudes; mēģināsim vēlāk.",
+    "release_notes": "Laidiena piezīmes",
+    "release_page": "Laidiena lapa",
+    "release_page_desc": "Pilnas laidiena piezīmes un lejupielādes GitHub.",
+    "release_page_pending_desc": "Sekojiet būvēšanas gaitai vai lejupielādējiet APK manuāli.",
+    "severity_deprecated": "Obligāts",
+    "severity_security": "Drošība",
+    "title": "Lietotnes atjauninājumi",
+    "verifying": "Pārbauda…"
+  }
+}

@@ -1,0 +1,1183 @@
+{
+  "advanced_search": {
+    "after": "Després de",
+    "before": "Abans de",
+    "no_attachment": "Sense fitxers adjunts",
+    "not_starred": "No destacat"
+  },
+  "calendar": {
+    "alerts": {
+      "minutes_after": "{count, plural, one {# minut després} other {# minuts després}}"
+    },
+    "colors": {
+      "indigo": "Índigo",
+      "teal": "Verd blavós"
+    },
+    "drawer": {
+      "my_calendars": "Els meus calendaris",
+      "no_calendars": "Encara no hi ha cap calendari.",
+      "shared_with_me": "Compartits amb mi",
+      "subscribed": "Subscrits"
+    },
+    "event_modal": {
+      "participant_placeholder": "Afegiu un participant per correu electrònic"
+    },
+    "events": {
+      "copy_link_short": "Enllaç",
+      "export_ics_short": ".ics",
+      "nothing_planned": "Res planificat. Toca per crear.",
+      "tap_to_create": "Toqueu + per crear-ne un"
+    },
+    "fab": {
+      "event": "Esdeveniment",
+      "task": "Tasca"
+    },
+    "form": {
+      "description_placeholder": "Notes, ordre del dia…",
+      "location_placeholder": "Lloc o adreça",
+      "time": "Hora"
+    },
+    "import": {
+      "file_too_large_max": "Aquest fitxer és massa gran (màxim {size} MB).",
+      "imported_count": "{count, plural, one {S'ha importat # esdeveniment.} other {S'han importat # esdeveniments.}}",
+      "no_calendar": "Creeu un calendari abans d'importar esdeveniments.",
+      "no_calendar_title": "Cap calendari",
+      "picker_error": "No s'ha pogut obrir el selector de fitxers",
+      "picker_unavailable": "El selector de fitxers no està inclòs en aquesta compilació. Torneu a compilar l'aplicació per activar la importació.",
+      "picker_unavailable_title": "Importació no disponible",
+      "refused_count": "{count, plural, one {No s'ha pogut importar # esdeveniment:} other {No s'han pogut importar # esdeveniments:}}",
+      "refused_message": "{count, plural, =1 {No s'ha pogut importar l'esdeveniment: {reason}} one {No s'ha pogut importar # esdeveniment: {reason}} other {No s'han pogut importar # esdeveniments: {reason}}}",
+      "selected_count": "{count, plural, one {# seleccionat} other {# seleccionats}}"
+    },
+    "invitation": {
+      "accept": "Sí",
+      "add_error": "No s'ha pogut afegir l'esdeveniment",
+      "add_to_calendar": "Afegeix al calendari",
+      "added": "S'ha afegit al calendari",
+      "already_in_calendar": "Ja és al vostre calendari",
+      "cancelled": "Aquest esdeveniment s'ha cancel·lat",
+      "decline": "No",
+      "join_video": "Entra a la videotrucada",
+      "no_writable_calendar": "No hi ha cap calendari amb permís d'escriptura",
+      "organizer": "Organitzador",
+      "reading": "S'està llegint la invitació…",
+      "reply": "Un participant ha respost a aquesta invitació",
+      "response_error": "No s'ha pogut enviar la vostra resposta",
+      "response_sent": "Resposta enviada",
+      "tentative": "Potser",
+      "title": "Invitació de calendari",
+      "trust_authentication_failed": "Aquest missatge no ha superat l'autenticació del remitent (SPF/DKIM/DMARC).",
+      "trust_authentication_missing": "No s'ha pogut verificar el remitent.",
+      "trust_sender_mismatch": "El remitent no coincideix amb l'organitzador de l'esdeveniment.",
+      "trust_sender_mismatch_unverified": "El remitent no coincideix amb l'organitzador i el missatge no està autenticat.",
+      "trust_verified": "Remitent verificat"
+    },
+    "management": {
+      "clear_confirm": "Elimina-ho tot",
+      "clear_description": "Se suprimiran tots els esdeveniments d'aquest calendari. Els esdeveniments que també pertanyen a un altre calendari només es desvinculen.",
+      "clear_title": "Voleu eliminar tots els esdeveniments?",
+      "delete_description": "Se suprimiran el calendari i tots els seus esdeveniments. Això no es pot desfer.",
+      "delete_title": "Voleu suprimir el calendari?",
+      "description_placeholder": "Opcional",
+      "edit_calendar": "Edita el calendari",
+      "new_calendar": "Calendari nou"
+    },
+    "notifications": {
+      "channel_name": "Recordatoris del calendari",
+      "starts_in_days": "{count, plural, one {Comença d'aquí a # dia} other {Comença d'aquí a # dies}}",
+      "starts_in_hours": "{count, plural, one {Comença d'aquí a # hora} other {Comença d'aquí a # hores}}",
+      "starts_in_minutes": "{count, plural, one {Comença d'aquí a # minut} other {Comença d'aquí a # minuts}}"
+    },
+    "recurrence": {
+      "editor_occurrences_count": "{count, plural, one {repetició} other {repeticions}}",
+      "every_count_days": "{count, plural, one {Cada dia} other {Cada # dies}}",
+      "every_count_months": "{count, plural, one {Cada mes} other {Cada # mesos}}",
+      "every_count_weeks": "{count, plural, one {Cada setmana} other {Cada # setmanes}}",
+      "every_count_years": "{count, plural, one {Cada any} other {Cada # anys}}",
+      "occurrence_count": "{count, plural, one {# repetició} other {# repeticions}}",
+      "until_date": "Fins al {date}"
+    },
+    "settings": {
+      "device_sync_desc": "Mostra els vostres calendaris a l'aplicació Calendari i a altres aplicacions d'aquest dispositiu. Els canvis se sincronitzen en tots dos sentits.",
+      "device_sync_title": "Sincronitza amb aquest dispositiu",
+      "show_week_numbers_mobile_desc": "Mostra els números de setmana a la vista de mes.",
+      "time_zone": "Zona horària",
+      "time_zone_auto": "Zona horària del dispositiu",
+      "time_zone_auto_zone": "Zona horària del dispositiu ({zone})",
+      "time_zone_desc": "Zona que s'utilitza per als esdeveniments nous i per interpretar el calendari. «Dispositiu» segueix la del telèfon."
+    },
+    "share": {
+      "add_people": "Afegeix persones",
+      "error": "No s'ha pogut actualitzar la compartició",
+      "no_matches": "Cap coincidència",
+      "no_principals": "La compartició no està disponible en aquest servidor.",
+      "search_placeholder": "Cerca per nom o correu electrònic",
+      "shared_with": "Compartit amb"
+    },
+    "subscription": {
+      "add_feed": "Afegeix un canal",
+      "feed_too_large": "El canal és massa gran",
+      "fetch_failed": "No s'ha pogut obtenir el canal (HTTP {status})",
+      "name_and_url_required": "Introduïu un nom i l'URL del canal.",
+      "not_a_feed": "Aquest URL no ha retornat cap canal iCalendar",
+      "not_synced": "Encara no s'ha sincronitzat",
+      "url_scheme_invalid": "L'URL ha de començar per https://, http://, webcal:// o webcals://",
+      "your_subscriptions": "Les vostres subscripcions"
+    },
+    "tasks": {
+      "add_placeholder": "Afegiu una tasca…",
+      "add_time": "Afegeix l'hora",
+      "clear_due_date": "Esborra la data de venciment",
+      "delete_error": "No s'ha pogut suprimir la tasca",
+      "not_found": "Aquesta tasca ja no està disponible.",
+      "save_error": "No s'ha pogut desar la tasca",
+      "update_error": "No s'ha pogut actualitzar la tasca"
+    },
+    "views": {
+      "schedule": "Agenda",
+      "three_days": "3 dies"
+    }
+  },
+  "common": {
+    "add": "Afegeix",
+    "back": "Enrere",
+    "confirm": "Confirma",
+    "create": "Crea",
+    "dismiss": "Descarta",
+    "done": "Fet",
+    "open": "Obre",
+    "open_link_message": "S'obrirà {host} fora de l'aplicació.",
+    "open_link_title": "Voleu obrir l'enllaç?",
+    "remove": "Elimina",
+    "retry": "Reintenta",
+    "undo": "Desfés",
+    "update": "Actualitza"
+  },
+  "contacts": {
+    "address_books": {
+      "confirm_delete_count": "{count, plural, =0 {Voleu suprimir «{name}»? Això no es pot desfer.} one {Voleu suprimir «{name}»? Conté # contacte, que també se suprimirà. Això no es pot desfer.} other {Voleu suprimir «{name}»? Conté # contactes, que també se suprimiran. Això no es pot desfer.}}"
+    },
+    "all_contacts": "Tots els contactes",
+    "bulk": {
+      "add_tag": "Afegeix una etiqueta",
+      "delete_confirm_mobile": "{count, plural, one {Voleu suprimir # contacte? Això no es pot desfer.} other {Voleu suprimir # contactes? Això no es pot desfer.}}",
+      "move_to_address_book": "Mou a una llibreta d'adreces",
+      "tag_failed": "No s'ha pogut etiquetar"
+    },
+    "contact": "Contacte",
+    "create_hint_mobile": "Manteniu premut per crear un grup",
+    "detail": {
+      "add_to_group_failed": "No s'ha pogut afegir al grup",
+      "copy_name": "{name} (còpia)",
+      "created_on": "Creat el {date}",
+      "duplicate_failed": "No s'ha pogut duplicar",
+      "duplicate_no_book": "No es pot duplicar sense una llibreta d'adreces.",
+      "no_address_book": "Cap llibreta d'adreces",
+      "not_found": "No s'ha trobat el contacte",
+      "open_dialer_failed": "No es pot obrir el marcador",
+      "open_link_failed": "No es pot obrir l'enllaç",
+      "open_maps_failed": "No es pot obrir l'aplicació de mapes",
+      "open_sms_failed": "No es pot obrir l'aplicació de missatges",
+      "share": "Comparteix",
+      "share_title": "Comparteix {name}",
+      "sms": "SMS",
+      "timezone_value": "Fus horari: {zone}",
+      "updated_on": "Actualitzat el {date}"
+    },
+    "empty_state_hint_mobile": "Toqueu + per afegir-ne un",
+    "export": {
+      "failed": "No s'ha pogut exportar"
+    },
+    "form": {
+      "add_nickname": "Afegeix un sobrenom",
+      "add_note": "Afegeix una nota",
+      "add_organization": "Afegeix una organització",
+      "address_book_required": "Seleccioneu una llibreta d'adreces per desar aquest contacte.",
+      "categories_placeholder_mobile": "Afegiu una etiqueta i premeu Retorn",
+      "context_none": "Cap",
+      "date_placeholder": "YYYY-MM-DD, YYYY-MM, YYYY o --MM-DD",
+      "display_name_optional": "Nom mostrat (opcional)",
+      "display_name_placeholder": "Nom mostrat personalitzat",
+      "edit_named": "Edita {name}",
+      "gender_unspecified": "Sense especificar",
+      "grammatical_gender": "Gènere gramatical",
+      "invalid_date_message": "«{date}» no és una data. Feu servir YYYY-MM-DD, YYYY-MM, YYYY o --MM-DD.",
+      "invalid_date_title": "Data no vàlida",
+      "invalid_email_message": "«{address}» no és una adreça electrònica vàlida.",
+      "invalid_email_title": "Adreça electrònica no vàlida",
+      "label": "Etiqueta",
+      "label_placeholder": "Feina, Personal, …",
+      "missing_address_book": "Falta la llibreta d'adreces",
+      "missing_info": "Falta informació",
+      "name_or_email_required": "Afegiu un nom o almenys una adreça electrònica.",
+      "new_organization": "Organització nova",
+      "org_name_required": "Afegiu el nom de l'organització.",
+      "photo_hint_mobile": "Toqueu la foto per triar una imatge",
+      "photo_permission_message": "Concediu permís per a la galeria de fotos per triar una foto de contacte.",
+      "photo_permission_title": "Cal accés a les fotos",
+      "pick_date": "Tria una data",
+      "pronouns": "Pronoms",
+      "pronouns_placeholder": "ella/ell",
+      "url": "URL"
+    },
+    "group": "Grup",
+    "groups": {
+      "add_member": "Afegeix un membre",
+      "add_members": "Afegeix membres",
+      "add_members_failed": "No s'han pogut afegir els membres",
+      "create_ellipsis": "Grup nou…",
+      "delete_confirm_named": "Voleu suprimir «{name}»? Els membres no se suprimiran.",
+      "delete_failed": "No s'ha pogut suprimir el grup",
+      "email_all": "Envia un correu a tots",
+      "members_with_count": "Membres ({count})",
+      "no_emails": "Cap adreça electrònica",
+      "no_members_hint": "Toqueu «Afegeix un membre» per començar",
+      "not_found": "No s'ha trobat el grup",
+      "remove_member": "Treu el membre",
+      "remove_member_confirm": "Voleu treure «{name}» d'aquest grup?",
+      "remove_member_failed": "No s'ha pogut treure el membre"
+    },
+    "import": {
+      "change_target": "Canvia",
+      "choose_file_mobile": "Tria un fitxer vCard",
+      "failed_count": "{count, plural, one {No s'ha pogut importar # contacte.} other {No s'han pogut importar # contactes.}}",
+      "import_count": "Importa {count}",
+      "into_address_book": "Importa a la llibreta d'adreces",
+      "into_named": "Importa a {name}",
+      "no_address_book": "Creeu una llibreta d'adreces abans d'importar contactes.",
+      "picker_failed": "No s'ha pogut obrir el selector de fitxers"
+    },
+    "no_tags_hint": "Encara no hi ha etiquetes. Escriviu-ne una a dalt.",
+    "picker": {
+      "add_count": "{count, plural, =0 {Afegeix} other {Afegeix (#)}}",
+      "title": "Afegeix un contacte"
+    },
+    "rename_tag_hint_mobile": "Manteniu premuda una etiqueta per canviar-ne el nom",
+    "tag_name_placeholder": "Nom de l'etiqueta nova",
+    "unnamed": "Sense nom"
+  },
+  "context_menu": {
+    "color_tag": "Etiqueta",
+    "remove_color": "Elimina l'etiqueta"
+  },
+  "device_sync": {
+    "auth_problem_text": "El servidor ja no accepta l'inici de sessió de {account}, de manera que els seus contactes i calendaris d'aquest dispositiu han deixat de sincronitzar-se. Torneu a iniciar la sessió per reprendre la sincronització. Els canvis fets en aquest dispositiu es conserven.",
+    "auth_problem_title": "Torneu a iniciar la sessió per continuar sincronitzant",
+    "problem_channel": "Problemes de sincronització",
+    "sign_out_anyway": "Tanca la sessió",
+    "sign_out_pending_message": "{count, plural, one {# canvi fet en aquest dispositiu no ha arribat al servidor. Es perdrà si tanqueu la sessió ara.} other {# canvis fets en aquest dispositiu no han arribat al servidor. Es perdran si tanqueu la sessió ara.}}",
+    "sign_out_pending_title": "Voleu tancar la sessió igualment?",
+    "sign_out_unknown_message": "És possible que els canvis fets en aquest dispositiu no hagin arribat al servidor. Es perdran si tanqueu la sessió ara.",
+    "signed_out_text": "S'ha tancat la sessió de {account}, de manera que els seus contactes i calendaris d'aquest dispositiu ja no se sincronitzen. Torneu a iniciar la sessió per reprendre la sincronització. Els canvis fets en aquest dispositiu es conserven.",
+    "signed_out_title": "Inicieu la sessió per continuar sincronitzant",
+    "signing_out": "S'estan eliminant d'aquest dispositiu els contactes i calendaris sincronitzats…"
+  },
+  "email_composer": {
+    "attach_camera": "Càmera",
+    "attachment_reminder_body": "El vostre missatge esmenta «{keyword}», però no hi ha cap fitxer adjunt. Voleu enviar-lo igualment?",
+    "attachment_reminder_title": "Us heu oblidat d'un fitxer adjunt?",
+    "attachments_too_large_total": "Els fitxers adjunts superarien els {max} que aquest servidor permet per missatge.",
+    "editor_unavailable": "No s'ha pogut llegir el contingut del missatge. Copieu el text i, després, tanqueu i torneu a obrir el redactor.",
+    "from_options": "Opcions del remitent",
+    "group_chip": "{name} ({count})",
+    "identity_unavailable": "Identitat no disponible",
+    "image_load_failed": "No s'ha pogut carregar la imatge",
+    "no_recipient": "(sense destinatari)",
+    "no_sent_folder": "No s'ha trobat la carpeta Enviats",
+    "permission_camera": "Cal permís per a la càmera per fer una foto.",
+    "permission_photos": "Cal permís per a la galeria de fotos per adjuntar imatges.",
+    "recipient_add_contact": "Afegeix als contactes",
+    "recipient_copy": "Copia l'adreça",
+    "recipient_move_to": "Mou a {field}",
+    "recipient_remove": "Elimina",
+    "remove_attachment": "Elimina el fitxer adjunt",
+    "save_draft": "Desa l'esborrany",
+    "save_failed_no_drafts": "No hi ha cap carpeta Esborranys on desar aquest esborrany.",
+    "save_failed_no_identity": "No s'han pogut carregar les vostres identitats de remitent, per tant no es pot desar aquest esborrany. Comproveu la connexió o copieu el text abans de tancar.",
+    "schedule_custom": "Tria la data i l'hora…",
+    "schedule_in_1h": "D'aquí a 1 hora",
+    "schedule_in_3h": "D'aquí a 3 hores",
+    "schedule_past_body": "L'hora programada ha de ser en el futur.",
+    "schedule_past_title": "Trieu una hora futura",
+    "schedule_tomorrow": "Demà, 8:00",
+    "schedule_tomorrow_morning": "Demà al matí",
+    "schedule_too_late_body": "És més tard del que permet aquest servidor. Trieu una hora anterior.",
+    "schedule_too_late_title": "Massa endavant",
+    "schedule_unsupported_body": "Aquest servidor de correu no admet l'enviament programat.",
+    "schedule_unsupported_title": "Programació no disponible",
+    "scheduled_body": "El vostre missatge s'enviarà el {time}.",
+    "scheduled_title": "Programat",
+    "send_now": "Envia ara",
+    "send_timeout_body": "És possible que el missatge ja s'hagi enviat. Comproveu la carpeta Enviats abans de tornar-lo a enviar.",
+    "send_timeout_title": "El servidor no respon",
+    "undo_send_label": "S'envia d'aquí a {seconds} s…",
+    "upload_failed_short": "No s'ha pogut pujar",
+    "uploading": "Pujant...",
+    "uploading_pct": "S'està pujant {pct}%",
+    "validation": {
+      "subject_required": "Afegiu un assumpte"
+    }
+  },
+  "email_list": {
+    "cross_account_move_offline": "Per moure entre comptes cal connexió",
+    "emails_archived_count": "{count, plural, one {S'ha arxivat # correu} other {S'han arxivat # correus}}",
+    "emails_moved_to": "{count, plural, one {S'ha mogut # correu} other {S'han mogut # correus}} a {mailbox}",
+    "error": "Error",
+    "filter_chip": "{field}: {value}",
+    "filter_title": "Filtra els correus",
+    "folder_counts": "{total} en total · {unread} sense llegir",
+    "import": {
+      "none": "No s'ha importat cap missatge.",
+      "partial": "Importats: {imported}. Amb errors: {failed}.",
+      "success": "{count, plural, one {S'ha importat # missatge.} other {S'han importat # missatges.}}",
+      "title": "Importació"
+    },
+    "marked_as_spam": "S'ha marcat com a correu brossa",
+    "marked_as_spam_count": "{count, plural, one {S'ha marcat # correu} other {S'han marcat # correus}} com a correu brossa",
+    "marked_not_spam": "S'ha marcat com a no brossa",
+    "marked_not_spam_count": "{count, plural, one {S'ha marcat # correu} other {S'han marcat # correus}} com a no brossa",
+    "move_same_account": "Els missatges només es poden moure dins del mateix compte",
+    "moved_to_trash": "S'ha mogut el correu a la paperera",
+    "moved_to_trash_count": "{count, plural, one {S'ha mogut # correu} other {S'han mogut # correus}} a la paperera",
+    "no_archive_folder": "No s'ha trobat cap carpeta Arxiu al servidor.",
+    "no_emails_in": "No hi ha correus a {folder}",
+    "no_junk_folder": "No s'ha trobat cap carpeta de correu brossa al servidor.",
+    "no_mailboxes": "No s'ha trobat cap bústia",
+    "no_mailboxes_hint": "Comproveu que el vostre compte JMAP tingui la capacitat de correu.",
+    "no_tags_defined": "No hi ha cap etiqueta definida. Afegiu-ne a Configuració.",
+    "no_trash_folder": "No s'ha trobat cap carpeta Paperera al servidor. Comproveu la configuració de les bústies.",
+    "offline_nothing_cached": "Sense connexió. No es mostra res perquè encara no hi ha correu a la memòria cau.",
+    "open_draft_failed": "No s'ha pogut obrir l'esborrany.",
+    "outbox_discard": "Descarta",
+    "outbox_failed": "No s'han pogut desar {count} canvis al servidor.",
+    "recent_searches": "Cerques recents",
+    "remove_filter": "Elimina el filtre {label}",
+    "scope_all_folders": "Totes les carpetes",
+    "scope_this_folder": "Aquesta carpeta",
+    "search_placeholder": "Cerca al correu...",
+    "showing_cached": "Es mostra el correu de la memòria cau",
+    "sort_toggle_hint": "Inverteix l'ordre dels correus",
+    "swipe_move": "Mou",
+    "swipe_spam": "Brossa",
+    "total": "en total",
+    "undo_failed": "No s'ha pogut desfer",
+    "unknown_tag": "no definida aquí"
+  },
+  "email_viewer": {
+    "add_sender_to_contacts": "Afegeix el remitent als contactes",
+    "address_actions": {
+      "add_contact": "Afegeix als contactes",
+      "compose": "Missatge nou",
+      "copy": "Copia l'adreça",
+      "copy_failed": "No s'ha pogut copiar l'adreça."
+    },
+    "attachment_actions": {
+      "open": "Obre",
+      "preview": "Previsualitza",
+      "save": "Desa",
+      "share": "Comparteix"
+    },
+    "attachment_failed": "No s'ha pogut obrir el fitxer adjunt",
+    "authentication": {
+      "spoof_warning": "No s'ha pogut verificar l'adreça del remitent: aquest missatge podria ser falsificat."
+    },
+    "body_truncated": "Aquest missatge és massa gran per mostrar-lo sencer.",
+    "bundle_too_large": "Els fitxers adjunts són massa grans per agrupar-los.",
+    "color_tag": {
+      "blue": "Blau",
+      "green": "Verd",
+      "none": "Cap",
+      "orange": "Taronja",
+      "pink": "Rosa",
+      "purple": "Porpra",
+      "red": "Vermell",
+      "title": "Etiqueta de color",
+      "yellow": "Groc"
+    },
+    "delete_permanently_message": "Aquest missatge se suprimirà permanentment i no es podrà recuperar.",
+    "delete_permanently_title": "Voleu suprimir-lo permanentment?",
+    "details": {
+      "attachment_count_size": "{count, plural, one {# fitxer} other {# fitxers}} · {size}",
+      "received_after_delay": "{date} · lliurament en {delay}",
+      "spam_score_value": "{score} ({status})"
+    },
+    "export_failed": "No s'ha pogut exportar",
+    "forwarded": "Reenviat",
+    "load_failed": "No s'ha pogut carregar el correu",
+    "preview": {
+      "open_external": "Obre en una aplicació",
+      "pdf_external": "Els PDF s'obren amb el visualitzador de PDF d'aquest dispositiu.",
+      "unsupported": "No hi ha previsualització per a aquest tipus de fitxer."
+    },
+    "received_via": "per a {name}",
+    "remove_color": "Elimina l'etiqueta",
+    "replied": "Respost",
+    "sender_actions": "Remitent…",
+    "set_color": "Estableix l'etiqueta",
+    "show_all_count": "Mostra-ho tot ({count})",
+    "show_less": "Mostra'n menys",
+    "smime_unsupported": "Signat/xifrat amb S/MIME: no és compatible amb el mòbil",
+    "source_too_large": "El missatge és massa gran per mostrar-lo sencer. Compartiu-ne el codi font complet.",
+    "thread_loading": "Carregant la conversa...",
+    "unsubscribe_banner": {
+      "no_identity": "No hi ha cap identitat d'enviament disponible"
+    },
+    "view_dark_mode": "Mostra en mode fosc",
+    "view_light_mode": "Mostra en mode clar"
+  },
+  "files": {
+    "delete_cascade_hint": "Les carpetes se suprimeixen amb tot el que contenen. Això no es pot desfer.",
+    "delete_item_title": "Voleu suprimir aquest element?",
+    "delete_items_title": "{count, plural, one {Voleu suprimir # element?} other {Voleu suprimir # elements?}}",
+    "done": "Fet",
+    "download_failed_status": "No s'ha pogut baixar (HTTP {status})",
+    "folder_empty": "Aquesta carpeta és buida",
+    "invalid_name": "Nom no vàlid",
+    "invalid_name_slash": "Els noms no poden contenir «/».",
+    "move_to": "Mou a…",
+    "open_error": "No s'ha pogut obrir el fitxer",
+    "open_with": "Obre amb…",
+    "preview_too_large": "Aquest fitxer és massa gran per previsualitzar-lo.",
+    "selected_count": "{count, plural, one {# seleccionat} other {# seleccionats}}",
+    "share_add_people": "Afegeix persones",
+    "share_empty": "Encara no s'ha compartit amb ningú",
+    "share_error": "No s'ha pogut actualitzar la compartició",
+    "share_file_error": "No s'ha pogut compartir el fitxer",
+    "share_folder_hint": "Si compartiu una carpeta, se'n comparteix tot el contingut.",
+    "share_no_matches": "Cap coincidència",
+    "share_no_users": "No s'ha trobat cap altre usuari",
+    "share_remove": "Elimina l'accés",
+    "share_role_custom": "Personalitzat",
+    "share_search_placeholder": "Cerca per nom o correu electrònic",
+    "share_unavailable": "La compartició no està disponible en aquest dispositiu",
+    "shared_with": "Compartit amb",
+    "sharing_access": "Compartició i accés",
+    "upload_unavailable": "El selector de fitxers no està inclòs en aquesta compilació. Torneu a compilar l'aplicació per activar les pujades.",
+    "uploading_progress": "S'està pujant {current}/{total} · {name}"
+  },
+  "identities": {
+    "badge": {
+      "to": "per a {identity}",
+      "via": "mitjançant {identity}"
+    }
+  },
+  "login": {
+    "mobile": {
+      "add_subtitle": "Ja hi heu iniciat la sessió.",
+      "add_title": "Afegeix un altre compte",
+      "camera_allow": "Permet l'accés a la càmera",
+      "camera_disabled": "L'accés a la càmera està desactivat. Activeu-lo a Configuració per escanejar un codi QR d'inici de sessió.",
+      "camera_needed": "El Bulwark Mail necessita accés a la càmera per escanejar un codi QR d'inici de sessió.",
+      "choose_subtitle": "Trieu com voleu iniciar la sessió.",
+      "confirm_check": "Comproveu que sigui correcte",
+      "confirm_found": "Hem trobat el vostre servidor de correu",
+      "confirm_subtitle": "A continuació, iniciareu la sessió a la pàgina del vostre proveïdor.",
+      "connecting": "S'està connectant a {host}",
+      "connecting_detail": "S'està configurant la bústia…",
+      "continue": "Continua",
+      "different_server": "Utilitza un altre servidor",
+      "elsewhere_title": "Un compte en un altre lloc",
+      "email_desc": "Trobarem el vostre servidor de correu",
+      "email_step_hint": "Funciona amb Stalwart i amb qualsevol altre servidor de correu JMAP.",
+      "email_step_subtitle": "Normalment és tot el que necessitem per trobar el vostre servidor de correu.",
+      "email_step_title": "Quina és la vostra adreça electrònica?",
+      "email_step_title_add": "Quina és l'altra adreça?",
+      "email_title": "Utilitza la meva adreça electrònica",
+      "err_account_limit_detail": "Suprimiu un compte a la configuració per afegir-ne un altre.",
+      "err_bad_detail": "Comproveu el correu electrònic i la contrasenya. Si el vostre compte utilitza l'autenticació de dos factors, creeu una contrasenya d'aplicació al webmail i utilitzeu-la aquí.",
+      "err_bad_title": "No ha funcionat",
+      "err_cert_detail": "S'ha rebutjat el certificat de seguretat del servidor. Si és el vostre propi servidor, comproveu que el certificat sigui vàlid i no hagi caducat.",
+      "err_cert_title": "No s'ha pogut verificar {host}",
+      "err_code_expired_detail": "Els codis d'inici de sessió són vàlids durant dos minuts. Mostreu-ne un de nou al webmail i torneu-lo a escanejar.",
+      "err_code_expired_or_used_detail": "Mostreu-ne un de nou al webmail i torneu-lo a escanejar.",
+      "err_code_expired_or_used_title": "Aquest codi ha caducat o ja s'ha utilitzat",
+      "err_code_expired_title": "Aquest codi ha caducat",
+      "err_code_invalid_detail": "Mostreu un codi nou al webmail (Configuració → Seguretat → Enllaça l'aplicació mòbil) i escanegeu-lo.",
+      "err_code_invalid_title": "Aquest codi no és vàlid",
+      "err_code_used_detail": "Cada codi només funciona una vegada. Mostreu-ne un de nou al webmail i torneu-lo a escanejar.",
+      "err_code_used_title": "Aquest codi ja s'ha utilitzat",
+      "err_generic_detail": "Alguna cosa ha anat malament. Torneu-ho a provar.",
+      "err_generic_title": "Ha fallat l'inici de sessió",
+      "err_interrupted_detail": "La resposta no coincideix amb la sol·licitud que vam iniciar. Torneu a iniciar la sessió.",
+      "err_interrupted_title": "S'ha interromput l'inici de sessió",
+      "err_no_server_detail": "Reviseu l'adreça o, en lloc d'això, escanegeu un codi d'inici de sessió des del webmail.",
+      "err_no_server_title": "No hi ha cap servidor de correu a {host}",
+      "err_no_webmail_detail": "Aquest servidor no té webmail del Bulwark ni inici de sessió OAuth. Utilitzeu una contrasenya (o una contrasenya d'aplicació).",
+      "err_no_webmail_title": "No hi ha cap pàgina d'inici de sessió a {host}",
+      "err_pair_connect_detail": "Mostreu un codi nou a l'ordinador i torneu-lo a escanejar.",
+      "err_pair_connect_title": "Sessió iniciada, però no s'ha pogut connectar a {host}",
+      "err_pair_insecure_detail": "{host} vol utilitzar una connexió sense xifrar.",
+      "err_pair_network_detail": "Comproveu la connexió i que el telèfon pugui accedir al webmail, i torneu-ho a provar.",
+      "err_pair_rate_detail": "Espereu un minut i torneu-ho a provar.",
+      "err_pair_server_detail": "Torneu-ho a provar amb un codi nou. Si continua fallant, consulteu l'administrador.",
+      "err_pair_server_title": "El webmail no ha pogut completar l'inici de sessió",
+      "err_pair_unsupported_detail": "{host} no admet codis d'inici de sessió. Potser necessita una actualització, o l'enllaç apunta a una adreça incorrecta.",
+      "err_pair_unsupported_title": "Aquest webmail no pot enllaçar dispositius",
+      "err_pair_untrusted_detail": "{host} ha enviat dades d'inici de sessió per a un servidor que l'aplicació no pot verificar.",
+      "err_pair_untrusted_title": "No es pot confiar en aquest inici de sessió",
+      "err_rate_detail": "El servidor ens ha demanat que esperem un moment. Torneu-ho a provar d'aquí a poc.",
+      "err_rate_detail_seconds": "El servidor ens ha demanat que esperem. Torneu-ho a provar d'aquí a uns {seconds} segons.",
+      "err_rate_title": "Massa intents",
+      "err_server_detail": "El servidor ha respost amb un error. Torneu-ho a provar d'aquí a uns minuts.",
+      "err_server_title": "{host} té problemes",
+      "err_totp_bad_detail": "Comproveu la contrasenya i el codi actual de l'aplicació d'autenticació i torneu-ho a provar.",
+      "err_totp_detail": "Aquest compte està protegit amb autenticació de dos factors. Escriviu el codi de 6 dígits de l'aplicació d'autenticació.",
+      "err_totp_title": "Introduïu el codi de dos factors",
+      "err_unreachable_detail": "Comproveu la connexió i l'adreça del servidor i torneu-ho a provar.",
+      "err_unreachable_title": "No es pot accedir a {host}",
+      "know_server": "Conec l'adreça del meu servidor",
+      "known_server_desc": "Ja coneixem aquest servidor, així que no cal configurar res",
+      "known_server_title": "Un altre compte a {host}",
+      "link_confirm_connect": "Un enllaç demana iniciar la sessió en aquesta pàgina. Continueu només si utilitzeu {host} per al correu.",
+      "link_confirm_connect_add": "Un enllaç demana afegir un compte iniciant la sessió en aquesta pàgina. Continueu només si utilitzeu {host} per al correu.",
+      "link_confirm_connect_title": "Voleu obrir la pàgina d'inici de sessió de {host}?",
+      "link_confirm_pair": "Aquest enllaç inicia la sessió en un compte de {host}. Continueu només si acabeu de mostrar un codi d'inici de sessió a l'ordinador.",
+      "link_confirm_pair_add": "Aquest enllaç afegeix un compte de {host} i hi canvia l'aplicació. Continueu només si acabeu de mostrar un codi d'inici de sessió a l'ordinador.",
+      "link_confirm_title": "Voleu iniciar la sessió amb un enllaç?",
+      "looking_up": "S'està cercant el vostre servidor…",
+      "manual": "Introdueix les dades del servidor manualment",
+      "notice_bad_qr": "Aquest codi no és un codi d'inici de sessió del Bulwark",
+      "notice_bad_qr_detail": "Obriu el Bulwark al web i aneu a Configuració → Seguretat → Enllaça l'aplicació mòbil per mostrar-ne un.",
+      "notice_bad_server": "No sembla l'adreça d'un servidor",
+      "notice_bad_server_detail": "Proveu l'adreça que utilitzeu per al webmail, com ara mail.example.com.",
+      "notice_full_email": "Introduïu una adreça electrònica completa",
+      "notice_full_email_detail": "Com ara ada@example.com. Si inicieu la sessió amb un nom d'usuari, utilitzeu «Conec l'adreça del meu servidor».",
+      "notice_need_code": "Introduïu el codi de 6 dígits de l'aplicació d'autenticació",
+      "notice_need_credentials": "Introduïu el correu electrònic i la contrasenya",
+      "notice_need_server": "Primer necessitem l'adreça d'un servidor",
+      "open_settings": "Obre la configuració",
+      "opening": "S'està obrint {host}",
+      "opening_detail": "Acabeu d'iniciar la sessió a la pàgina que s'acaba d'obrir. Nosaltres ens encarreguem de la resta.",
+      "pairing": "S'està bescanviant el codi d'inici de sessió",
+      "pairing_detail": "S'està aparellant aquest dispositiu amb {host}…",
+      "password_subtitle": "La contrasenya només s'envia a aquest servidor i es desa al magatzem segur del dispositiu.",
+      "password_title": "Inicia la sessió a {host}",
+      "paste_button": "Enganxa",
+      "paste_clipboard_empty": "No hi ha res per enganxar. Primer copieu l'enllaç al webmail.",
+      "paste_hint": "Al webmail, obriu Configuració → Seguretat → Enllaça l'aplicació mòbil, copieu l'enllaç d'inici de sessió i enganxeu-lo aquí.",
+      "paste_invalid": "Això no és un enllaç d'inici de sessió del Bulwark",
+      "paste_label": "Enllaç d'inici de sessió",
+      "paste_title": "Enganxa l'enllaç d'inici de sessió",
+      "provider_detail": "L'escriureu a la seva pàgina. El Bulwark només desa un testimoni d'inici de sessió, que podeu revocar en qualsevol moment.",
+      "provider_title": "La contrasenya es queda amb el vostre proveïdor",
+      "qr_hint": "Configuració → Seguretat → Enllaça l'aplicació mòbil mostra un codi. Apunteu-hi la càmera.",
+      "qr_hint_title": "Obriu el Bulwark a l'ordinador",
+      "qr_title": "Codi d'inici de sessió",
+      "scan_desc": "La manera més ràpida si ja heu iniciat la sessió al web",
+      "scan_title": "Escaneja un codi d'inici de sessió",
+      "server_hint": "La mateixa adreça que escriviu al navegador. Hi afegirem https://.",
+      "server_label": "Adreça del servidor",
+      "server_not_found": "No hem trobat cap servidor per a {domain}. Si l'allotgeu vosaltres, l'adreça és la que utilitzeu per al webmail.",
+      "server_paste_hint": "Teniu un enllaç d'inici de sessió? Enganxeu-lo aquí.",
+      "server_scan_hint": "Si no n'esteu segur, escanegeu un codi d'inici de sessió. Inclou l'adreça del servidor.",
+      "server_subtitle": "Introduïu l'adreça que utilitzeu per accedir al webmail.",
+      "server_title": "Quina és l'adreça del vostre servidor?",
+      "the_server": "el servidor",
+      "unencrypted": "Connexió sense xifrar",
+      "use_password": "Inicia la sessió amb una contrasenya",
+      "username_label": "Correu electrònic o nom d'usuari",
+      "your_server": "el vostre servidor"
+    }
+  },
+  "offline": {
+    "banner": "No teniu connexió",
+    "queued_changes": "{count, plural, one {# canvi es sincronitzarà} other {# canvis se sincronitzaran}} quan us torneu a connectar",
+    "sync": {
+      "cached_count": "{count, plural, one {# missatge nou a la memòria cau} other {# missatges nous a la memòria cau}} • {size}",
+      "cancelled": "S'ha cancel·lat la sincronització",
+      "failed": "Ha fallat la sincronització sense connexió",
+      "processed": "{completed}/{total} processats",
+      "ready": "El correu sense connexió és a punt",
+      "syncing": "S'està sincronitzant el correu sense connexió",
+      "title": "Sincronització sense connexió",
+      "unable_to_download": "No s'ha pogut baixar",
+      "up_to_date": "Ja està al dia"
+    }
+  },
+  "push_prompt": {
+    "body": "Activeu les notificacions en segon pla perquè els missatges nous us arribin amb l'aplicació tancada.",
+    "dismiss": "Ara no",
+    "enable": "Activa",
+    "title": "Rebeu avisos de correu nou"
+  },
+  "scheduled": {
+    "cancel_body": "El missatge no s'entregarà. Se'n conserva una còpia a la carpeta Enviats.",
+    "cancel_failed": "No s'ha pogut cancel·lar",
+    "edit_failed": "No s'ha pogut obrir el missatge per editar-lo",
+    "keep_scheduled": "Mantén-lo programat",
+    "reschedule_failed": "No s'ha pogut reprogramar",
+    "send_now_failed": "No s'ha pogut enviar ara"
+  },
+  "settings": {
+    "account": {
+      "accounts": {
+        "description_mobile": "Reordeneu com apareixen els comptes al selector de comptes, trieu el predeterminat o tanqueu-ne la sessió.",
+        "limit": "S'ha arribat al màxim de {count} comptes."
+      },
+      "shared_accounts": {
+        "description_manage": "Comptes de grup i compartits que podeu llegir a través d'aquest compte. Seleccioneu-ne un per gestionar-ne els filtres i la resposta automàtica."
+      },
+      "unknown": "Desconegut"
+    },
+    "advanced": {
+      "about": {
+        "deprecated_update": "Cal actualitzar: {version}",
+        "mobile_title": "Bulwark Mobile",
+        "security_update": "Actualització de seguretat: {version}",
+        "update_available": "Actualització: {version}",
+        "update_store_hint": "disponible a TestFlight / App Store"
+      },
+      "export_settings": {
+        "saved_to": "S'ha desat a {path}"
+      },
+      "reset_settings": {
+        "done": "S'ha restablert tota la configuració als valors per defecte."
+      }
+    },
+    "appearance": {
+      "language": {
+        "restart_for_direction": "Reinicieu l'aplicació per aplicar la nova direcció del text.",
+        "system_default": "Predeterminat del sistema"
+      },
+      "toolbar_labels": {
+        "description_mobile": "Mostra etiquetes de text al costat de les icones de la barra d'eines."
+      }
+    },
+    "badges": {
+      "experimental": "Experimental",
+      "not_implemented": "No implementat",
+      "unavailable": "No disponible"
+    },
+    "contacts": {
+      "book_count": "{count, plural, one {# contacte} other {# contactes}}",
+      "default_book": "Llibreta d'adreces predeterminada",
+      "description_mobile": "Preferències de visualització i eines de la llibreta d'adreces.",
+      "device_sync_desc": "Mostra les vostres llibretes d'adreces a l'aplicació Contactes i a altres aplicacions d'aquest dispositiu. Els canvis se sincronitzen en tots dos sentits.",
+      "device_sync_title": "Sincronitza amb aquest dispositiu",
+      "export_description_count": "{count, plural, one {Exporta # contacte com un únic fitxer vCard.} other {Exporta # contactes com un únic fitxer vCard.}}",
+      "export_empty": "No hi ha contactes per exportar",
+      "import_description_mobile": "Importa contactes des d'un fitxer vCard (.vcf) amb detecció de duplicats.",
+      "manage_description_mobile": "Creeu, canvieu el nom i suprimiu les llibretes d'adreces que organitzen els contactes."
+    },
+    "device_sync": {
+      "also_synced_by": "També se sincronitza per a {accounts}, per això apareix dues vegades en aquest dispositiu.",
+      "android_settings": "Configuració del compte d'Android",
+      "blocked_calendar": "Android ja no demana accés als calendaris. Permeteu-lo a la configuració de l'aplicació i torneu a activar la sincronització.",
+      "blocked_contacts": "Android ja no demana accés als contactes. Permeteu-lo a la configuració de l'aplicació i torneu a activar la sincronització.",
+      "blocked_title": "L'accés està desactivat",
+      "books_default": "Les vostres llibretes d'adreces se sincronitzen; les compartides, només si les trieu.",
+      "books_hint": "Les vostres llibretes d'adreces se sincronitzen tret que les desactiveu; les compartides, només si les activeu.",
+      "books_label": "Llibretes d'adreces",
+      "calendars_default": "Els vostres calendaris se sincronitzen; els compartits, només si els trieu.",
+      "calendars_hint": "Els vostres calendaris se sincronitzen tret que els desactiveu; els compartits, només si els activeu. Les llistes de tasques es queden al Bulwark.",
+      "calendars_label": "Calendaris",
+      "choose": "Tria",
+      "choose_books_title": "Llibretes d'adreces per sincronitzar",
+      "choose_calendars_title": "Calendaris per sincronitzar",
+      "collections_count": "Sincronització: {selected} de {total}",
+      "continue": "Continua",
+      "deletions_delete": "Suprimeix al servidor",
+      "deletions_message": "S'han suprimit molts elements alhora en aquest dispositiu, de manera que no s'han suprimit al servidor. Suprimiu-los també allà o recupereu-los en aquest dispositiu.",
+      "deletions_restore": "Recupera'ls",
+      "deletions_title": "Voleu suprimir-los també al servidor?",
+      "denied_calendar": "Sense accés als calendaris, el Bulwark no pot posar els vostres calendaris en aquest dispositiu.",
+      "denied_contacts": "Sense accés als contactes, el Bulwark no pot posar les vostres llibretes d'adreces en aquest dispositiu.",
+      "denied_title": "La sincronització continua desactivada",
+      "failed_title": "No s'ha pogut activar la sincronització",
+      "grant_access": "Concedeix l'accés",
+      "interval_15m": "Cada 15 minuts",
+      "interval_1h": "Cada hora",
+      "interval_30m": "Cada 30 minuts",
+      "interval_6h": "Cada 6 hores",
+      "interval_desc": "Amb quina freqüència sincronitza Android pel seu compte. Els canvis fets al Bulwark i els que arriben per push se sincronitzen abans.",
+      "interval_label": "Interval de sincronització",
+      "interval_manual": "Sense sincronització periòdica",
+      "keep_syncing": "Continua sincronitzant",
+      "list_error_auth": "El servidor no ha acceptat l'inici de sessió.",
+      "list_error_network": "No s'ha pogut connectar amb el servidor.",
+      "list_error_server": "El servidor no n'ha pogut mostrar la llista.",
+      "list_error_signed_out": "Aquest compte no té la sessió iniciada en aquest dispositiu.",
+      "master_off": "La sincronització automàtica està desactivada en aquest dispositiu, de manera que només se sincronitza quan toqueu «Sincronitza ara».",
+      "new_contacts_default": "Llibreta d'adreces predeterminada",
+      "new_contacts_desc": "La llibreta d'adreces per als contactes creats en altres aplicacions d'aquest dispositiu.",
+      "new_contacts_label": "Desa els contactes nous a",
+      "no_books": "Aquest compte no té cap llibreta d'adreces.",
+      "no_calendars": "Aquest compte no té cap calendari per sincronitzar.",
+      "ok": "D'acord",
+      "open_app_settings": "Obre la configuració",
+      "own_collections": "Personals",
+      "rationale_calendar": "Per mostrar els vostres calendaris a l'aplicació Calendari, el Bulwark necessita accés als calendaris d'aquest dispositiu. Només modifica els calendaris del seu propi compte.",
+      "rationale_contacts": "Per mostrar les vostres llibretes d'adreces a l'aplicació Contactes, el Bulwark necessita accés als contactes d'aquest dispositiu. Només modifica els contactes del seu propi compte.",
+      "rationale_title_calendar": "Permet l'accés als calendaris",
+      "rationale_title_contacts": "Permet l'accés als contactes",
+      "read_only": "Només lectura",
+      "reminder_owner_bulwark": "Bulwark",
+      "reminder_owner_device": "Aplicació Calendari",
+      "reminder_question_message": "Els recordatoris dels esdeveniments sincronitzats poden venir de l'aplicació de calendari d'aquest dispositiu o del Bulwark. Trieu-ne un perquè no rebeu els recordatoris dues vegades. Ho podeu canviar més endavant.",
+      "reminder_question_title": "Qui us ha d'enviar els recordatoris?",
+      "reminders_desc": "Qui us recorda els esdeveniments sincronitzats. L'altre no avisa, perquè no rebeu els recordatoris dues vegades.",
+      "reminders_label": "Recordatoris",
+      "reminders_nobody": "Les notificacions d'esdeveniments del Bulwark estan desactivades, de manera que res no us recorda els esdeveniments sincronitzats.",
+      "remove": "Elimina",
+      "remove_from_device": "Elimina d'aquest dispositiu",
+      "remove_message": "Els contactes i calendaris del compte s'eliminen d'aquest dispositiu. Els canvis fets aquí que no hagin arribat al servidor es perden.",
+      "remove_title": "Voleu eliminar-ho d'aquest dispositiu?",
+      "review_deletions": "Revisa les supressions",
+      "shared_by": "Compartit per {name}",
+      "sign_in_again": "Torna a iniciar la sessió",
+      "status_auth": "El servidor ja no accepta l'inici de sessió. Torneu a iniciar la sessió per continuar sincronitzant.",
+      "status_cancelled": "L'última sincronització s'ha aturat abans d'hora. Continuarà la propera vegada.",
+      "status_failed": "Ha fallat l'última sincronització: {message}",
+      "status_failed_plain": "Ha fallat l'última sincronització.",
+      "status_io": "No s'ha pogut connectar amb el servidor {when}. Android ho tornarà a provar.",
+      "status_item_errors": "{count, plural, one {No s'ha pogut sincronitzar # element.} other {No s'han pogut sincronitzar # elements.}}",
+      "status_off": "Desactivada",
+      "status_paused": "En pausa a la configuració d'Android",
+      "status_permission_calendar": "S'ha desactivat l'accés als calendaris, de manera que no se sincronitza res.",
+      "status_permission_contacts": "S'ha desactivat l'accés als contactes, de manera que no se sincronitza res.",
+      "status_removed": "S'ha eliminat a la configuració d'Android. Activeu la sincronització per tornar a afegir el compte.",
+      "status_safety_abort": "S'ha aturat: el servidor no ha retornat res, però aquest dispositiu encara conté elements. Comproveu el servidor i torneu a sincronitzar.",
+      "status_synced": "Sincronitzat {when}",
+      "status_syncing": "S'està sincronitzant…",
+      "status_too_many_deletions": "S'han suprimit molts elements en aquest dispositiu. No se suprimiran al servidor fins que no ho confirmeu.",
+      "status_unsupported_calendar": "El servidor no ofereix calendaris per a aquest compte.",
+      "status_unsupported_contacts": "El servidor no ofereix llibretes d'adreces per a aquest compte.",
+      "status_waiting": "S'està esperant la primera sincronització",
+      "status_waiting_next": "S'està esperant la propera sincronització",
+      "suspended_desc": "Sessió tancada. Els seus contactes i calendaris es queden en aquest dispositiu, amb els canvis fets aquí, i es tornaran a sincronitzar quan inicieu la sessió.",
+      "switch_label": "Sincronitza {account} amb aquest dispositiu",
+      "sync_now": "Sincronitza ara",
+      "turn_off_anyway": "Desactiva",
+      "turn_off_failed": "No s'han pogut eliminar les dades sincronitzades d'aquest dispositiu. La sincronització està en pausa; torneu-ho a provar més tard.",
+      "turn_off_failed_title": "No s'ha pogut desactivar la sincronització",
+      "turn_off_pending": "{count, plural, one {# canvi fet en aquest dispositiu encara no ha arribat al servidor. Es perdrà si desactiveu la sincronització ara.} other {# canvis fets en aquest dispositiu encara no han arribat al servidor. Es perdran si desactiveu la sincronització ara.}}",
+      "turn_off_title": "Voleu desactivar-la igualment?",
+      "turn_off_unknown": "El Bulwark no ha pogut comprovar si els canvis fets en aquest dispositiu han arribat al servidor. Es perdran si desactiveu la sincronització ara.",
+      "turning_off": "S'estan pujant els canvis i després s'eliminaran les dades d'aquest dispositiu…",
+      "turning_on": "S'està configurant…"
+    },
+    "downloads": {
+      "attachment_template": {
+        "description_mobile": "Plantilla utilitzada en desar o compartir un fitxer adjunt."
+      },
+      "email_template": {
+        "description_mobile": "Plantilla utilitzada en exportar un missatge com a fitxer .eml."
+      },
+      "strip_diacritics": {
+        "description_mobile": "Converteix les lletres accentuades a ASCII simple (ä → a)."
+      },
+      "transform_description": "S'aplica a tots els noms de fitxer exportats.",
+      "transform_title": "Transformació del nom de fitxer"
+    },
+    "email_behavior": {
+      "archive_mode": {
+        "no_archive": "No s'ha trobat cap carpeta d'arxiu.",
+        "reorganize_result": "S'han mogut {moved} de {total} correus.",
+        "reorganizing": "S'està reorganitzant…"
+      },
+      "attachment_click_action": {
+        "description_mobile": "Què passa quan toqueu un fitxer adjunt."
+      },
+      "auto_select_reply_identity": {
+        "description_mobile": "Les respostes sempre s'envien des de la identitat a la qual es va enviar el missatge. Amb aquesta opció activada, una resposta a una altra adreça dels vostres dominis (un àlies de captura general) també s'envia des d'aquesta adreça."
+      },
+      "content_senders_description_mobile": "Controleu com es gestionen els recursos externs i els píxels de seguiment.",
+      "external_content": {
+        "allow_mobile": "Permet",
+        "ask_mobile": "Pregunta",
+        "block_mobile": "Bloqueja"
+      },
+      "plain_text_mode": {
+        "description_mobile": "Redacta i llegeix només en text sense format."
+      },
+      "send_delay": {
+        "description_mobile": "Reté el correu sortint uns segons perquè el pugueu cancel·lar. Cal que el servidor ho admeti."
+      },
+      "swipe_actions": {
+        "move": "Mou a una carpeta",
+        "pin": "Fixa"
+      },
+      "swipe_left_action": {
+        "description_mobile": "Acció en arrossegar una fila des de la vora dreta cap a l'esquerra.",
+        "label_mobile": "Llisca a l'esquerra (dreta → esquerra)"
+      },
+      "swipe_right_action": {
+        "description_mobile": "Acció en arrossegar una fila des de la vora esquerra cap a la dreta.",
+        "label_mobile": "Llisca a la dreta (esquerra → dreta)"
+      },
+      "trusted_senders": {
+        "description_mobile": "El contingut extern sempre es carrega per als remitents d'aquesta llista.",
+        "description_synced_mobile": "El contingut extern sempre es carrega per als remitents d'aquesta llista. {count, plural, one {# sincronitzat} other {# sincronitzats}} mitjançant la llibreta d'adreces.",
+        "sync_add_failed": "No s'ha pogut sincronitzar amb la llibreta d'adreces",
+        "sync_remove_failed": "No s'ha pogut eliminar de la llibreta d'adreces",
+        "synced_badge": "Sincronitzat mitjançant la llibreta d'adreces"
+      }
+    },
+    "experimental": {
+      "title": "Funció experimental"
+    },
+    "filters": {
+      "remove_action": "Elimina l'acció",
+      "remove_condition": "Elimina la condició",
+      "sieve_editor": {
+        "line_count": "{count, plural, one {# línia} other {# línies}}"
+      }
+    },
+    "folders": {
+      "account": "Compte",
+      "cannot_delete": "No es pot suprimir",
+      "description_mobile": "Creeu, canvieu el nom, moveu i suprimiu carpetes. Manteniu premuda una carpeta al tauler lateral per a accions ràpides.",
+      "edit_folder": "Edita «{name}»",
+      "folder_name": "Nom de la carpeta",
+      "move_under": "Mou dins de",
+      "name_placeholder": "Rebuts",
+      "name_required": "Cal un nom",
+      "new_folder": "Carpeta nova",
+      "not_empty_message": "«{name}» conté {count} correus. Voleu suprimir-la igualment?",
+      "not_empty_title": "La carpeta no és buida",
+      "own_account": "Les meves carpetes",
+      "role": "Ús especial",
+      "role_hint": "Assigneu un rol d'ús especial (Arxiu, Correu brossa, …) a aquesta carpeta. Cada rol només el pot tenir una carpeta.",
+      "save_failed": "No s'ha pogut desar",
+      "system_folder_delete": "Les carpetes del sistema no es poden eliminar.",
+      "system_folder_rename": "Les carpetes del sistema no es poden canviar de nom.",
+      "top_level": "Nivell superior"
+    },
+    "identities": {
+      "cannot_delete": "La identitat principal no es pot eliminar.",
+      "cannot_delete_title": "No es pot suprimir",
+      "count": "{count, plural, =0 {Cap identitat} one {# identitat} other {# identitats}}",
+      "create": "Identitat nova",
+      "delete_confirm": "Voleu eliminar «{name}»?",
+      "delete_failed": "No s'ha pogut suprimir",
+      "delete_title": "Suprimeix la identitat",
+      "description_mobile": "Gestioneu els noms de remitent, les adreces electròniques i les signatures. Toqueu una fila per editar-la.",
+      "display_name": "Nom mostrat",
+      "display_name_placeholder": "Jane Doe",
+      "edit": "Edita la identitat",
+      "email_address": "Adreça electrònica",
+      "email_locked": "JMAP no permet canviar l'adreça electrònica d'una identitat; creeu-ne una de nova.",
+      "invalid_email": "Introduïu una adreça electrònica vàlida per a aquesta identitat.",
+      "invalid_email_title": "Adreça electrònica no vàlida",
+      "new": "Nova",
+      "no_name": "(sense nom)",
+      "primary": "principal",
+      "save_failed": "No s'ha pogut desar",
+      "text_signature": "Signatura en text sense format"
+    },
+    "keywords": {
+      "description_mobile": "Etiquetes de colors per organitzar el correu.",
+      "discover": {
+        "add_all": "Afegeix-les totes",
+        "found": "S'han trobat {count} etiquetes que no estan definides aquí.",
+        "none": "No s'ha trobat cap etiqueta desconeguda en {scanned} missatges.",
+        "partial": "(L'anàlisi només ha abastat els missatges més recents.)",
+        "progress": "S'han analitzat {scanned} de {total} missatges…",
+        "scan": "Cerca etiquetes a la bústia"
+      },
+      "reset_confirm": "Voleu substituir la llista d'etiquetes per les etiquetes predeterminades? Les etiquetes que ja tenen els missatges es mantenen al servidor.",
+      "reset_defaults": "Restableix els valors per defecte"
+    },
+    "layout": {
+      "description": "Ajusteu les interaccions de la llista de correu per al mòbil.",
+      "quick_actions": {
+        "description": "Els tres botons que es mostren entre Anterior/Següent a la part inferior d'un correu obert. Per defecte: Respon, Respon a tots i Reenvia.",
+        "label": "Accions ràpides del lector",
+        "mark_unread": "Marca com a llegit/no llegit",
+        "relocated": "{count, plural, one {{actions} s'ha mogut a la barra superior perquè el pugueu continuar utilitzant.} other {{actions} s'han mogut a la barra superior perquè els pugueu continuar utilitzant.}}",
+        "slot": "Posició {n}",
+        "spam": "Brossa",
+        "star": "Marca amb estrella",
+        "tag": "Etiqueta"
+      },
+      "show_avatars_in_junk": "Mostra els avatars dels remitents al correu brossa",
+      "show_avatars_in_junk_description": "Carrega els logotips dels remitents dels missatges de la carpeta de correu brossa. Desactivat, evita que es contacti amb els remitents de correu brossa.",
+      "show_folder_total_count": "Mostra el nombre total de missatges a les carpetes",
+      "show_folder_total_count_description": "Mostra el total al costat del nombre de no llegits a la llista de carpetes.",
+      "swipe_mode": {
+        "description": "Trieu immediat (llisqueu més enllà del llindar per executar l'acció) o revela (llisqueu per mostrar una franja d'accions i després toqueu per confirmar).",
+        "instant": "Immediat (lliscar = acció)",
+        "label": "Comportament en lliscar",
+        "reveal": "Revela (llisca i després toca)"
+      },
+      "unified_cross_account": "Vistes unificades entre comptes",
+      "unified_cross_account_description": "Combina tots els comptes amb la sessió iniciada a «Safata d'entrada unificada». Desactivat, les vistes unificades es limiten al compte actiu i les seves carpetes compartides."
+    },
+    "message_list_order": {
+      "description": "Quins missatges apareixen primer a la llista. Dins de cada grup, els més recents van primer; el botó de la capçalera continua alternant entre els més antics i els més recents.",
+      "preset_chronological": "Més recents primer",
+      "preset_custom": "Personalitzat",
+      "preset_starred_first": "Destacats primer",
+      "preset_tagged_first": "Etiquetats primer",
+      "preset_unread_first": "No llegits primer",
+      "scope": "Aplica a",
+      "scope_all": "Totes les carpetes",
+      "scope_inbox": "Només la safata d'entrada",
+      "tag": "Etiqueta",
+      "title": "Ordre de la llista de missatges"
+    },
+    "notifications": {
+      "email": {
+        "app_icon_badge": "Nombre de no llegits a la icona de l'aplicació",
+        "app_icon_badge_desc": "Mostra el nombre de no llegits de la safata d'entrada com a insígnia a la icona de l'aplicació.",
+        "sound_channel_hint": "El so i la vibració dels avisos de correu es controlen amb el canal de notificacions d'Android: manteniu premuda una notificació o obriu la configuració de l'aplicació al sistema."
+      },
+      "push": {
+        "confirm_disable_message_mobile": "Aquest dispositiu deixarà de rebre avisos de correu nou per a aquest compte.",
+        "description_mobile": "Rebeu notificacions del sistema per al correu nou quan l'aplicació estigui tancada. S'entreguen mitjançant el repetidor push del Bulwark; el repetidor mai no veu el contingut del correu.",
+        "err_android_only": "Les notificacions push només estan disponibles a Android.",
+        "err_fcm_empty": "El Firebase ha retornat un testimoni de dispositiu buit.",
+        "err_fcm_token": "El Firebase no ha pogut emetre un testimoni de dispositiu ({detail}). Les notificacions push per FCM necessiten els serveis de Google Play en aquest dispositiu.",
+        "err_fcm_token_up": "El Firebase no ha pogut emetre un testimoni de dispositiu ({detail}). Les notificacions push per FCM necessiten els serveis de Google Play en aquest dispositiu. Aquest dispositiu té instal·lat un distribuïdor d'UnifiedPush: canvieu el mètode de lliurament a UnifiedPush.",
+        "err_jmap_refused": "El servidor de correu ha rebutjat la subscripció push: {detail}",
+        "err_no_account": "No hi ha cap compte carregat: no es poden configurar les notificacions push.",
+        "err_permission": "No s'ha concedit el permís de notificacions.",
+        "err_relay_https": "L'URL del repetidor ha d'utilitzar https://.",
+        "err_relay_rejected": "El repetidor push ha rebutjat el registre: {detail}",
+        "err_relay_unreachable": "No s'ha pogut contactar amb el repetidor push a {url} ({detail}).",
+        "err_up_android_only": "UnifiedPush només està disponible a Android.",
+        "err_verify_rejected": "El servidor de correu ha rebutjat el codi de verificació: {detail}",
+        "err_verify_relay": "El repetidor no ha rebut mai el codi de verificació del servidor de correu (última resposta del repetidor: {detail}).",
+        "err_verify_timeout": "El servidor de correu no ha enviat cap codi de verificació al repetidor en 75 s. Comproveu que el servidor pugui accedir a l'URL del repetidor.",
+        "phase_account": "Compte",
+        "phase_distributor": "Distribuïdor UnifiedPush",
+        "phase_jmap": "Subscripció al servidor de correu",
+        "phase_permission": "Permís de notificacions",
+        "phase_platform": "Plataforma",
+        "phase_relay": "Registre al repetidor",
+        "phase_token": "Testimoni del dispositiu",
+        "phase_verify": "Verificació",
+        "relay_desc_mobile": "El servidor que entrega les notificacions. Per defecte utilitza el repetidor allotjat del Bulwark; canvieu-ho només si allotgeu el vostre propi servidor. Ha d'utilitzar https.",
+        "relay_invalid": "Introduïu un URL https:// vàlid",
+        "setup_failed": "Ha fallat la configuració",
+        "status_android_only": "Les notificacions en segon pla només estan disponibles a Android.",
+        "transport_desc": "Com arriben les notificacions a aquest dispositiu: el Firebase Cloud Messaging de Google o una aplicació distribuïdora d'UnifiedPush (com ara ntfy) per a un lliurament sense Google.",
+        "transport_fcm": "Google (FCM)",
+        "transport_label": "Mètode de lliurament",
+        "transport_unifiedpush": "UnifiedPush",
+        "up_distributor_desc": "Hi ha diverses aplicacions distribuïdores d'UnifiedPush instal·lades: trieu la que ha d'entregar les notificacions.",
+        "up_distributor_label": "Distribuïdor",
+        "up_no_distributor": "No hi ha cap aplicació distribuïdora d'UnifiedPush instal·lada en aquest dispositiu. Instal·leu-ne una (per exemple, ntfy) i torneu-ho a provar."
+      }
+    },
+    "offline": {
+      "cached_count": "{count, plural, one {# missatge} other {# missatges}}",
+      "clear": "Neteja",
+      "clear_cache": "Neteja la memòria cau",
+      "clear_message": "Voleu eliminar {count, plural, one {# missatge desat a la memòria cau} other {# missatges desats a la memòria cau}} ({size})?",
+      "clear_title": "Neteja el correu sense connexió",
+      "days_ago": "fa {count} d",
+      "description": "Baixeu els missatges recents perquè s'obrin a l'instant i es puguin llegir sense connexió. Només el cos: els fitxers adjunts es continuen baixant quan cal.",
+      "downloading": "S'està baixant {completed}/{total}…",
+      "enabled": "Desa el correu recent a la memòria cau",
+      "enabled_desc": "Si està activat, l'aplicació conserva en aquest dispositiu el cos dels missatges del període seleccionat.",
+      "hours_ago": "fa {count} h",
+      "just_now": "ara mateix",
+      "last_sync": "Última sincronització: {when}",
+      "last_sync_failed": "Ha fallat l'última sincronització: {message}",
+      "max_size": "Mida màxima",
+      "max_size_desc": "Els missatges més antics s'eliminen quan la memòria cau supera aquesta mida.",
+      "minutes_ago": "fa {count} min",
+      "never": "mai",
+      "nothing_cached": "Encara no hi ha res a la memòria cau",
+      "queued_changes": "{count, plural, one {# canvi pendent} other {# canvis pendents}} de sincronitzar",
+      "scanning": "S'està analitzant el correu recent…",
+      "sync_now": "Sincronitza ara",
+      "syncing": "S'està sincronitzant…",
+      "title": "Correu sense connexió",
+      "window": "Període",
+      "window_24h": "Últimes 24 hores",
+      "window_days": "Últims {count} dies",
+      "window_desc": "Fins a quina data desar a la memòria cau, segons la data de recepció del missatge."
+    },
+    "plugins": {
+      "mobile_description": "Els connectors s'executen dins del webmail i l'amplien al navegador.",
+      "mobile_explainer": "L'aplicació mòbil no té entorn d'execució de connectors. Instal·leu i gestioneu els connectors des del webmail a Configuració → Connectors; els temes i els filtres que proporcionen no s'apliquen aquí."
+    },
+    "security": {
+      "client_cert": {
+        "active": "Actiu: {alias}",
+        "choose_another": "Tria'n un altre",
+        "clear": "Treu",
+        "clear_message": "Les sol·licituds noves ja no presentaran cap certificat. El certificat continua instal·lat a Android.",
+        "clear_title": "Voleu deixar d'utilitzar el certificat de client?",
+        "description": "Tria un certificat instal·lat a Android per autenticar-se al servidor durant la negociació TLS. Útil quan el servidor intermediari invers exigeix mTLS.",
+        "hint": "Instal·leu el certificat a Configuració d'Android → Seguretat → Encriptació i credencials i, després, seleccioneu-lo aquí.",
+        "not_set": "No definit",
+        "pick": "Tria un certificat",
+        "pick_failed": "No s'ha pogut triar",
+        "title": "Certificat de client TLS"
+      },
+      "credentials": {
+        "allowed_ips": "IP permeses (opcional)",
+        "allowed_ips_hint": "Separades per comes o espais. Deixeu-ho buit per permetre qualsevol IP.",
+        "clear_expiry": "Treu la caducitat",
+        "copy_now": "Copieu-ho ara: només es mostra una vegada. Manteniu premut per seleccionar-ho.",
+        "create_error": "No s'ha pogut crear",
+        "expires": "Caduca (opcional)",
+        "expires_on": "caduca el {date}",
+        "no_expiry": "Sense caducitat",
+        "none": "Encara no n'hi ha cap.",
+        "remove_error": "No s'ha pogut eliminar",
+        "remove_message": "Qualsevol client que la utilitzi deixarà de funcionar.",
+        "remove_title": "Voleu eliminar la credencial?"
+      },
+      "display_name": {
+        "error_title": "No s'ha pogut actualitzar"
+      },
+      "encryption": {
+        "no_keys": "Primer afegiu una clau pública: el xifratge en repòs en necessita una."
+      },
+      "load_error": "No s'ha pogut carregar la configuració de seguretat.",
+      "not_supported": "La gestió de la seguretat del compte requereix un servidor Stalwart. Aquestes funcions no estan disponibles per a aquest compte.",
+      "offline": "No teniu connexió. La configuració de seguretat del compte necessita una connexió activa amb el servidor.",
+      "password": {
+        "change": "Canvia la contrasenya",
+        "changed": "S'ha actualitzat la contrasenya del compte.",
+        "changed_title": "Contrasenya canviada",
+        "description": "Canvieu la contrasenya d'aquest compte.",
+        "error": "No s'ha pogut canviar la contrasenya.",
+        "mismatch": "Les contrasenyes no coincideixen.",
+        "toggle_visibility": "Mostra o amaga la contrasenya",
+        "too_short": "La contrasenya nova ha de tenir com a mínim 8 caràcters."
+      },
+      "public_keys": {
+        "add_error": "No s'ha pogut afegir la clau pública",
+        "description": "Certificats S/MIME i claus PGP desats al servidor. S'utilitzen per al xifratge en repòs.",
+        "expires": "caduca el {date}",
+        "remove_error": "No s'ha pogut eliminar la clau pública",
+        "remove_message": "El xifratge en repòs que utilitza aquesta clau deixarà de funcionar.",
+        "remove_title": "Voleu eliminar la clau pública?",
+        "title": "Claus públiques"
+      },
+      "two_factor": {
+        "active": "Activada",
+        "code": "Codi de verificació",
+        "code_required": "Introduïu el codi de 6 dígits de l'aplicació.",
+        "description": "Demana un codi d'un sol ús en iniciar la sessió.",
+        "disable": "Desactiva",
+        "disable_error": "No s'ha pogut desactivar l'autenticació de dos factors.",
+        "disable_hint": "Introduïu la contrasenya per desactivar l'autenticació de dos factors.",
+        "enable_error": "No s'ha pogut activar l'autenticació de dos factors.",
+        "enabled_message": "Se us demanarà un codi el proper cop que inicieu la sessió.",
+        "enabled_title": "Autenticació de dos factors activada",
+        "enrol_hint": "Afegiu aquest secret a l'aplicació d'autenticació i, després, introduïu el codi de 6 dígits per confirmar.",
+        "inactive": "Desactivada",
+        "label": "Aplicació d'autenticació",
+        "manual_secret": "O introduïu aquest secret manualment",
+        "no_app": "No s'ha pogut obrir cap aplicació d'autenticació. Afegiu manualment el secret següent.",
+        "no_app_title": "Cap aplicació d'autenticació",
+        "open_app": "Afegeix a l'aplicació d'autenticació",
+        "password_required": "Introduïu la contrasenya actual.",
+        "section_title": "Autenticació de dos factors"
+      }
+    },
+    "sidebar_apps": {
+      "add": "Afegeix una aplicació",
+      "empty": "Encara no s'ha afegit cap aplicació.",
+      "form": {
+        "name": "Nom",
+        "name_placeholder": "Nom de l'aplicació",
+        "open_mode": "Mode d'obertura",
+        "show_on_mobile": "Mostra al mòbil",
+        "url": "URL"
+      },
+      "keep_loaded_description_mobile": "Mantén les aplicacions incrustades en execució en segon pla quan en canvieu.",
+      "open_mode": {
+        "inline": "Incrustat",
+        "new_tab": "Pestanya nova",
+        "tab": "Pestanya"
+      }
+    },
+    "smime": {
+      "mobile_description": "Signeu i xifreu el correu amb certificats S/MIME.",
+      "mobile_explainer": "S/MIME encara no està disponible a l'aplicació mòbil. Gestioneu les claus i els certificats al webmail; aquí els missatges signats es mostren sense verificar."
+    },
+    "tabs": {
+      "plugins": "Connectors",
+      "themes": "Temes",
+      "updates": "Actualitzacions"
+    },
+    "templates": {
+      "delete_confirm": "Voleu suprimir «{name}» permanentment?",
+      "delete_title": "Suprimeix la plantilla",
+      "description_mobile": "Fragments reutilitzables per a respostes habituals. Toqueu-ne un per editar-lo; manteniu-lo premut per suprimir-lo.",
+      "export_failed": "No s'ha pogut exportar",
+      "import_failed": "No s'ha pogut importar",
+      "imported": "Importació completada",
+      "imported_count": "{count, plural, one {S'ha afegit # plantilla.} other {S'han afegit # plantilles.}}",
+      "is_html": "El cos és HTML",
+      "placeholders_hint": "Variables: {{recipient_name}}, {{company}}, {{date}}, {{day_of_week}}, {{sender_name}}",
+      "share_unavailable": "No es pot compartir"
+    },
+    "themes": {
+      "default_description": "Les paletes clara i fosca per defecte.",
+      "default_name": "Bulwark",
+      "mobile_description": "Trieu un tema de color. Els temes segueixen el paràmetre clar/fosc d'Aparença; els paquets de temes personalitzats es gestionen al webmail.",
+      "title": "Temes"
+    },
+    "vacation": {
+      "warnings": {
+        "date_format": "Les dates han de tenir el format \"YYYY-MM-DD\" o \"YYYY-MM-DD HH:MM\""
+      }
+    }
+  },
+  "sidebar": {
+    "account_error": "Cal atenció",
+    "remove_account_hint": "Manteniu premut per eliminar aquest compte",
+    "remove_account_message": "Tanca la sessió de {account} en aquest dispositiu. El correu es queda al servidor.",
+    "remove_account_title": "Voleu eliminar el compte?",
+    "show_unread": "Mostra els no llegits",
+    "tab_unavailable": "{name} (no disponible)"
+  },
+  "unified_mailbox": {
+    "accounts_failed": "{count, plural, one {No s'ha pogut carregar # compte} other {No s'han pogut carregar # comptes}}"
+  },
+  "updates": {
+    "advisory": "Avís de seguretat",
+    "advisory_desc": "Detalls sobre el problema que corregeix aquesta versió.",
+    "auto_check": "Comprova automàticament",
+    "auto_check_desc": "Cerca actualitzacions cada poques hores quan s'inicia l'aplicació.",
+    "available": "Actualització disponible",
+    "available_desc": "Toqueu Instal·la per baixar la v{version} i obrir-la amb l'instal·lador de paquets d'Android.",
+    "banner": {
+      "advisory": "Llegeix l'avís",
+      "deprecated_subtitle": "Instal·leu la v{version} per continuar utilitzant l'aplicació.",
+      "deprecated_title": "Aquesta versió ja no és compatible",
+      "security_subtitle": "La v{version} corregeix un problema de seguretat. Instal·leu-la com més aviat millor.",
+      "security_title": "Actualització de seguretat disponible",
+      "subtitle": "La v{version} està a punt per instal·lar-se.",
+      "title": "Actualització disponible"
+    },
+    "building": "S'està compilant l'actualització",
+    "building_desc": "S'ha publicat la v{version}, però l'APK encara s'està compilant. Aquesta pàgina ho tornarà a comprovar cada 30 segons.",
+    "check": "Cerca actualitzacions",
+    "check_again": "Torna a comprovar",
+    "check_now": "Comprova ara",
+    "checking": "Comprovant…",
+    "current_version": "Versió actual",
+    "description": "Cerqueu versions noves i instal·leu-les.",
+    "downloading": "S'està baixant…",
+    "downloading_pct": "S'està baixant: {pct}%",
+    "install": "Instal·la",
+    "installing": "S'està instal·lant…",
+    "last_checked": "Última comprovació",
+    "last_error": "Últim error: {message}",
+    "latest_version": "Última versió",
+    "never": "mai",
+    "open": "Obre",
+    "open_github": "Obre a GitHub",
+    "opening_installer": "S'està obrint l'instal·lador…",
+    "progress_of": "{written} de {total}",
+    "published": "Publicada el {date}",
+    "rate_limited": "GitHub està limitant les comprovacions d'actualitzacions; es tornarà a provar més tard.",
+    "release_notes": "Notes de la versió",
+    "release_page": "Pàgina de la versió",
+    "release_page_desc": "Notes completes de la versió i baixades a GitHub.",
+    "release_page_pending_desc": "Seguiu el progrés de la compilació o baixeu l'APK manualment.",
+    "severity_deprecated": "Obligatòria",
+    "severity_security": "Seguretat",
+    "title": "Actualitzacions de l'aplicació",
+    "verifying": "S'està verificant…"
+  }
+}

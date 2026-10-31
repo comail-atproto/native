@@ -1,0 +1,67 @@
+{
+  "source": "https://github.com/google/fonts",
+  "revision": "9862abc066c9b83bf84c3e8ed1fc2d8d48f9bbf0",
+  "conversion": "FontTools 4.68.0 WOFF2 compression; no subsetting",
+  "fonts": [
+    {
+      "family": "Young Serif",
+      "style": "normal",
+      "weight": "400",
+      "file": "young-serif-regular.woff2",
+      "source": "ofl/youngserif/YoungSerif-Regular.ttf",
+      "sourceSha256": "42bb2602364b28569fdce5eeb6ab3d81cf8090ba81b211f1229ed69f33155523",
+      "sha256": "0da3b85dfc2ae240b6ffa6f655d93e8922823098b5a28f1446f58c2d3d438abf",
+      "license": "YoungSerif-OFL.txt"
+    },
+    {
+      "family": "Atkinson Hyperlegible",
+      "style": "normal",
+      "weight": "400",
+      "file": "atkinson-hyperlegible-regular.woff2",
+      "source": "ofl/atkinsonhyperlegible/AtkinsonHyperlegible-Regular.ttf",
+      "sourceSha256": "7fb917c89019896d0b52ee84b7cbb3304c18cb90b19a62f5e32712bd23e97669",
+      "sha256": "5e146fe6f69d92ba3d7bf0b34d1bed2e29ec289160819929686e7a56a386bc45",
+      "license": "AtkinsonHyperlegible-OFL.txt"
+    },
+    {
+      "family": "Atkinson Hyperlegible",
+      "style": "normal",
+      "weight": "700",
+      "file": "atkinson-hyperlegible-bold.woff2",
+      "source": "ofl/atkinsonhyperlegible/AtkinsonHyperlegible-Bold.ttf",
+      "sourceSha256": "5a3b0c8cc8ca545155150b4512a1fa248298df121c50d6557e651e61fbdab92f",
+      "sha256": "72131d49034959f742d298d58d55e11f704c3223791f0f90188cf8cb43ef07c5",
+      "license": "AtkinsonHyperlegible-OFL.txt"
+    },
+    {
+      "family": "Atkinson Hyperlegible",
+      "style": "italic",
+      "weight": "400",
+      "file": "atkinson-hyperlegible-italic.woff2",
+      "source": "ofl/atkinsonhyperlegible/AtkinsonHyperlegible-Italic.ttf",
+      "sourceSha256": "021beda4d3c6edfc78872e436d74009f9a1bcb294331908fe5747c61d3dcc514",
+      "sha256": "6c65d1d126be4bb3d6d230228de6ba129b280548ca511faea90f75bd2f645167",
+      "license": "AtkinsonHyperlegible-OFL.txt"
+    },
+    {
+      "family": "Atkinson Hyperlegible",
+      "style": "italic",
+      "weight": "700",
+      "file": "atkinson-hyperlegible-bold-italic.woff2",
+      "source": "ofl/atkinsonhyperlegible/AtkinsonHyperlegible-BoldItalic.ttf",
+      "sourceSha256": "7a46f1b0ef2f64b61065c1a6b5a11fcb9b019b44062d88ba121a083cc39e86bf",
+      "sha256": "37e2aa2433f5f9d9b320e099bc6d8f00ac57f2279e58a2ba186dbdbc76463dda",
+      "license": "AtkinsonHyperlegible-OFL.txt"
+    },
+    {
+      "family": "JetBrains Mono",
+      "style": "normal",
+      "weight": "100 800",
+      "file": "jetbrains-mono-variable.woff2",
+      "source": "ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf",
+      "sourceSha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+      "sha256": "295d3f8a3ac4ed48f201b5ba00b4dd12bdd39bab33ee7dad80fd1f32f898c9a6",
+      "license": "JetBrainsMono-OFL.txt"
+    }
+  ]
+}

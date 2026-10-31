@@ -1,0 +1,325 @@
+apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "com.facebook.react"
+// Firebase is optional for local builds. A Comail Firebase registration is
+// required for FCM; never initialize the upstream project's registration.
+def firebaseConfig = file('google-services.json')
+if (firebaseConfig.exists()) {
+    def firebaseClients = new groovy.json.JsonSlurper().parse(firebaseConfig).client
+    if (!firebaseClients.any { it.client_info.android_client_info.package_name == 'at.comail.mobile' }) {
+        throw new GradleException('google-services.json must register at.comail.mobile')
+    }
+    apply plugin: "com.google.gms.google-services"
+}
+
+def projectRoot = rootDir.getAbsoluteFile().getParentFile().getAbsolutePath()
+
+def appVersionName = file("${projectRoot}/VERSION").text.trim()
+
+/**
+ * versionCode has to grow with every release, or Android refuses the update as
+ * a downgrade. It is derived from VERSION as
+ *
+ *     major * 10000000 + minor * 10000 + patch      (0.1.62 -> 10062)
+ *
+ * which keeps increasing as long as patch stays below 10000 and minor below
+ * 1000 (scripts/bump-version.mjs, which only ever bumps patch, enforces both),
+ * and stays under Android's 2100000000 ceiling up to major 209.
+ */
+def versionParts = (appVersionName =~ /^(\d+)\.(\d+)\.(\d+)$/)
+if (!versionParts.matches()) {
+    throw new GradleException("VERSION must be MAJOR.MINOR.PATCH, got '${appVersionName}'")
+}
+def (versionMajor, versionMinor, versionPatch) = (1..3).collect { versionParts.group(it) as long }
+if (versionMinor > 999 || versionPatch > 9999) {
+    throw new GradleException("VERSION ${appVersionName}: minor must stay below 1000 and patch below 10000, " +
+            "or versionCode stops increasing. Move to the next minor or major version instead.")
+}
+def appVersionCode = versionMajor * 10000000L + versionMinor * 10000L + versionPatch
+if (appVersionCode < 1 || appVersionCode > 2100000000L) {
+    throw new GradleException("VERSION ${appVersionName} gives versionCode ${appVersionCode}, " +
+            "outside the 1..2100000000 range Android accepts.")
+}
+
+/**
+ * Release signing. The key never lives in the repo: CI passes it as
+ * ORG_GRADLE_PROJECT_BULWARK_RELEASE_* environment variables, and a local
+ * release build can set the same names with -P, in ~/.gradle/gradle.properties
+ * or as plain environment variables. See docs/android-release.md.
+ *
+ * There is deliberately no automatic fallback to the debug key. It is the
+ * public React Native template key, so an APK signed with it can be replaced
+ * by an "update" anyone can sign.
+ */
+def releaseSigningNames = [
+    'BULWARK_RELEASE_STORE_FILE',
+    'BULWARK_RELEASE_STORE_PASSWORD',
+    'BULWARK_RELEASE_KEY_ALIAS',
+    'BULWARK_RELEASE_KEY_PASSWORD',
+]
+def releaseSigning = releaseSigningNames.collectEntries { name ->
+    [(name): (findProperty(name) ?: System.getenv(name))?.toString()]
+}
+def missingReleaseSigning = releaseSigningNames.findAll { !releaseSigning[it]?.trim() }
+def releaseSigningConfigured = missingReleaseSigning.isEmpty()
+def releaseStoreFile = releaseSigningConfigured ? file(releaseSigning.BULWARK_RELEASE_STORE_FILE.trim()) : null
+
+// Escape hatch for a local release build that never leaves the machine
+// (profiling, checking R8). It is refused whenever CI is set, so a stray flag
+// cannot turn a published build back into a debug-signed one.
+def ciEnv = System.getenv('CI')?.trim()?.toLowerCase()
+def onCi = ciEnv && !(ciEnv in ['false', '0'])
+def allowDebugSignedRelease = (findProperty('allowDebugSignedRelease') ?: 'false').toString().trim().toBoolean()
+def debugSignedRelease = !releaseSigningConfigured && allowDebugSignedRelease && !onCi
+
+/**
+ * This is the configuration block to customize your React Native Android app.
+ * By default you don't need to apply any configuration, just uncomment the lines you need.
+ */
+react {
+    entryFile = file(["node", "-e", "require('expo/scripts/resolveAppEntry')", projectRoot, "android", "absolute"].execute(null, rootDir).text.trim())
+    reactNativeDir = new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
+    hermesCommand = new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/sdks/hermesc/%OS-BIN%/hermesc"
+    codegenDir = new File(["node", "--print", "require.resolve('@react-native/codegen/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
+
+    enableBundleCompression = (findProperty('android.enableBundleCompression') ?: false).toBoolean()
+    // Use Expo CLI to bundle the app, this ensures the Metro config
+    // works correctly with Expo projects.
+    cliFile = new File(["node", "--print", "require.resolve('@expo/cli', { paths: [require.resolve('expo/package.json')] })"].execute(null, rootDir).text.trim())
+    bundleCommand = "export:embed"
+
+    /* Folders */
+     //   The root of your project, i.e. where "package.json" lives. Default is '../..'
+    // root = file("../../")
+    //   The folder where the react-native NPM package is. Default is ../../node_modules/react-native
+    // reactNativeDir = file("../../node_modules/react-native")
+    //   The folder where the react-native Codegen package is. Default is ../../node_modules/@react-native/codegen
+    // codegenDir = file("../../node_modules/@react-native/codegen")
+
+    /* Variants */
+    //   The list of variants to that are debuggable. For those we're going to
+    //   skip the bundling of the JS bundle and the assets. By default is just 'debug'.
+    //   If you add flavors like lite, prod, etc. you'll have to list your debuggableVariants.
+    // debuggableVariants = ["liteDebug", "prodDebug"]
+
+    /* Bundling */
+    //   A list containing the node command and its flags. Default is just 'node'.
+    // nodeExecutableAndArgs = ["node"]
+
+    //
+    //   The path to the CLI configuration file. Default is empty.
+    // bundleConfig = file(../rn-cli.config.js)
+    //
+    //   The name of the generated asset file containing your JS bundle
+    // bundleAssetName = "MyApplication.android.bundle"
+    //
+    //   The entry file for bundle generation. Default is 'index.android.js' or 'index.js'
+    // entryFile = file("../js/MyApplication.android.js")
+    //
+    //   A list of extra flags to pass to the 'bundle' commands.
+    //   See https://github.com/react-native-community/cli/blob/main/docs/commands.md#bundle
+    // extraPackagerArgs = []
+
+    /* Hermes Commands */
+    //   The hermes compiler command to run. By default it is 'hermesc'
+    // hermesCommand = "$rootDir/my-custom-hermesc/bin/hermesc"
+    //
+    //   The list of flags to pass to the Hermes compiler. By default is "-O", "-output-source-map"
+    // hermesFlags = ["-O", "-output-source-map"]
+
+    /* Autolinking */
+    autolinkLibrariesWithApp()
+}
+
+/**
+ * Set this to true in release builds to optimize the app using [R8](https://developer.android.com/topic/performance/app-optimization/enable-app-optimization).
+ */
+def enableMinifyInReleaseBuilds = (findProperty('android.enableMinifyInReleaseBuilds') ?: false).toBoolean()
+
+/**
+ * The preferred build flavor of JavaScriptCore (JSC)
+ *
+ * For example, to use the international variant, you can use:
+ * `def jscFlavor = 'org.webkit:android-jsc-intl:+'`
+ *
+ * The international variant includes ICU i18n library and necessary data
+ * allowing to use e.g. `Date.toLocaleString` and `String.localeCompare` that
+ * give correct results when using with locales other than en-US. Note that
+ * this variant is about 6MiB larger per architecture than default.
+ */
+def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
+
+android {
+    ndkVersion rootProject.ext.ndkVersion
+
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk rootProject.ext.compileSdkVersion
+
+    namespace 'com.anonymous.bulwarkmobile'
+    defaultConfig {
+        applicationId 'at.comail.mobile'
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode appVersionCode.toInteger()
+        versionName appVersionName
+
+        // Android account type of device sync (#34), derived from the package
+        // name so a later rename needs no other change. The XML in res/xml and
+        // the Kotlin in sync/ read it as @string/device_sync_account_type.
+        resValue "string", "device_sync_account_type", "${applicationId}.account"
+
+        buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
+    }
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        if (releaseSigningConfigured) {
+            release {
+                storeFile releaseStoreFile
+                storePassword releaseSigning.BULWARK_RELEASE_STORE_PASSWORD
+                keyAlias releaseSigning.BULWARK_RELEASE_KEY_ALIAS
+                keyPassword releaseSigning.BULWARK_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            // With neither a key nor the opt-in there is no signing config at
+            // all; checkReleaseSigning below stops the build before packaging.
+            if (releaseSigningConfigured) {
+                signingConfig signingConfigs.release
+            } else if (debugSignedRelease) {
+                signingConfig signingConfigs.debug
+            }
+            def enableShrinkResources = findProperty('android.enableShrinkResourcesInReleaseBuilds') ?: 'false'
+            shrinkResources enableShrinkResources.toBoolean()
+            minifyEnabled enableMinifyInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            def enablePngCrunchInRelease = findProperty('android.enablePngCrunchInReleaseBuilds') ?: 'true'
+            crunchPngs enablePngCrunchInRelease.toBoolean()
+        }
+    }
+    packagingOptions {
+        jniLibs {
+            def enableLegacyPackaging = findProperty('expo.useLegacyPackaging') ?: 'false'
+            useLegacyPackaging enableLegacyPackaging.toBoolean()
+        }
+    }
+    androidResources {
+        ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~'
+    }
+}
+
+// Stop a release build that has no real key. This runs only when a release
+// variant is actually built, so `expo run:android`, assembleDebug and IDE sync
+// keep working with no key configured.
+def releaseSigningHelp = [
+    "Release signing is not configured (missing: ${missingReleaseSigning.join(', ')}).",
+    "",
+    "Release builds are never signed with the debug key: it is the public React Native",
+    "template key, so an APK signed with it can be replaced by anyone. Provide the release",
+    "key as gradle properties (-P or ~/.gradle/gradle.properties) or environment variables:",
+    "  BULWARK_RELEASE_STORE_FILE       path to the keystore",
+    "  BULWARK_RELEASE_STORE_PASSWORD",
+    "  BULWARK_RELEASE_KEY_ALIAS",
+    "  BULWARK_RELEASE_KEY_PASSWORD",
+    "",
+    onCi && allowDebugSignedRelease
+        ? "allowDebugSignedRelease is ignored because CI is set: published builds must use the release key."
+        : "For a local test build that is never installed anywhere else, pass -PallowDebugSignedRelease=true.",
+    "See docs/android-release.md.",
+].join('\n')
+
+def checkReleaseSigning = tasks.register('checkReleaseSigning') {
+    group = 'verification'
+    description = 'Fails a release build that has no release signing key.'
+    doLast {
+        if (releaseSigningConfigured) {
+            if (!releaseStoreFile.isFile()) {
+                throw new GradleException("BULWARK_RELEASE_STORE_FILE points to ${releaseStoreFile}, which does not exist.")
+            }
+        } else if (debugSignedRelease) {
+            logger.warn("WARNING: this release build is signed with the PUBLIC debug key " +
+                    "(allowDebugSignedRelease). Do not distribute it.")
+        } else {
+            throw new GradleException(releaseSigningHelp)
+        }
+    }
+}
+tasks.configureEach { task ->
+    if (task.name == 'preReleaseBuild') {
+        task.dependsOn(checkReleaseSigning)
+    }
+}
+
+// Apply static values from `gradle.properties` to the `android.packagingOptions`
+// Accepts values in comma delimited lists, example:
+// android.packagingOptions.pickFirsts=/LICENSE,**/picasa.ini
+["pickFirsts", "excludes", "merges", "doNotStrip"].each { prop ->
+    // Split option: 'foo,bar' -> ['foo', 'bar']
+    def options = (findProperty("android.packagingOptions.$prop") ?: "").split(",");
+    // Trim all elements in place.
+    for (i in 0..<options.size()) options[i] = options[i].trim();
+    // `[] - ""` is essentially `[""].filter(Boolean)` removing all empty strings.
+    options -= ""
+
+    if (options.length > 0) {
+        println "android.packagingOptions.$prop += $options ($options.length)"
+        // Ex: android.packagingOptions.pickFirsts += '**/SCCS/**'
+        options.each {
+            android.packagingOptions[prop] += it
+        }
+    }
+}
+
+dependencies {
+    // The version of react-native is set by the React Native Gradle Plugin
+    implementation("com.facebook.react:react-android")
+
+    // Firebase Cloud Messaging - delivers pushes via Google Play services.
+    // Requires android/app/google-services.json at build time.
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.firebase:firebase-messaging")
+
+    // UnifiedPush - Google-free push via a user-chosen distributor app such
+    // as ntfy. Coexists with FCM; the user picks the transport in settings.
+    // NOTE: 3.3.2-3.3.4 are built with Kotlin 2.3 and break this project's
+    // Kotlin 2.1 toolchain; 3.3.5 went back to 2.2 which it can read.
+    implementation("org.unifiedpush.android:connector:3.3.5")
+
+    // JVM unit tests for the logic in the Kotlin shell of device sync (src/test).
+    // android.jar only stubs org.json, so the tests use the real one.
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.json:json:20240303")
+
+    def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true";
+    def isWebpEnabled = (findProperty('expo.webp.enabled') ?: "") == "true";
+    def isWebpAnimatedEnabled = (findProperty('expo.webp.animated') ?: "") == "true";
+
+    if (isGifEnabled) {
+        // For animated gif support
+        implementation("com.facebook.fresco:animated-gif:${expoLibs.versions.fresco.get()}")
+    }
+
+    if (isWebpEnabled) {
+        // For webp support
+        implementation("com.facebook.fresco:webpsupport:${expoLibs.versions.fresco.get()}")
+        if (isWebpAnimatedEnabled) {
+            // Animated webp support
+            implementation("com.facebook.fresco:animated-webp:${expoLibs.versions.fresco.get()}")
+        }
+    }
+
+    if (hermesEnabled.toBoolean()) {
+        implementation("com.facebook.react:hermes-android")
+    } else {
+        implementation jscFlavor
+    }
+}

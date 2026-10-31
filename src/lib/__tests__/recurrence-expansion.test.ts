@@ -1,0 +1,298 @@
+import { describe, it, expect } from 'vitest';
+import { expandRecurringEvents } from '../recurrence-expansion';
+import type { CalendarEvent, RecurrenceRule } from '../../api/types';
+
+function ev(partial: Partial<CalendarEvent>): CalendarEvent {
+  return {
+    id: 'master',
+    uid: 'uid-1',
+    title: 'Recurring',
+    start: '2026-04-06T09:00:00',
+    duration: 'PT1H',
+    calendarIds: { 'cal-1': true },
+    ...partial,
+  } as CalendarEvent;
+}
+
+describe('expandRecurringEvents - daily', () => {
+  it('expands a daily rule with count', () => {
+    const rule: RecurrenceRule = { frequency: 'daily', count: 3 };
+    const result = expandRecurringEvents(
+      [ev({ recurrenceRules: [rule] })],
+      '2026-04-01T00:00:00',
+      '2026-04-30T00:00:00',
+    );
+    expect(result).toHaveLength(3);
+    expect(result.map((e) => e.start)).toEqual([
+      '2026-04-06T09:00:00',
+      '2026-04-07T09:00:00',
+      '2026-04-08T09:00:00',
+    ]);
+    // synthetic id includes recurrenceId
+    expect(result[1].id).toBe('master:2026-04-07T09:00:00');
+    // originalId points back to master event id
+    expect(result[1].originalId).toBe('master');
+  });
+
+  it('respects until and stays within range', () => {
+    const rule: RecurrenceRule = {
+      frequency: 'daily',
+      until: '2026-04-08T09:00:00',
+    };
+    const result = expandRecurringEvents(
+      [ev({ recurrenceRules: [rule] })],
+      '2026-04-01T00:00:00',
+      '2026-04-30T00:00:00',
+    );
+    expect(result.map((e) => e.start)).toEqual([
+      '2026-04-06T09:00:00',
+      '2026-04-07T09:00:00',
+      '2026-04-08T09:00:00',
+    ]);
+  });
+});
+
+describe('expandRecurringEvents - weekly', () => {
+  it('expands a weekly rule on specific byDay values', () => {
+    // April 6, 2026 is a Monday - expand Mon/Wed for two weeks.
+    const rule: RecurrenceRule = {
+      frequency: 'weekly',
+      byDay: [{ day: 'mo' }, { day: 'we' }],
+      count: 4,
+    };
+    const result = expandRecurringEvents(
+      [ev({ recurrenceRules: [rule] })],
+      '2026-04-01T00:00:00',
+      '2026-04-30T00:00:00',
+    );
+    expect(result.map((e) => e.start)).toEqual([
+      '2026-04-06T09:00:00', // Mon
+      '2026-04-08T09:00:00', // Wed
+      '2026-04-13T09:00:00', // Mon
+      '2026-04-15T09:00:00', // Wed
+    ]);
+  });
+});
+
+describe('expandRecurringEvents - interval > 1 (#13)', () => {
+  it('expands an every-5-weeks rule', () => {
+    const rule: RecurrenceRule = { frequency: 'weekly', interval: 5 };
+    const result = expandRecurringEvents(
+      [ev({ recurrenceRules: [rule] })], // starts Mon 2026-04-06
+      '2026-04-01T00:00:00',
+      '2026-08-01T00:00:00',
+    );
+    expect(result.map((e) => e.start)).toEqual([
+      '2026-04-06T09:00:00',
+      '2026-05-11T09:00:00',
+      '2026-06-15T09:00:00',
+      '2026-07-20T09:00:00',
+    ]);
+  });
+
+  it('expands an every-5-weeks series started long before the visible range', () => {
+    const event = ev({
+      start: '2025-01-06T09:00:00', // Monday
+      recurrenceRules: [{ frequency: 'weekly', interval: 5 }],
+    });
+    // Occurrences fall every 35 days from 2025-01-06 (…2026-04-06, 05-11,
+    // 06-15, 07-20…) — only those inside the window are returned.
+    const result = expandRecurringEvents([event], '2026-05-01T00:00:00', '2026-08-01T00:00:00');
+    expect(result.map((e) => e.start)).toEqual([
+      '2026-05-11T09:00:00',
+      '2026-06-15T09:00:00',
+      '2026-07-20T09:00:00',
+    ]);
+  });
+
+  it('expands an every-2-months rule', () => {
+    const rule: RecurrenceRule = { frequency: 'monthly', interval: 2 };
+    const result = expandRecurringEvents(
+      [ev({ recurrenceRules: [rule] })],
+      '2026-04-01T00:00:00',
+      '2026-12-31T00:00:00',
+    );
+    expect(result.map((e) => e.start)).toEqual([
+      '2026-04-06T09:00:00',
+      '2026-06-06T09:00:00',
+      '2026-08-06T09:00:00',
+      '2026-10-06T09:00:00',
+      '2026-12-06T09:00:00',
+    ]);
+  });
+});
+
+describe('expandRecurringEvents - monthly', () => {
+  it('expands monthly on the 6th', () => {
+    const rule: RecurrenceRule = { frequency: 'monthly', count: 3 };
+    const result = expandRecurringEvents(
+      [ev({ recurrenceRules: [rule] })],
+      '2026-04-01T00:00:00',
+      '2026-12-31T00:00:00',
+    );
+    expect(result.map((e) => e.start)).toEqual([
+      '2026-04-06T09:00:00',
+      '2026-05-06T09:00:00',
+      '2026-06-06T09:00:00',
+    ]);
+  });
+
+  it('expands monthly second Wednesday using byDay nthOfPeriod', () => {
+    const rule: RecurrenceRule = {
+      frequency: 'monthly',
+      byDay: [{ day: 'we', nthOfPeriod: 2 }],
+      count: 2,
+    };
+    const result = expandRecurringEvents(
+      [ev({ start: '2026-04-08T09:00:00', recurrenceRules: [rule] })],
+      '2026-04-01T00:00:00',
+      '2026-12-31T00:00:00',
+    );
+    // 2nd Wednesday of April is the 8th, May is the 13th
+    expect(result.map((e) => e.start)).toEqual([
+      '2026-04-08T09:00:00',
+      '2026-05-13T09:00:00',
+    ]);
+  });
+});
+
+describe('expandRecurringEvents - overrides', () => {
+  it('skips occurrences marked excluded', () => {
+    const rule: RecurrenceRule = { frequency: 'daily', count: 3 };
+    const event = ev({
+      recurrenceRules: [rule],
+      recurrenceOverrides: {
+        '2026-04-07T09:00:00': { excluded: true } as any,
+      },
+    });
+    const result = expandRecurringEvents(
+      [event],
+      '2026-04-01T00:00:00',
+      '2026-04-30T00:00:00',
+    );
+    expect(result.map((e) => e.start)).toEqual([
+      '2026-04-06T09:00:00',
+      '2026-04-08T09:00:00',
+    ]);
+  });
+
+  it('applies field overrides to a specific occurrence', () => {
+    const rule: RecurrenceRule = { frequency: 'daily', count: 2 };
+    const event = ev({
+      recurrenceRules: [rule],
+      recurrenceOverrides: {
+        '2026-04-07T09:00:00': { title: 'Special' } as any,
+      },
+    });
+    const result = expandRecurringEvents(
+      [event],
+      '2026-04-01T00:00:00',
+      '2026-04-30T00:00:00',
+    );
+    expect(result[0].title).toBe('Recurring');
+    expect(result[1].title).toBe('Special');
+  });
+});
+
+describe('expandRecurringEvents - non-recurring passthrough', () => {
+  it('returns non-recurring events unchanged', () => {
+    const single = ev({ id: 'one', recurrenceRules: undefined });
+    const result = expandRecurringEvents(
+      [single],
+      '2026-04-01T00:00:00',
+      '2026-04-30T00:00:00',
+    );
+    expect(result).toHaveLength(1);
+    expect(result[0].id).toBe('one');
+  });
+});
+
+describe('expandRecurringEvents - range filtering', () => {
+  it('returns occurrences only within the requested window', () => {
+    const rule: RecurrenceRule = { frequency: 'daily', count: 30 };
+    const result = expandRecurringEvents(
+      [ev({ recurrenceRules: [rule] })],
+      '2026-04-10T00:00:00',
+      '2026-04-13T00:00:00',
+    );
+    expect(result.map((e) => e.start)).toEqual([
+      '2026-04-10T09:00:00',
+      '2026-04-11T09:00:00',
+      '2026-04-12T09:00:00',
+    ]);
+  });
+});
+
+describe('expandRecurringEvents - excludedRecurrenceRules', () => {
+  it('removes occurrences generated by excluded rules', () => {
+    const event = ev({
+      start: '2025-01-06T09:00:00',
+      recurrenceRules: [{ frequency: 'daily' }],
+      excludedRecurrenceRules: [{
+        frequency: 'weekly',
+        byDay: [{ day: 'tu' }],
+      }],
+    });
+    // Jan 6-12 2025: Mon-Sun, Tuesday Jan 7 excluded
+    const result = expandRecurringEvents([event], '2025-01-06T00:00:00', '2025-01-13T00:00:00');
+    const days = result.map((e) => e.start.substring(0, 10));
+    expect(days).not.toContain('2025-01-07');
+    expect(days).toContain('2025-01-06');
+    expect(days).toContain('2025-01-08');
+    expect(result).toHaveLength(6);
+  });
+});
+
+describe('expandRecurringEvents - long-running series', () => {
+  it('expands a daily series started years before the visible range', () => {
+    const event = ev({
+      start: '2022-01-03T09:00:00',
+      recurrenceRules: [{ frequency: 'daily' }],
+    });
+    const result = expandRecurringEvents([event], '2025-06-02T00:00:00', '2025-06-05T00:00:00');
+    expect(result.map((e) => e.start)).toEqual([
+      '2025-06-02T09:00:00',
+      '2025-06-03T09:00:00',
+      '2025-06-04T09:00:00',
+    ]);
+  });
+
+  it('expands a weekly series started years before the visible range', () => {
+    const event = ev({
+      start: '2020-01-06T09:00:00', // Monday
+      recurrenceRules: [{ frequency: 'weekly' }],
+    });
+    const result = expandRecurringEvents([event], '2025-06-01T00:00:00', '2025-06-30T00:00:00');
+    const days = result.map((e) => e.start.substring(0, 10));
+    expect(days).toEqual(['2025-06-02', '2025-06-09', '2025-06-16', '2025-06-23']);
+  });
+
+  it('still respects count for old series (no fast-forward shortcut)', () => {
+    const event = ev({
+      start: '2025-01-06T09:00:00',
+      recurrenceRules: [{ frequency: 'daily', count: 5 }],
+    });
+    // Range far after the 5 occurrences ran out
+    const result = expandRecurringEvents([event], '2025-06-01T00:00:00', '2025-06-30T00:00:00');
+    expect(result).toHaveLength(0);
+  });
+});
+
+describe('expandRecurringEvents - event timezone DST handling', () => {
+  it('keeps wall time across a DST transition in the event timezone', () => {
+    // America/New_York: EST (UTC-5) until 2025-03-09, EDT (UTC-4) after
+    const event = ev({
+      start: '2025-03-03T10:00:00',
+      timeZone: 'America/New_York',
+      utcStart: '2025-03-03T15:00:00Z',
+      utcEnd: '2025-03-03T16:00:00Z',
+      recurrenceRules: [{ frequency: 'weekly' }],
+    });
+    const result = expandRecurringEvents([event], '2025-03-03T00:00:00', '2025-03-17T00:00:00');
+    const utcStarts = result.map((e) => e.utcStart);
+    expect(utcStarts[0]).toBe('2025-03-03T15:00:00.000Z'); // EST: 10:00 -5
+    expect(utcStarts[1]).toBe('2025-03-10T14:00:00.000Z'); // EDT: 10:00 -4
+    const utcEnds = result.map((e) => e.utcEnd);
+    expect(utcEnds[1]).toBe('2025-03-10T15:00:00.000Z');
+  });
+});

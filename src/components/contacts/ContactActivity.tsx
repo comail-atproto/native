@@ -1,0 +1,328 @@
+import React from 'react';
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Mail as MailIcon, CalendarDays } from '../icons';
+import { format, isAfter, parseISO, type Locale } from 'date-fns';
+import type { ContactCard, Email, CalendarEvent } from '../../api/types';
+import type { RootStackParamList } from '../../navigation/types';
+import { getEmails, queryEmailsByFilter } from '../../api/email';
+import { getEvents, queryEvents } from '../../api/calendar';
+import { useCalendarStore } from '../../stores/calendar-store';
+import { useLocaleStore, type TranslateFn } from '../../stores/locale-store';
+import { getEventColor } from '../../lib/calendar-utils';
+import { getDateFnsLocale } from '../../lib/calendar-locale';
+import { hasCalendarCapability } from '../../lib/capabilities';
+import { singleLine } from '../../lib/single-line';
+import { prefetchMessage } from '../../lib/email-detail-cache';
+import SenderAvatar from '../SenderAvatar';
+import { radius, spacing, typography, componentSizes, type ThemePalette } from '../../theme/tokens';
+import { useColors } from '../../theme/colors';
+
+const EMAIL_LIMIT = 5;
+const EVENT_LIMIT = 5;
+const EVENT_LOOKAHEAD_DAYS = 365;
+
+type Nav = NativeStackNavigationProp<RootStackParamList>;
+
+function getContactEmails(contact: ContactCard): string[] {
+  if (!contact.emails) return [];
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const e of Object.values(contact.emails)) {
+    const addr = e.address?.trim().toLowerCase();
+    if (addr && !seen.has(addr)) {
+      seen.add(addr);
+      out.push(addr);
+    }
+  }
+  return out;
+}
+
+function buildEmailFilter(addresses: string[]): Record<string, unknown> {
+  const conditions: Record<string, unknown>[] = [];
+  for (const addr of addresses) {
+    conditions.push({ from: addr });
+    conditions.push({ to: addr });
+  }
+  if (conditions.length === 1) return conditions[0];
+  return { operator: 'OR', conditions };
+}
+
+function eventInvolvesContact(event: CalendarEvent, addresses: Set<string>): boolean {
+  if (event.participants) {
+    for (const p of Object.values(event.participants)) {
+      const addr = p.email?.trim().toLowerCase();
+      if (addr && addresses.has(addr)) return true;
+      if (p.sendTo) {
+        for (const target of Object.values(p.sendTo)) {
+          const m = typeof target === 'string' ? target.match(/mailto:(.+)/i) : null;
+          if (m && addresses.has(m[1].trim().toLowerCase())) return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
+function formatRelativeDate(iso: string, locale: Locale): string {
+  try {
+    const d = parseISO(iso);
+    const now = new Date();
+    return d.getFullYear() === now.getFullYear()
+      ? format(d, 'MMM d', { locale })
+      : format(d, 'MMM d, yyyy', { locale });
+  } catch {
+    return '';
+  }
+}
+
+function formatEventTime(event: CalendarEvent, t: TranslateFn): string {
+  if (event.showWithoutTime) return t('contacts.activity.all_day', 'All day');
+  try {
+    return format(parseISO(event.start), 'HH:mm');
+  } catch {
+    return '';
+  }
+}
+
+interface Props {
+  contact: ContactCard;
+}
+
+export function ContactActivity({ contact }: Props) {
+  const c = useColors();
+  const styles = React.useMemo(() => makeStyles(c), [c]);
+  const navigation = useNavigation<Nav>();
+  const t = useLocaleStore((s) => s.t);
+  const dateLocale = getDateFnsLocale(useLocaleStore((s) => s.locale));
+  const calendarEvents = useCalendarStore((s) => s.events);
+  const calendars = useCalendarStore((s) => s.calendars);
+
+  const addresses = React.useMemo(() => getContactEmails(contact), [contact]);
+  const addressKey = addresses.join(',');
+
+  const [emails, setEmails] = React.useState<Email[] | null>(null);
+  const [emailsLoading, setEmailsLoading] = React.useState(false);
+  const [emailsError, setEmailsError] = React.useState(false);
+
+  React.useEffect(() => {
+    if (addresses.length === 0) {
+      setEmails([]);
+      return;
+    }
+    let cancelled = false;
+    setEmailsLoading(true);
+    setEmailsError(false);
+    (async () => {
+      try {
+        const ids = await queryEmailsByFilter(buildEmailFilter(addresses), EMAIL_LIMIT);
+        const fetched = ids.length > 0 ? await getEmails(ids) : [];
+        if (cancelled) return;
+        setEmails(fetched);
+      } catch {
+        if (cancelled) return;
+        setEmailsError(true);
+        setEmails([]);
+      } finally {
+        if (!cancelled) setEmailsLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [addressKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const pickUpcoming = React.useCallback((events: CalendarEvent[]): CalendarEvent[] => {
+    const addrSet = new Set(addresses);
+    const now = new Date();
+    const horizon = new Date(now.getTime() + EVENT_LOOKAHEAD_DAYS * 24 * 60 * 60 * 1000);
+    return events
+      .filter((e) => eventInvolvesContact(e, addrSet))
+      .filter((e) => {
+        try {
+          const start = parseISO(e.utcStart || e.start);
+          return isAfter(start, now) && !isAfter(start, horizon);
+        } catch {
+          return false;
+        }
+      })
+      .sort((a, b) => (a.utcStart || a.start).localeCompare(b.utcStart || b.start))
+      .slice(0, EVENT_LIMIT);
+  }, [addresses]);
+
+  // Ask the server for the next year instead of relying on whatever range the
+  // calendar tab happened to load (empty on a fresh start). The cached events
+  // render immediately while the query is in flight.
+  const [serverEvents, setServerEvents] = React.useState<CalendarEvent[] | null>(null);
+  React.useEffect(() => {
+    if (addresses.length === 0 || !hasCalendarCapability()) {
+      setServerEvents(null);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      try {
+        const now = new Date();
+        const before = new Date(now.getTime() + EVENT_LOOKAHEAD_DAYS * 24 * 60 * 60 * 1000);
+        const ids = await queryEvents([], now.toISOString(), before.toISOString());
+        const fetched = ids.length > 0 ? await getEvents(ids) : [];
+        if (!cancelled) setServerEvents(fetched);
+      } catch {
+        if (!cancelled) setServerEvents(null);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [addressKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const upcomingEvents = React.useMemo(() => {
+    if (addresses.length === 0) return [];
+    return pickUpcoming(serverEvents ?? calendarEvents);
+  }, [serverEvents, calendarEvents, addresses, pickUpcoming]);
+
+  if (addresses.length === 0) return null;
+
+  return (
+    <View style={styles.wrap}>
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <View style={styles.sectionIcon}>
+            <MailIcon size={16} color={c.textMuted} />
+          </View>
+          <Text style={styles.sectionLabel}>{t('contacts.activity.recent_emails', 'Recent Emails')}</Text>
+        </View>
+        <View style={styles.sectionBody}>
+          {emailsLoading ? (
+            <View style={styles.loading}>
+              <ActivityIndicator size="small" color={c.primary} />
+            </View>
+          ) : emailsError ? (
+            <Text style={styles.emptyText}>{t('contacts.activity.load_failed', 'Failed to load')}</Text>
+          ) : !emails || emails.length === 0 ? (
+            <Text style={styles.emptyText}>{t('contacts.activity.no_emails', 'No recent emails')}</Text>
+          ) : (
+            emails.map((email) => {
+              const sender = email.from?.[0];
+              const senderName = sender?.name || sender?.email || t('contacts.activity.unknown_sender', 'Unknown sender');
+              const preview = singleLine(email.preview);
+              return (
+                <Pressable
+                  key={email.id}
+                  onPress={() => {
+                    prefetchMessage(email);
+                    navigation.navigate('EmailThread', {
+                      emailId: email.id,
+                      threadId: email.threadId,
+                      subject: email.subject ?? undefined,
+                    });
+                  }}
+                  style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
+                >
+                  <SenderAvatar name={senderName} email={sender?.email} size={32} />
+                  <View style={styles.rowContent}>
+                    <View style={styles.rowTop}>
+                      <Text style={styles.rowSender} numberOfLines={1}>{senderName}</Text>
+                      <Text style={styles.rowDate}>{formatRelativeDate(email.receivedAt, dateLocale)}</Text>
+                    </View>
+                    <Text style={styles.rowSubject} numberOfLines={1}>
+                      {singleLine(email.subject) || t('contacts.activity.no_subject', '(No subject)')}
+                    </Text>
+                    {preview ? (
+                      <Text style={styles.rowPreview} numberOfLines={1}>{preview}</Text>
+                    ) : null}
+                  </View>
+                </Pressable>
+              );
+            })
+          )}
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <View style={styles.sectionIcon}>
+            <CalendarDays size={16} color={c.textMuted} />
+          </View>
+          <Text style={styles.sectionLabel}>{t('contacts.activity.upcoming_events', 'Upcoming Events')}</Text>
+        </View>
+        <View style={styles.sectionBody}>
+          {upcomingEvents.length === 0 ? (
+            <Text style={styles.emptyText}>{t('contacts.activity.no_events', 'No upcoming events')}</Text>
+          ) : (
+            upcomingEvents.map((event) => (
+              <View key={event.id} style={styles.eventRow}>
+                <View
+                  style={[styles.eventDot, { backgroundColor: getEventColor(event, calendars) }]}
+                />
+                <Text style={styles.eventTime}>{formatEventTime(event, t)}</Text>
+                <View style={styles.eventInfo}>
+                  <Text style={styles.eventTitle} numberOfLines={1}>
+                    {event.title || t('contacts.activity.no_title', '(No title)')}
+                  </Text>
+                  <Text style={styles.eventDate}>
+                    {formatRelativeDate(event.utcStart || event.start, dateLocale)}
+                  </Text>
+                </View>
+              </View>
+            ))
+          )}
+        </View>
+      </View>
+    </View>
+  );
+}
+
+function makeStyles(c: ThemePalette) {
+  return StyleSheet.create({
+  wrap: { gap: spacing.lg },
+  section: { gap: spacing.sm },
+  sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  sectionIcon: { width: 16 },
+  sectionLabel: {
+    // Fill the row: shrink-wrapped, Android measured the letter-spaced
+    // label a few px short and wrapped its last word out of sight ("WOR").
+    flex: 1,
+    ...typography.bodyMedium,
+    color: c.textSecondary,
+    textTransform: 'uppercase',
+    fontSize: 11,
+    letterSpacing: 0.6,
+  },
+  sectionBody: { paddingLeft: spacing.lg + spacing.xs, gap: spacing.xs },
+  loading: { paddingVertical: spacing.sm, alignItems: 'flex-start' },
+  emptyText: { ...typography.caption, color: c.textMuted },
+
+  row: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.sm,
+    paddingVertical: 6,
+    borderRadius: radius.xs,
+  },
+  rowPressed: { backgroundColor: c.surface },
+  rowContent: { flex: 1, minWidth: 0 },
+  rowTop: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.sm },
+  rowSender: { ...typography.bodyMedium, color: c.text, flex: 1 },
+  rowDate: { ...typography.caption, color: c.textMuted },
+  rowSubject: { ...typography.body, color: c.text },
+  rowPreview: { ...typography.caption, color: c.textMuted },
+
+  eventRow: { flexDirection: 'row', gap: spacing.sm, alignItems: 'baseline', paddingVertical: 4 },
+  eventDot: {
+    width: componentSizes.eventDot,
+    height: componentSizes.eventDot,
+    borderRadius: componentSizes.eventDot / 2,
+    alignSelf: 'center',
+  },
+  eventTime: {
+    ...typography.caption,
+    color: c.textMuted,
+    width: 52,
+  },
+  eventInfo: { flex: 1, minWidth: 0 },
+  eventTitle: { ...typography.body, color: c.text },
+  eventDate: { ...typography.caption, color: c.textMuted, marginTop: 2 },
+  });
+}

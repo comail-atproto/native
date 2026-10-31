@@ -1,0 +1,73 @@
+import type { Email } from '../api/types';
+
+export interface ViewerPagesInput {
+  /** The message the viewer opens on, and its thread. */
+  emailId: string;
+  threadId: string;
+  /** Ids handed over by a list other than the open folder (unified inbox, contact activity). */
+  emailIds?: string[];
+  /**
+   * The store's loaded rows that live in the message's account: none when the
+   * open folder is another account's, and only that account's rows of a list
+   * spanning accounts. Ids are only unique per account (B3, #1082).
+   */
+  list: Email[];
+  threading: boolean;
+}
+
+/**
+ * The pages the viewer swipes through, worked out once when it opens. Following
+ * the live list let new mail shift the page under the user while Star, Delete
+ * and Archive still acted on the message they had opened (B5).
+ *
+ * A message opened from the open folder pages over that folder, collapsed to
+ * one page per thread when threading is on (the opened message standing in for
+ * its thread); one opened from another list pages over the ids that list handed
+ * over; anything else (notification, deep link, a group message not in the
+ * folder page) is a single page, so the pager never shows `pages[0]` while the
+ * toolbar acts on the tapped message.
+ */
+export function viewerPages(input: ViewerPagesInput): Email[] {
+  const { emailId, threadId, emailIds, threading, list } = input;
+  if (emailIds && emailIds.length > 0) {
+    const byId = new Map(list.map((e) => [e.id, e]));
+    return emailIds.map((id) => byId.get(id) ?? ({ id, threadId } as Email));
+  }
+  const opened = list.find((e) => e.id === emailId);
+  if (!opened) return [{ id: emailId, threadId } as Email];
+  if (!threading) return [...list];
+  const openedKey = opened.threadId || opened.id;
+  const seen = new Set<string>();
+  const out: Email[] = [];
+  for (const e of list) {
+    const key = e.threadId || e.id;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(key === openedKey ? opened : e);
+  }
+  return out;
+}
+
+/** Which viewer instance shows a navigation target; see {@link viewerInstance}. */
+export interface ViewerInstance {
+  params: object;
+  key: string;
+  opens: number;
+}
+
+/**
+ * The viewer instance for the route's current params. Opening the viewer
+ * while it is already on top (a notification tap) does not push a new screen:
+ * React Navigation hands the new target to the same route as new params. Each
+ * such open (new params object) gets a new key, so the viewer is mounted
+ * afresh on the new message, with its own page snapshot, instead of ignoring
+ * the tap. The same params keep the same instance.
+ */
+export function viewerInstance(
+  prev: ViewerInstance | null,
+  params: { emailId: string; jmapAccountId?: string },
+): ViewerInstance {
+  if (prev && prev.params === params) return prev;
+  const opens = (prev?.opens ?? 0) + 1;
+  return { params, key: `${params.jmapAccountId ?? ''}|${params.emailId}|${opens}`, opens };
+}

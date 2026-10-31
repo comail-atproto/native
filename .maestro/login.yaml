@@ -1,0 +1,14 @@
+appId: at.comail.app
+---
+- launchApp
+- assertVisible: Sign in
+- assertNotVisible: '.*scroll bar.*'
+- swipe:
+    start: 50%, 75%
+    end: 50%, 25%
+    duration: 400
+- assertVisible: Sign in
+- tapOn: Your atproto handle
+- inputText: a
+- assertVisible: Continue
+- assertVisible: Your handle (optional)
